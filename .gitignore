@@ -10,18 +10,23 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# Cloudflare & Wrangler artifacts (DO NOT deploy)
+# Cloudflare
 .wrangler/
 .dev.vars
 .cloudflare/
 node_modules/
-.dev.vars
 
-# Build output - generated locally for Cloudflare deploy, not needed in git (keeps repo small)
-# Cloudflare Pages should run: python catalog/build_all.py and publish dir = dist
-dist/
+# Build output (dist is built, but we keep it for Cloudflare Pages if needed - comment out if you want to commit)
+# dist/
 
 # Scratch and Temp
 scratch/
 .tempmediaStorage/
-tmp/
+
+# Keep these for deployment (do NOT ignore)
+!wrangler.jsonc
+!_headers
+!_redirects
+!robots.txt
+!sitemap.xml
+!_routes.json
