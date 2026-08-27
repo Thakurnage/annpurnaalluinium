@@ -6,21 +6,7 @@ __pycache__/
 Thumbs.db
 .sudo_as_admin_successful
 
-# Logs
-*.log
-npm-debug.log*
-
-# Cloudflare artifacts
-.wrangler/
-.dev.vars
-.cloudflare/
-node_modules/
-
-# Build output - dist is committed for Cloudflare Workers (contains 238 clean files)
-# If you want to gitignore dist, uncomment next line and set build command to python catalog/build_all.py
-# dist/
-
 # Scratch and Temp
 scratch/
 .tempmediaStorage/
-tmp/
+*.log
