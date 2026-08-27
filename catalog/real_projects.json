@@ -14,7 +14,10 @@
       "Heavy 6063-T5 Aluminium Subframe",
       "Eurobond ACP Cladding",
       "Zero Water Leakage EPDM Gaskets"
-    ]
+    ],
+    "category_ne": "फसाड र एसीपी क्ल्याडिङ",
+    "location_ne": "Janakpur Commercial Hub",
+    "desc_ne": "Full structural silicone glazed curtain wall with premium thermal performance glass and fire-retardant Red ACP composite panel architectural accents."
   },
   {
     "id": "rp-2",
@@ -31,7 +34,10 @@
       "Reflective Glass Curtain Wall",
       "Integrated UPVC Casements",
       "Weatherproof Structural Seal"
-    ]
+    ],
+    "category_ne": "फसाड र एसीपी क्ल्याडिङ",
+    "location_ne": "Airport Road, Janakpur",
+    "desc_ne": "Contemporary multi-story facade featuring dark tinted reflective glass panels and frameless glass balustrades on all cantilevered balconies."
   },
   {
     "id": "rp-3",
@@ -48,7 +54,10 @@
       "Laser-Cut Decorative Grillework",
       "Heavy-Duty Ball Bearing Hinges",
       "Lifetime Mirror Polished Shine"
-    ]
+    ],
+    "category_ne": "स्टिल तथा मन्दिर गेट",
+    "location_ne": "Duhaba Temple, Dhanusha",
+    "desc_ne": "Massive ceremonial temple entrance double gate handcrafted from mirror-polished heavy SS 304 stainless steel pipes with religious sunburst motifs and devnagari nameplate."
   },
   {
     "id": "rp-4",
@@ -65,7 +74,10 @@
       "Heavy Gauge SS Tubular Sections",
       "Anti-Sag Structural Framework",
       "Dual Master Security Locking"
-    ]
+    ],
+    "category_ne": "स्टिल तथा मन्दिर गेट",
+    "location_ne": "Janakpur Pilgrimage Route",
+    "desc_ne": "Architectural arched temple gate engineered for maximum security and enduring aesthetic brilliance under high pedestrian footfall."
   },
   {
     "id": "rp-5",
@@ -82,7 +94,10 @@
       "5+9A+5 Double Glazing",
       "Multi-Point Security Locks",
       "Dust & Monsoon Rainproof Seals"
-    ]
+    ],
+    "category_ne": "यूपीभीसी झ्याल तथा ढोका",
+    "location_ne": "Janakpur Private Villa",
+    "desc_ne": "Full courtyard glazing with German multi-chamber white uPVC sliding windows, double-glazed French patio doors, and overhead transoms for natural lighting."
   },
   {
     "id": "rp-6",
@@ -99,7 +114,10 @@
       "Heavy Anodized Aluminium Framing",
       "Smooth Telescopic Drawer Channels",
       "Easy-Clean Hygiene Surfaces"
-    ]
+    ],
+    "category_ne": "मोड्युलर किचन र्याक",
+    "location_ne": "Janakpur Modern Residence",
+    "desc_ne": "Termite-proof, 100% waterproof modular kitchen counter and drawer organization system finished in vibrant high-gloss pink ACP panels and anodized aluminium framework."
   },
   {
     "id": "rp-7",
@@ -116,7 +134,10 @@
       "High Impact ACP Backing",
       "Smooth Slide Glass Fronts",
       "Rust-Free Long Life"
-    ]
+    ],
+    "category_ne": "मोड्युलर किचन र्याक",
+    "location_ne": "Showroom Display Unit",
+    "desc_ne": "Multipurpose kitchen storage rack with toughened glass shelves, sliding glass front panels, and heavy-duty corner-braced aluminium structure."
   },
   {
     "id": "rp-8",
@@ -133,7 +154,10 @@
       "Stainless Steel Handles & Locks",
       "Fire-Safe Composite Panels",
       "Heavy Load Carrying Capacity"
-    ]
+    ],
+    "category_ne": "मोड्युलर किचन र्याक",
+    "location_ne": "Residential Kitchen, Janakpur",
+    "desc_ne": "Custom made-to-measure under-counter storage cabinets with stainless steel pulls and integrated ventilation louvers."
   },
   {
     "id": "rp-9",
@@ -150,7 +174,10 @@
       "Crystal & Acrylic Balusters",
       "Core-Drilled & Chemical Anchored",
       "Rigid Wobble-Free Safety"
-    ]
+    ],
+    "category_ne": "स्टेनलेस स्टील रेलिङ",
+    "location_ne": "Luxury Duplex, Janakpur",
+    "desc_ne": "Stunning internal staircase balustrade featuring solid black acrylic inserts, mirror-finish SS 304 handrails, and round crystal finials."
   },
   {
     "id": "rp-10",
@@ -167,7 +194,10 @@
       "SS 304 Mirror Flange Mounts",
       "Internal Prism Light Refraction",
       "Exclusive Luxury Styling"
-    ]
+    ],
+    "category_ne": "लक्जरी पिलर र फिटिङ्स",
+    "location_ne": "Workshop Hardware Collection",
+    "desc_ne": "Premium hand-cut crystal acrylic newel posts with internal light-refracting bubbles and stainless steel mirror-polished bases for palatial staircase entries."
   },
   {
     "id": "rp-11",
@@ -184,7 +214,10 @@
       "10mm Toughened Glass Panes",
       "Acoustic Noise Dampening",
       "Modular Relocatable Framework"
-    ]
+    ],
+    "category_ne": "आल्मुनियम पार्टिसन",
+    "location_ne": "Commercial Office, Madhesh Province",
+    "desc_ne": "Floor-to-ceiling sleek black powder-coated aluminium partition walls with acoustic sound reduction and tempered glass viewports."
   },
   {
     "id": "rp-12",
@@ -201,7 +234,10 @@
       "Frosted Privacy Sandblasted Panels",
       "Overhead Transom Glazing",
       "Smooth Pivot Door Integration"
-    ]
+    ],
+    "category_ne": "आल्मुनियम पार्टिसन",
+    "location_ne": "Janakpur Retail Store",
+    "desc_ne": "Heavy-duty commercial glass entrance with upper glass transom and frosted bottom panels for seamless customer flow and privacy."
   },
   {
     "id": "rp-13",
@@ -218,7 +254,10 @@
       "4-Line Horizontal Child-Safe Guards",
       "TIG Welded & Mirror Buffed",
       "Lifetime Corrosion Resistance"
-    ]
+    ],
+    "category_ne": "स्टेनलेस स्टील रेलिङ",
+    "location_ne": "Residential Home, Janakpur",
+    "desc_ne": "Sleek minimalist stainless steel handrail system with 4 horizontal intermediate safety guards, seamless elbow joints, and wall anchors."
   },
   {
     "id": "rp-14",
@@ -235,7 +274,10 @@
       "Artistic Wave & Ring Motifs",
       "Heavy Base Flange Anchors",
       "Weather Resistant Mirror Polish"
-    ]
+    ],
+    "category_ne": "स्टेनलेस स्टील रेलिङ",
+    "location_ne": "First Floor Balcony, Dhanusha",
+    "desc_ne": "Decorative exterior balcony guard with interlocking laser-cut wave bars and circular accents in all-weather SS 304."
   },
   {
     "id": "rp-15",
@@ -252,7 +294,10 @@
       "Seamless Precision Bending",
       "SS 304 Marine Quality",
       "Zero Rust in Monsoon Seasons"
-    ]
+    ],
+    "category_ne": "स्टेनलेस स्टील रेलिङ",
+    "location_ne": "Private Residence, Janakpur",
+    "desc_ne": "Precision-bent stainless steel arcs create an open, airy feeling while exceeding standard parapet safety height regulations."
   },
   {
     "id": "rp-16",
@@ -269,7 +314,10 @@
       "Sunburst Radial Grillework",
       "Heavy 16-Gauge SS Pipe",
       "High Impact Safety Tested"
-    ]
+    ],
+    "category_ne": "स्टेनलेस स्टील रेलिङ",
+    "location_ne": "Balcony Exterior, Janakpur",
+    "desc_ne": "Eye-catching sunburst radial design mounted on curved balcony slab with solid newel anchor points."
   },
   {
     "id": "rp-17",
@@ -286,7 +334,10 @@
       "Double Sealed uPVC Sash",
       "Smooth Bearing Heavy Rollers",
       "Sound & Heat Insulation"
-    ]
+    ],
+    "category_ne": "यूपीभीसी झ्यालहरू",
+    "location_ne": "Showcase Unit, Workshop",
+    "desc_ne": "European styling with internal colonial muntin bars sealed inside the double glass unit for zero-dust cleaning and maximum elegance."
   },
   {
     "id": "rp-18",
@@ -303,7 +354,10 @@
       "Multi-Chamber Insulated Profile",
       "Interlocking Security Stile",
       "Nylon Mesh Bug Screen Ready"
-    ]
+    ],
+    "category_ne": "यूपीभीसी झ्यालहरू",
+    "location_ne": "Residential Installation",
+    "desc_ne": "High thermal efficiency sliding window with solar-control blue reflective glass that keeps interiors 5-7°C cooler during Janakpur summer heat."
   },
   {
     "id": "rp-19",
@@ -320,7 +374,10 @@
       "Top Exhaust Transom Provision",
       "EPDM Multi-Lip Weather Seals",
       "Reinforced Galvanized Steel Core"
-    ]
+    ],
+    "category_ne": "यूपीभीसी झ्यालहरू",
+    "location_ne": "New Home Construction",
+    "desc_ne": "Full building aperture package: 3-track sliding window with insect mesh panel and independent top-hung exhaust ventilator."
   },
   {
     "id": "rp-20",
@@ -337,7 +394,10 @@
       "Friction Stay Hinges (Hold Any Angle)",
       "Multi-Point Espag Locking",
       "100% Termite & Rot Immune"
-    ]
+    ],
+    "category_ne": "यूपीभीसी झ्यालहरू",
+    "location_ne": "Workshop Dispatch Area",
+    "desc_ne": "Batch of luxury woodgrain laminated casement windows with blue tinted safety glass, ready for on-site villa installation."
   },
   {
     "id": "rp-21",
@@ -354,7 +414,10 @@
       "6063-T5 Architectural Alloy",
       "Smooth Glide Bottom Tracks",
       "Dual Flush Locks"
-    ]
+    ],
+    "category_ne": "आल्मुनियम झ्यालहरू",
+    "location_ne": "Residential Installation",
+    "desc_ne": "Precision powder-coated white aluminium sliding window with top fixed viewing transom and solar reflective blue safety glass."
   },
   {
     "id": "rp-22",
@@ -371,7 +434,10 @@
       "Continuous Sightline Alignment",
       "Double Weather Stripping",
       "Heavy Rain Drain Chambers"
-    ]
+    ],
+    "category_ne": "आल्मुनियम झ्यालहरू",
+    "location_ne": "Corner Room, Janakpur",
+    "desc_ne": "90-degree corner joint window framework providing uninterrupted panoramic views of nature and surrounding greenery."
   },
   {
     "id": "rp-23",
@@ -388,7 +454,10 @@
       "Stainless Steel Lever Handles",
       "Rubber Gasketed Door Stop Frame",
       "Maintenance-Free Surface"
-    ]
+    ],
+    "category_ne": "यूपीभीसी ढोकाहरू",
+    "location_ne": "Bedroom Entry, Janakpur",
+    "desc_ne": "Elegant interior flush door combining real teak wood texture aesthetic with the zero-warp, zero-rot durability of uPVC framing."
   },
   {
     "id": "rp-24",
@@ -405,7 +474,10 @@
       "Frosted Obscure Privacy Top",
       "Heavy Duty Aluminium Frame",
       "Waterproof & Corrosion Proof"
-    ]
+    ],
+    "category_ne": "आल्मुनियम ढोकाहरू",
+    "location_ne": "Balcony / Washroom Door",
+    "desc_ne": "Durable interior/exterior door featuring Eurobond branded composite base panel and frosted obscure privacy glass top section."
   },
   {
     "id": "rp-25",
@@ -422,7 +494,10 @@
       "Decorative Blue Mosaic Base",
       "Stainless Steel Hinges & Latches",
       "Anti-Fungal & Anti-Bacterial"
-    ]
+    ],
+    "category_ne": "यूपीभीसी ढोकाहरू",
+    "location_ne": "Modern Washroom",
+    "desc_ne": "Completely waterproof bathroom door designed to resist high humidity, daily water spray, soap residues, and chemical cleaners without discoloration."
   },
   {
     "id": "rp-26",
@@ -439,7 +514,10 @@
       "Woodgrain Textured Frame",
       "Heavy Duty Mortise Lockset",
       "Luxury Statement Piece"
-    ]
+    ],
+    "category_ne": "आल्मुनियम ढोकाहरू",
+    "location_ne": "Main Hallway Door",
+    "desc_ne": "Showpiece interior door showcasing 3D textured floral stained glass art illuminated with natural light."
   },
   {
     "id": "rp-27",
@@ -456,7 +534,10 @@
       "Dual Leaf Symmetrical Swing",
       "High Clearance Opening",
       "Durable Powder Coated Finish"
-    ]
+    ],
+    "category_ne": "आल्मुनियम ढोकाहरू",
+    "location_ne": "Community Entryway",
+    "desc_ne": "Custom curved arch framework designed to match traditional architectural archways with blue glass and white composite infill."
   },
   {
     "id": "rp-28",
@@ -473,7 +554,10 @@
       "Reinforced Mullions & Transoms",
       "Heavy Traffic Commercial Rating",
       "Clean Aesthetic Fitment"
-    ]
+    ],
+    "category_ne": "फसाड र एसीपी क्ल्याडिङ",
+    "location_ne": "Institutional Hall, Madhesh",
+    "desc_ne": "Coordinated series of three arched aluminium double doors fabricated and installed with precision wall matching."
   },
   {
     "id": "rp-29",
@@ -490,7 +574,10 @@
       "Diamond Lattice Lower Grille",
       "Concealed Heavy Hinge Pins",
       "Tamper-Proof Lock Housing"
-    ]
+    ],
+    "category_ne": "स्टिल तथा मन्दिर गेट",
+    "location_ne": "Residential Security Gate",
+    "desc_ne": "High-security arched outer gate with diamond lattice mesh and solid stainless steel bars protecting the main entrance."
   },
   {
     "id": "rp-30",
@@ -507,7 +594,10 @@
       "Ornamental Cast Medallions",
       "Heavy Post Gate Mounts",
       "Coordinated Architectural Theme"
-    ]
+    ],
+    "category_ne": "स्टिल तथा मन्दिर गेट",
+    "location_ne": "Private Compound, Janakpur",
+    "desc_ne": "Complete exterior metal package: decorative driveway swing gate paired with matching upper floor safety railings."
   },
   {
     "id": "rp-31",
@@ -524,7 +614,10 @@
       "Friction Clamp (No Hole in Glass)",
       "Mirror / Satin Brushed Finish",
       "Supports up to 15mm Glass"
-    ]
+    ],
+    "category_ne": "लक्जरी पिलर र फिटिङ्स",
+    "location_ne": "Hardware Warehouse Stock",
+    "desc_ne": "Solid casting grade 304 stainless steel base clamps designed to clamp 10mm-15mm toughened glass panels securely without drilling glass."
   },
   {
     "id": "rp-32",
@@ -541,7 +634,10 @@
       "High Tensile Fasteners",
       "Zero Rust Lifetime Performance",
       "Clean Concealed Fixings"
-    ]
+    ],
+    "category_ne": "लक्जरी पिलर र फिटिङ्स",
+    "location_ne": "Hardware Warehouse Stock",
+    "desc_ne": "Adjustable glass clamp brackets for stair handrail posts, glass shower cubicles, and swimming pool fencing."
   },
   {
     "id": "rp-33",
@@ -558,7 +654,10 @@
       "Scratch-Resistant Silver Finish",
       "Comfort Grip Ergonomic Contour",
       "Universal Screw Hole Pitch"
-    ]
+    ],
+    "category_ne": "लक्जरी पिलर र फिटिङ्स",
+    "location_ne": "Hardware Accessories",
+    "desc_ne": "Heavy-duty ergonomic pull handles with electroplated matte silver coating for luxury sliding doors and commercial partitions."
   },
   {
     "id": "rp-34",
@@ -575,7 +674,10 @@
       "Polished SS 304 Accent Rings",
       "Crystal Sphere Finials",
       "Pre-Drilled Base Anchor Flange"
-    ]
+    ],
+    "category_ne": "लक्जरी पिलर र फिटिङ्स",
+    "location_ne": "Showroom Display Stock",
+    "desc_ne": "Royal combination of rich seasoned mahogany wood columns with stainless steel bands, round crystal finials, and heavy base collars."
   },
   {
     "id": "rp-35",
@@ -592,7 +694,10 @@
       "8mm Safety Toughened Glass",
       "Vibrant Non-Fading Color Infill",
       "Custom Design Engraving Ready"
-    ]
+    ],
+    "category_ne": "ग्लास सोलुसन्स",
+    "location_ne": "Custom Glass Studio",
+    "desc_ne": "Precision acid-etched and color-infilled frosted toughened glass panel depicting a tropical coconut palm tree for luxury doors and partitions."
   },
   {
     "id": "rp-36",
@@ -609,7 +714,10 @@
       "Thermal Fusion Corner Welding",
       "Internal Galvanized Steel Insertion",
       "100% Quality Inspection Gate"
-    ]
+    ],
+    "category_ne": "वर्कशप र टिम",
+    "location_ne": "Janakpur Workshop, Murli Chowk",
+    "desc_ne": "Precision miter cutting and fusion welding of multi-chamber uPVC profiles at our Janakpur Dham workshop."
   },
   {
     "id": "rp-37",
@@ -626,7 +734,10 @@
       "Diamond Compound 5-Stage Buffing",
       "Laser Level Elevation Alignment",
       "Clean Residue-Free Handover"
-    ]
+    ],
+    "category_ne": "वर्कशप र टिम",
+    "location_ne": "Client Installation Site",
+    "desc_ne": "Our skilled technicians perform inert gas TIG welding and multiple stages of diamond compound buffing to create flawless invisible joints."
   },
   {
     "id": "rp-38",
@@ -643,7 +754,10 @@
       "Full Machinery Workshop",
       "Direct Factory Price Guarantee",
       "Visit Us: 9 AM - 7 PM Daily"
-    ]
+    ],
+    "category_ne": "वर्कशप र टिम",
+    "location_ne": "Murli Chowk Airport Road, Janakpur",
+    "desc_ne": "Our established physical workshop in Janakpur Dham-8, trusted by thousands across Madhesh Province since inception."
   },
   {
     "id": "rp-39",
@@ -660,7 +774,10 @@
       "Weatherproof Backer Rod & Sealant",
       "Strict Plumb & Level Tolerances",
       "On-Time Project Delivery"
-    ]
+    ],
+    "category_ne": "फसाड र एसीपी क्ल्याडिङ",
+    "location_ne": "Commercial Project Site",
+    "desc_ne": "Certified installers executing exterior ACP pillar wraps and scaffolding-supported structural glazing with safety harnesses."
   },
   {
     "id": "rp-40",
@@ -677,6 +794,9 @@
       "Protective Scratch-Proof Film",
       "Nepal-Wide Freight Logistics",
       "Fast 3-5 Day Turnaround"
-    ]
+    ],
+    "category_ne": "वर्कशप र टिम",
+    "location_ne": "Janakpur Workshop Yard",
+    "desc_ne": "Completed batch of bespoke sliding windows and doors packaged with protective wrap ready for safe transport across Nepal."
   }
 ]
