@@ -10,23 +10,17 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# Cloudflare
+# Cloudflare artifacts
 .wrangler/
 .dev.vars
 .cloudflare/
 node_modules/
 
-# Build output (dist is built, but we keep it for Cloudflare Pages if needed - comment out if you want to commit)
+# Build output - dist is committed for Cloudflare Workers (contains 238 clean files)
+# If you want to gitignore dist, uncomment next line and set build command to python catalog/build_all.py
 # dist/
 
 # Scratch and Temp
 scratch/
 .tempmediaStorage/
-
-# Keep these for deployment (do NOT ignore)
-!wrangler.jsonc
-!_headers
-!_redirects
-!robots.txt
-!sitemap.xml
-!_routes.json
+tmp/

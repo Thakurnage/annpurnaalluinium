@@ -1596,9 +1596,10 @@ shutil.copy(catalog_html_path, DIST_DIR / "catalog" / "catalog.html")
 
 # Generate Cloudflare specific files
 # wrangler.jsonc - FIXED: assets directory = ./dist, not . (which includes .git)
+# Name must match Cloudflare dashboard project: annpurnaalluiniumai
 wrangler_config = {
     "$schema": "node_modules/wrangler/config-schema.json",
-    "name": "annpurnaalluinium",
+    "name": "annpurnaalluiniumai",
     "compatibility_date": "2026-08-26",
     "compatibility_flags": ["assets_navigation_prefers_asset_serving"],
     "observability": {"enabled": True},
@@ -1611,8 +1612,8 @@ wrangler_path = ROOT / "wrangler.jsonc"
 wrangler_path.write_text(json.dumps(wrangler_config, indent=2), encoding="utf-8")
 print(f"✅ Created fixed wrangler.jsonc with assets.directory='./dist' (fixes .git pack error)")
 
-# _headers for Cloudflare Pages/Workers
-headers_content = """/* 
+# _headers for Cloudflare Workers (SPA handled via wrangler.jsonc not_found_handling, so NO _redirects needed)
+headers_content = """/*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
@@ -1630,14 +1631,16 @@ headers_content = """/*
 """
 (ROOT / "_headers").write_text(headers_content, encoding="utf-8")
 (DIST_DIR / "_headers").write_text(headers_content, encoding="utf-8")
-print("✅ Created _headers")
+print("✅ Created _headers (NO _redirects - SPA handled by wrangler.jsonc)")
 
-# _redirects
-redirects_content = """/* /index.html 200
-"""
-(ROOT / "_redirects").write_text(redirects_content, encoding="utf-8")
-(DIST_DIR / "_redirects").write_text(redirects_content, encoding="utf-8")
-print("✅ Created _redirects")
+# NOTE: _redirects REMOVED for Workers - it caused infinite loop error 100324
+# Workers with assets.not_found_handling="single-page-application" already serves index.html for 404s
+# Creating /* /index.html 200 in _redirects triggers Cloudflare infinite loop detection
+# So we explicitly ensure no _redirects exists
+for p in [ROOT / "_redirects", DIST_DIR / "_redirects"]:
+    if p.exists():
+        p.unlink()
+        print(f"🗑️ Removed {p} to fix infinite loop error")
 
 # robots.txt
 robots_content = f"""User-agent: *
@@ -1690,66 +1693,14 @@ __pycache__
 catalog/
 image/
 uploads/
-dist/
-"""
-(ROOT / ".assetsignore").write_text(assetsignore_content, encoding="utf-8")
-print("✅ Created .assetsignore to prevent .git inclusion")
-
-# Update .gitignore for Cloudflare
-gitignore_path = ROOT / ".gitignore"
-current_gitignore = ""
-if gitignore_path.exists():
-    current_gitignore = gitignore_path.read_text(encoding="utf-8")
-
-needed_ignores = ["\n# Cloudflare & Build\n", ".wrangler/\n", ".dev.vars\n", "dist/\n", ".cloudflare/\n", "node_modules/\n", ".assetsignore\n", "wrangler.jsonc\n", "_headers\n", "_redirects\n"]
-# Actually we WANT wrangler.jsonc to be committed for Cloudflare, so don't ignore it
-# Let's make clean gitignore that includes wrangler artifacts but keeps wrangler.jsonc
-final_gitignore = """# System & Temporary
-__pycache__/
-*.py[cod]
-*$py.class
-.DS_Store
-Thumbs.db
-.sudo_as_admin_successful
-
-# Logs
-*.log
-npm-debug.log*
-
-# Cloudflare
-.wrangler/
-.dev.vars
-.cloudflare/
-node_modules/
-
-# Build output (dist is built, but we keep it for Cloudflare Pages if needed - comment out if you want to commit)
-# dist/
-
-# Scratch and Temp
-scratch/
-.tempmediaStorage/
-
-# Keep these for deployment (do NOT ignore)
-!wrangler.jsonc
-!_headers
-!_redirects
-!robots.txt
-!sitemap.xml
-!_routes.json
 """
 
-gitignore_path.write_text(final_gitignore, encoding="utf-8")
-print("✅ Updated .gitignore with Cloudflare-safe rules")
-
-# Create _routes.json for advanced routing (optional but helps)
-routes_content = {
-    "version": 1,
-    "include": ["/*"],
-    "exclude": []
-}
-(ROOT / "_routes.json").write_text(json.dumps(routes_content, indent=2), encoding="utf-8")
-(DIST_DIR / "_routes.json").write_text(json.dumps(routes_content, indent=2), encoding="utf-8")
-print("✅ Created _routes.json")
+# _routes.json REMOVED for Workers - it is Pages Functions specific and not needed for Workers assets
+# Keeping it can cause confusion, so we delete if exists
+for p in [ROOT / "_routes.json", DIST_DIR / "_routes.json"]:
+    if p.exists():
+        p.unlink()
+        print(f"🗑️ Removed {p} (Pages-only, not needed for Workers)")
 
 print("\n🎉 Master Website & Cloudflare Build Complete!")
 print(f"   - Root: {index_path} ({len(html_content)} bytes)")
