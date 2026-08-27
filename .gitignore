@@ -1,0 +1,12 @@
+# System & Temporary
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+Thumbs.db
+.sudo_as_admin_successful
+
+# Scratch and Temp
+scratch/
+.tempmediaStorage/
+*.log
