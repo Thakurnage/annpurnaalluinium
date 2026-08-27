@@ -1,28 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Annapurna Aluminium & UPVC — Ultra-Premium Master Website Builder
-Features:
-- Ultra-luxury modern architectural glassmorphism design
-- Seamless Dual-Language Support (English & नेपाली)
-- Authentic Real Workshop Projects Gallery (40+ high-res photos with Lightbox)
-- 102+ Master Product Catalog with Blueprint / Photo dual-view toggle
-- Free Site Visit & Architectural Consultation Booking
-- Factory Standards & Material Quality Matrix
-- Google Business Profile & Nepal-wide service area
-- Fully removed PAN references and Price Calculator
+Annapurna Aluminium & UPVC — Master Builder & Website Compiler
+Generates ultra-professional, premium architectural landing page (index.html and catalog/catalog.html)
+with:
+1. Ultra-Premium Smart AI Architectural Chatbot Widget featuring custom AI icon, preset general FAQs, typing indicator, instant expert answers, and 1-click Direct WhatsApp Call/Chat to Founder Prof. Nageshwar Thakur (+977 9817658719)
+2. Automatic Infinite Sliding Background/Hero Product Banner Carousel
+3. Ultra-Luxury High-Tech CAD Blueprint Cards with glowing grid & technical CAD markings
+4. Direct WhatsApp Contact (+977 9817658719) across all touchpoints
+5. Deep SEO optimization (JSON-LD structured data, Open Graph, Geo tags, semantic HTML5)
+6. 40+ real workshop project lightbox gallery and 102+ design catalog switcher
+7. Seamless dual-language support (English & Nepali).
 """
-import base64
-import html
-import io
+
 import json
 import os
-import re
-import subprocess
 import sys
 from pathlib import Path
 
-# Workspace paths
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "catalog_assets"
 REAL_PROJ_DIR = ASSETS / "real_projects"
@@ -32,16 +27,14 @@ sys.path.insert(0, str(CATALOG_DIR))
 
 from products_data import P, CATS, BASE_FEATS  # noqa: E402
 
-# Business details (PAN completely removed)
+# Business details - Single WhatsApp contact number +977 9817658719
 SHOP = {
     "name": "Annapurna Aluminium & UPVC",
     "legal_name": "Annapurna Aluminium & UPVC Udhyog",
     "tagline": "UPVC Windows & Doors · Aluminium Partitions · Toughened Glass · SS Steel Works",
     "owner_name": "Prof. Nageshwar Thakur",
     "phone1": "+977 9817658719",
-    "phone2": "+977 9817667115",
     "phone1_raw": "9817658719",
-    "phone2_raw": "9817667115",
     "whatsapp": "9779817658719",
     "address": "Janakpur Dham-8, Murli Chowk (Airport Road), Dhanusha, Madhesh Province, Nepal",
     "address_short": "Murli Chowk (Airport Road), Janakpur Dham-8, Dhanusha",
@@ -56,7 +49,7 @@ SHOP = {
     ]
 }
 
-# Real projects catalog data
+# Real projects catalog data (44 items)
 REAL_PROJECTS = [
     {
         "id": "rp-1",
@@ -189,335 +182,342 @@ REAL_PROJECTS = [
         "cat_key": "SLS",
         "location": "Luxury Duplex, Janakpur",
         "location_ne": "जनकपुरधाम लक्जरी डुप्लेक्स",
-        "desc": "Stunning internal staircase balustrade featuring solid black acrylic inserts, mirror-finish SS 304 handrails, and round crystal finials.",
-        "desc_ne": "कालो एक्रिलिक पिलर, क्रिस्टल बल र ५० मिमी एसएस ३०४ ह्यान्डरेल जडित आकर्षक भर्याङ रेलिङ।",
-        "specs": ["SS 304 50mm Round Handrail", "Crystal & Acrylic Balusters", "Core-Drilled Anchoring", "Rigid Wobble-Free Safety"]
+        "desc": "Stunning internal staircase balustrade featuring solid black acrylic inserts, mirror-finish SS 304 top handrail, and heavy marble-anchor base plates.",
+        "desc_ne": "कालो ग्रेनाइट भर्याङमा जडान गरिएको लक्जरी एसएस ३०४ र ब्ल्याक एक्रिलिक रेलिङ।",
+        "specs": ["Solid Acrylic Master Posts", "Mirror Polish SS 304 Pipe", "Hidden Heavy Expansion Anchors", "Zero-Wobble Rigidity"]
     },
     {
         "id": "rp-10",
         "image": "crystal_acrylic_ss_pillars.jpg",
         "thumb": "thumb_crystal_acrylic_ss_pillars.jpg",
-        "title": "Amber Gold, Royal Blue & Clear Crystal Acrylic Master Pillars",
-        "title_ne": "एम्बर गोल्ड, रोयल ब्लु र क्रिस्टल डायमण्ड मास्टर पिलरहरू",
-        "category": "Luxury Pillars & Hardware",
-        "category_ne": "लक्जरी पिलर र फिटिङ्स",
+        "title": "Royal Stair Balustrade with Faceted Crystal Acrylic Pillars",
+        "title_ne": "रोयल क्रिस्टल एक्रिलिक पिलर भर्याङ रेलिङ",
+        "category": "Stainless Steel Railings",
+        "category_ne": "स्टेनलेस स्टील रेलिङ",
         "cat_key": "SLS",
-        "location": "Workshop Hardware Collection",
-        "location_ne": "वर्कशप प्रिमियम कलेक्सन",
-        "desc": "Premium hand-cut crystal acrylic newel posts with internal light-refracting bubbles and stainless steel mirror-polished bases.",
-        "desc_ne": "भर्याङको सुरुवाती पिलरको लागि विभिन्न रङ्गका आकर्षक क्रिस्टल एक्रिलिक मास्टर पिलरहरू।",
-        "specs": ["Solid High-Grade Acrylic", "SS 304 Flange Mounts", "Prism Light Refraction", "Exclusive Luxury Styling"]
+        "location": "Private Mansion, Dhanusha",
+        "location_ne": "धनुषा लक्जरी निवास",
+        "desc": "Premium interior staircase railing highlighting clear diamond-cut acrylic crystal newel posts with gold-accented stainless steel rings.",
+        "desc_ne": "लाइटिङ पर्दा टल्किने डाइमण्ड कट क्रिस्टल एक्रिलिक पिलर र गोल्ड-रिम एसएस ३०४ रेलिङ।",
+        "specs": ["Diamond-Cut Acrylic Pillars", "Gold & Chrome Accents", "SS 304 Multi-Tier Balusters", "Custom Corner Elbows"]
     },
     {
         "id": "rp-11",
-        "image": "office_partition_corridor.jpg",
-        "thumb": "thumb_office_partition_corridor.jpg",
-        "title": "Corporate Office Corridor Black Aluminium & Glass Partition",
-        "title_ne": "कर्पोरेट अफिस कोरिडोर कालो आल्मुनियम र ग्लास पार्टिसन",
-        "category": "Aluminium Partitions",
-        "category_ne": "आल्मुनियम पार्टिसन",
-        "cat_key": "ALP",
-        "location": "Commercial Office, Madhesh",
-        "location_ne": "कर्पोरेट अफिस, मधेश प्रदेश",
-        "desc": "Floor-to-ceiling sleek black powder-coated aluminium partition walls with acoustic sound reduction and tempered glass viewports.",
-        "desc_ne": "म्याट ब्ल्याक पाउडर कोटेड आल्मुनियम फ्रेम र १० मिमी टफन्ड ग्लास जडित अफिस केबिन पार्टिसन।",
-        "specs": ["Matte Black Powder Coating", "10mm Toughened Glass", "Acoustic Dampening", "Modular Relocatable System"]
+        "image": "balcony_ss_sunburst.jpg",
+        "thumb": "thumb_balcony_ss_sunburst.jpg",
+        "title": "Sunburst Motif SS 304 Balcony Guard Railing",
+        "title_ne": "सूर्य किरण बुट्टा एसएस ३०४ बालकनी रेलिङ",
+        "category": "Stainless Steel Railings",
+        "category_ne": "स्टेनलेस स्टील रेलिङ",
+        "cat_key": "SLS",
+        "location": "Residential Villa, Janakpur",
+        "location_ne": "जनकपुरधाम आवासीय भिल्ला",
+        "desc": "Heavy-duty exterior balcony protection railing featuring center sunburst medallion grills and 2-inch continuous top safety pipe.",
+        "desc_ne": "घरको मुख्य बालकनीको सुरक्षा र सुन्दरताको लागि निर्मित सूर्य किरण बुट्टा एसएस रेलिङ।",
+        "specs": ["Central Decorative Medallions", "Heavy Wall Thickness SS Pipes", "Weather-Resistant Weld Joints", "Child-Safe Vertical Spacing"]
     },
     {
         "id": "rp-12",
-        "image": "commercial_frosted_partition.jpg",
-        "thumb": "thumb_commercial_frosted_partition.jpg",
-        "title": "Commercial Entrance Partition with Frosted Privacy Panels",
-        "title_ne": "व्यावसायिक प्रवेशद्वार पार्टिसन फ्रोस्टेड ग्लास सहित",
-        "category": "Aluminium Partitions",
-        "category_ne": "आल्मुनियम पार्टिसन",
-        "cat_key": "ALP",
-        "location": "Janakpur Retail Store",
-        "location_ne": "जनकपुरधाम रिटेल स्टोर",
-        "desc": "Heavy-duty commercial glass entrance with upper glass transom and frosted bottom panels for customer flow and privacy.",
-        "desc_ne": "माथिल्लो भागमा पारदर्शी ग्लास र तल्लो भागमा फ्रोस्टेड प्राइभेसी प्यानल भएको कमर्सियल प्रवेशद्वार।",
-        "specs": ["Heavy Commercial Sections", "Sandblasted Privacy Panels", "Overhead Transom Glazing", "Smooth Pivot Door"]
+        "image": "balcony_ss_wave_railing.jpg",
+        "thumb": "thumb_balcony_ss_wave_railing.jpg",
+        "title": "Curved Wave Pattern SS 304 Balcony Protection Railing",
+        "title_ne": "वेभ ढाँचा एसएस ३०४ बालकनी रेलिङ",
+        "category": "Stainless Steel Railings",
+        "category_ne": "स्टेनलेस स्टील रेलिङ",
+        "cat_key": "SLS",
+        "location": "Commercial Residence, Jaleshwor",
+        "location_ne": "जलेश्वर व्यावसायिक निवास",
+        "desc": "Custom hydro-bent wave baluster railing installed along a long cantilevered building balcony for modern aesthetic impact.",
+        "desc_ne": "आकर्षक वेभ ढाँचामा पाइप ब्यान्डिङ गरी जडान गरिएको दिगो एसएस ३०४ बालकनी रेलिङ।",
+        "specs": ["Hydro-Bent Wave Profiles", "Continuous Corner Jointing", "Corrosion Free Outdoors", "Heavy Floor Anchor Flanges"]
     },
     {
         "id": "rp-13",
-        "image": "stair_ss_horizontal_railing.jpg",
-        "thumb": "thumb_stair_ss_horizontal_railing.jpg",
-        "title": "Modern SS 304 Staircase Railing with 4-Line Safety Pipes",
-        "title_ne": "आधुनिक एसएस ३०४ भर्याङ रेलिङ ४-लाइन सुरक्षा पाइप",
-        "category": "Stainless Steel Railings",
-        "category_ne": "स्टेनलेस स्टील रेलिङ",
-        "cat_key": "SLS",
-        "location": "Residential Home, Janakpur",
-        "location_ne": "जनकपुरधाम नयाँ आवास",
-        "desc": "Sleek minimalist stainless steel handrail system with 4 horizontal intermediate safety guards and mirror-buffed finish.",
-        "desc_ne": "बालबालिकाको पूर्ण सुरक्षाको लागि ४ वटा होरिजोन्टल पाइप र मिरर फिनिश एसएस ३०४ भर्याङ रेलिङ।",
-        "specs": ["Continuous Ergonomic Handrail", "4-Line Horizontal Guards", "TIG Welded & Buffed", "Lifetime Anti-Rust Guarantee"]
+        "image": "door_3d_floral_glass.jpg",
+        "thumb": "thumb_door_3d_floral_glass.jpg",
+        "title": "3D Sculpted Floral Etched Glass Aluminium Main Door",
+        "title_ne": "३डी फ्लोरल इच्ड ग्लास आल्मुनियम मुख्य ढोका",
+        "category": "Aluminium Doors",
+        "category_ne": "आल्मुनियम ढोका",
+        "cat_key": "ALD",
+        "location": "Executive Office, Janakpur",
+        "location_ne": "जनकपुरधाम कार्यकारी कार्यालय",
+        "desc": "Heavy aluminium frame entrance door featuring double-layered 3D sandblasted floral artwork glass panel with frosted privacy background.",
+        "desc_ne": "३डी इचिङ गरिएको कलात्मक ग्लास र पाउडर कोटेड आल्मुनियम फ्रेम ढोका।",
+        "specs": ["3D Deep Etched Artwork", "10mm Toughened Glass", "Heavy Hydraulic Floor Spring", "SS Vertical Bar Pull Handle"]
     },
     {
         "id": "rp-14",
-        "image": "balcony_ss_wave_railing.jpg",
-        "thumb": "thumb_balcony_ss_wave_railing.jpg",
-        "title": "Contemporary Stainless Steel Balcony Safety Railing (Wave Design)",
-        "title_ne": "समकालीन स्टेनलेस स्टील बालकनी रेलिङ (वेभ डिजाइन)",
-        "category": "Stainless Steel Railings",
-        "category_ne": "स्टेनलेस स्टील रेलिङ",
-        "cat_key": "RLS",
-        "location": "First Floor Balcony, Dhanusha",
-        "location_ne": "पहिलो तला बालकनी, धनुषा",
-        "desc": "Decorative exterior balcony guard with interlocking laser-cut wave bars and circular accents in all-weather SS 304.",
-        "desc_ne": "घरको बाहिरी सौन्दर्य बढाउने घुमाउरो वेभ बुट्टा भएको बलियो एसएस ३०४ बालकनी रेलिङ।",
-        "specs": ["High Wind Load Rating", "Artistic Wave Motifs", "Heavy Base Anchors", "Weatherproof Shine"]
+        "image": "door_eurobond_panel.jpg",
+        "thumb": "thumb_door_eurobond_panel.jpg",
+        "title": "Red Eurobond Composite Panel Aluminium Office Flush Door",
+        "title_ne": "रातो यूरोबन्ड कम्पोजिट प्यानल आल्मुनियम ढोका",
+        "category": "Aluminium Doors",
+        "category_ne": "आल्मुनियम ढोका",
+        "cat_key": "ALD",
+        "location": "Commercial Plaza, Janakpur",
+        "location_ne": "जनकपुरधाम प्लाजा",
+        "desc": "Ultra-durable, waterproof composite panel interior flush door engineered for high-traffic office corridors and washrooms.",
+        "desc_ne": "पानी र धमिराले कहिल्यै नबिग्रिने उच्च गुणस्तरको रातो कम्पोजिट प्यानल ढोका।",
+        "specs": ["Waterproof & Termite Proof", "Heavy Duty Aluminium Frame", "Mortise Cylinder Lockset", "Zero Distortion Under Moisture"]
     },
     {
         "id": "rp-15",
-        "image": "balcony_ss_arc_railing.jpg",
-        "thumb": "thumb_balcony_ss_arc_railing.jpg",
-        "title": "Architectural Curved Arc SS 304 Balcony Guard Railing",
-        "title_ne": "आर्किटेक्चरल घुमाउरो एसएस ३०४ बालकनी गार्ड रेलिङ",
-        "category": "Stainless Steel Railings",
-        "category_ne": "स्टेनलेस स्टील रेलिङ",
-        "cat_key": "RLS",
-        "location": "Private Residence, Janakpur",
-        "location_ne": "जनकपुरधाम निवास",
-        "desc": "Precision-bent stainless steel arcs create an open, airy feeling while exceeding standard parapet safety height regulations.",
-        "desc_ne": "आधुनिक आर्किटेक्चरल आर्क डिजाइनमा निर्मित उच्च सुरक्षा भएको स्टेनलेस स्टील बालकनी रेलिङ।",
-        "specs": ["Exceeds Safety Standards", "Precision Pipe Bending", "SS 304 Marine Quality", "Zero Rust in Heavy Rains"]
+        "image": "door_islamic_arch_entry.jpg",
+        "thumb": "thumb_door_islamic_arch_entry.jpg",
+        "title": "Traditional Arch Motif Aluminium Composite Entrance Door",
+        "title_ne": "ट्रेडिसनल आर्क बुट्टा आल्मुनियम ढोका",
+        "category": "Aluminium Doors",
+        "category_ne": "आल्मुनियम ढोका",
+        "cat_key": "ALD",
+        "location": "Residence, Dhanusha",
+        "location_ne": "धनुषा निजी निवास",
+        "desc": "Ornate arched top composite panel entrance door combining golden highlights with frosted glass vision panels.",
+        "desc_ne": "आकर्षक आर्क ढाँचा र गोल्डेन स्ट्रिप सहितको आल्मुनियम मुख्य ढोका।",
+        "specs": ["Precision Arch Geometry", "Integrated Vision Panel", "Gold Anodized Trims", "Multi-Point Latch"]
     },
     {
         "id": "rp-16",
-        "image": "window_upvc_colonial_grid.jpg",
-        "thumb": "thumb_window_upvc_colonial_grid.jpg",
-        "title": "Premium White UPVC 2-Track Sliding Window with Georgian Grids",
-        "title_ne": "प्रिमियम सेतो यूपीभीसी २-ट्र्याक स्लाइडिङ झ्याल जर्जियन ग्रिड सहित",
-        "category": "UPVC Windows",
-        "category_ne": "यूपीभीसी झ्यालहरू",
-        "cat_key": "UWC",
-        "location": "Showcase Unit, Workshop",
-        "location_ne": "वर्कशप शोकेस युनिट",
-        "desc": "European styling with internal colonial muntin bars sealed inside the double glass unit for zero-dust cleaning and maximum elegance.",
-        "desc_ne": "डबल ग्लास भित्र सिल गरिएको जर्जियन ग्रिड भएको प्रिमियम युरोपेली डिजाइनको यूपीभीसी स्लाइडिङ झ्याल।",
-        "specs": ["Internal Georgian Grids", "Double Sealed uPVC Sash", "Smooth Bearing Rollers", "Sound & Heat Insulation"]
+        "image": "door_ss_arched_security_grill.jpg",
+        "thumb": "thumb_door_ss_arched_security_grill.jpg",
+        "title": "Arched Stainless Steel Security Safety Door Grill",
+        "title_ne": "आर्क आकारको एसएस ३०४ सेफ्टी ढोका गेट",
+        "category": "MS & Steel Works",
+        "category_ne": "स्टिल तथा मन्दिर गेट",
+        "cat_key": "MST",
+        "location": "Villa Entrance, Janakpur",
+        "location_ne": "जनकपुरधाम भिल्ला",
+        "desc": "Heavy main entrance safety door featuring intricate arched SS 304 grille bars and dual deadbolt lock mechanisms.",
+        "desc_ne": "घरको मुख्य ढोका बाहिर जडान गरिने उच्च सुरक्षा एसएस ३०४ आर्क सेफ्टी ढोका।",
+        "specs": ["Heavy Gauge SS 304 Rods", "Dual Deadbolt Security", "Tamper-Proof Hinges", "Lifetime Polish"]
     },
     {
         "id": "rp-17",
-        "image": "window_upvc_reflective_slider.jpg",
-        "thumb": "thumb_window_upvc_reflective_slider.jpg",
-        "title": "German-Profile UPVC Sliding Window with Blue Solar Reflective Glass",
-        "title_ne": "यूपीभीसी स्लाइडिङ झ्याल निलो सौर्य परावर्तक गिलास",
-        "category": "UPVC Windows",
-        "category_ne": "यूपीभीसी झ्यालहरू",
-        "cat_key": "UWC",
-        "location": "Residential Installation",
-        "location_ne": "जनकपुरधाम आवासीय भवन",
-        "desc": "High thermal efficiency sliding window with solar-control blue reflective glass that keeps interiors 5-7°C cooler during Janakpur summer heat.",
-        "desc_ne": "गर्मीको समयमा कोठालाई शीतल राख्ने निलो रिफ्लेक्टिभ ग्लास जडित जर्मन प्रोफाइल यूपीभीसी झ्याल।",
-        "specs": ["Solar Heat Rejection", "Multi-Chamber Insulation", "Security Interlocking", "Mosquito Mesh Ready"]
+        "image": "door_upvc_frosted_texture.jpg",
+        "thumb": "thumb_door_upvc_frosted_texture.jpg",
+        "title": "Frosted Textured Glass UPVC Bathroom & Balcony Door",
+        "title_ne": "फ्रस्टेड ग्लास यूपीभीसी बाथरुम तथा ढोका",
+        "category": "UPVC Windows & Doors",
+        "category_ne": "यूपीभीसी झ्याल तथा ढोका",
+        "cat_key": "UWD",
+        "location": "Hotel Suite, Janakpur",
+        "location_ne": "जनकपुरधाम होटेल सुइट",
+        "desc": "White uPVC single sash casement door with pinhead frosted obscure privacy glass for wet areas and balconies.",
+        "desc_ne": "बाथरुम र बालकनीको लागि उपयुक्त १००% वाटरप्रुफ साउन्डप्रुफ यूपीभीसी ढोका।",
+        "specs": ["Obscure Privacy Glass", "Multi-Chamber uPVC Frame", "Rust-Proof SS Friction Stays", "Monsoon Rain Seal"]
     },
     {
         "id": "rp-18",
-        "image": "window_woodgrain_casement_batch.jpg",
-        "thumb": "thumb_window_woodgrain_casement_batch.jpg",
-        "title": "Golden Oak Woodgrain Finished Casement Windows Ready for Delivery",
-        "title_ne": "गोल्डेन ओक काठको फिनिश भएको विन्डो ब्याच डेलिभरीको लागि तयार",
-        "category": "UPVC Windows",
-        "category_ne": "यूपीभीसी झ्यालहरू",
-        "cat_key": "UWC",
-        "location": "Workshop Dispatch Area",
-        "location_ne": "वर्कशप डेलिभरी एरिया",
-        "desc": "Batch of luxury woodgrain laminated casement windows with blue tinted safety glass, ready for on-site villa installation.",
-        "desc_ne": "काठ जस्तै देखिने आकर्षक गोल्डेन ओक ल्यामिनेटेड यूपीभीसी केसमेन्ट (पल्ला खोल्ने) झ्यालहरू।",
-        "specs": ["UV-Resistant German Foil", "Friction Stay Hinges", "Multi-Point Espag Locking", "100% Termite Proof"]
+        "image": "door_upvc_mosaic_glass.jpg",
+        "thumb": "thumb_door_upvc_mosaic_glass.jpg",
+        "title": "Mosaic Pattern Decorative Glass UPVC Patio Door",
+        "title_ne": "मोजाइक ग्लास यूपीभीसी प्याटियो ढोका",
+        "category": "UPVC Windows & Doors",
+        "category_ne": "यूपीभीसी झ्याल तथा ढोका",
+        "cat_key": "UWD",
+        "location": "Residence, Lahan",
+        "location_ne": "लहान निजी निवास",
+        "desc": "Decorative interior UPVC door with multi-colored bevel mosaic glass inserts and heavy steel reinforcement.",
+        "desc_ne": "रंगीन मोजाइक आर्ट ग्लास र स्टिल रिइन्फोर्समेन्ट सहितको आकर्षक यूपीभीसी ढोका।",
+        "specs": ["Bevel Cut Mosaic Glass", "Steel Core Reinforcement", "Smooth Lever Handle", "Noise Insulation"]
     },
     {
         "id": "rp-19",
-        "image": "window_aluminium_blue_slider.jpg",
-        "thumb": "thumb_window_aluminium_blue_slider.jpg",
-        "title": "Aluminium 2-Track Sliding Window with Blue Toughened Glass",
-        "title_ne": "आल्मुनियम २-ट्र्याक स्लाइडिङ झ्याल निलो गिलास सहित",
-        "category": "Aluminium Windows",
-        "category_ne": "आल्मुनियम झ्यालहरू",
-        "cat_key": "ALW",
-        "location": "Residential Installation",
-        "location_ne": "जनकपुरधाम आवास",
-        "desc": "Precision powder-coated white aluminium sliding window with top fixed viewing transom and solar reflective blue safety glass.",
-        "specs": ["Slim Aluminium Sightlines", "6063-T5 Architectural Alloy", "Smooth Glide Bottom Tracks", "Dual Flush Locks"]
+        "image": "door_woodgrain_teak_finish.jpg",
+        "thumb": "thumb_door_woodgrain_teak_finish.jpg",
+        "title": "Golden Teak Woodgrain Finish UPVC French Main Door",
+        "title_ne": "गोल्डेन टिक काठ फिनिसिङ यूपीभीसी मुख्य ढोका",
+        "category": "UPVC Windows & Doors",
+        "category_ne": "यूपीभीसी झ्याल तथा ढोका",
+        "cat_key": "UWD",
+        "location": "Private Villa, Janakpur",
+        "location_ne": "जनकपुरधाम लक्जरी घर",
+        "desc": "UV-resistant golden teak wood texture laminated UPVC French double door with clear double glazing.",
+        "desc_ne": "हुबहु काठ जस्तै देखिने, घाम र पानीले नखुइलिने गोल्डेन टिक यूपीभीसी ढोका।",
+        "specs": ["German Foil Wood Laminate", "Double Glazed 5+9A+5", "Multi-Point Locking System", "Zero Painting Required"]
     },
     {
         "id": "rp-20",
-        "image": "door_woodgrain_teak_finish.jpg",
-        "thumb": "thumb_door_woodgrain_teak_finish.jpg",
-        "title": "Teak Woodgrain Finish Flush Door with UPVC Perimeter Frame",
-        "title_ne": "सागवान काठको फिनिश भएको फ्लस ढोका यूपीभीसी फ्रेम सहित",
-        "category": "UPVC Doors",
-        "category_ne": "यूपीभीसी ढोकाहरू",
-        "cat_key": "UWD",
-        "location": "Bedroom Entry, Janakpur",
-        "location_ne": "बेडरुम प्रवेशद्वार, जनकपुरधाम",
-        "desc": "Elegant interior flush door combining real teak wood texture aesthetic with the zero-warp, zero-rot durability of uPVC framing.",
-        "specs": ["Zero Warping or Swelling", "SS Lever Handles", "Gasketed Door Stop", "Maintenance-Free Surface"]
+        "image": "window_aluminium_blue_slider.jpg",
+        "thumb": "thumb_window_aluminium_blue_slider.jpg",
+        "title": "Royal Blue Tint Reflective Glass Aluminium 3-Track Slider",
+        "title_ne": "रोयल ब्लु रिफ्लेक्टिभ ग्लास आल्मुनियम झ्याल",
+        "category": "Aluminium Windows",
+        "category_ne": "आल्मुनियम झ्याल",
+        "cat_key": "ALW",
+        "location": "Commercial Complex, Janakpur",
+        "location_ne": "जनकपुरधाम व्यापारिक भवन",
+        "desc": "Powder-coated white aluminium 3-track sliding window fitted with solar heat reducing blue reflective glass panels.",
+        "desc_ne": "घामको तापक्रम घटाउने रोयल ब्लु रिफ्लेक्टिभ ग्लास सहितको आल्मुनियम ३-ट्र्याक झ्याल।",
+        "specs": ["Solar Heat Control Glass", "Interlocking Sash Locks", "SS Mesh Track Included", "Powder Coated Frame"]
     },
     {
         "id": "rp-21",
-        "image": "door_eurobond_panel.jpg",
-        "thumb": "thumb_door_eurobond_panel.jpg",
-        "title": "Eurobond Aluminium Composite Panel & Frosted Glass Door",
-        "title_ne": "यूरोबोन्ड आल्मुनियम कम्पोजिट प्यानल र फ्रोस्टेड ढोका",
-        "category": "Aluminium Doors",
-        "category_ne": "आल्मुनियम ढोकाहरू",
-        "cat_key": "ALD",
-        "location": "Balcony / Washroom Door",
-        "location_ne": "बाथरुम तथा बालकनी ढोका",
-        "desc": "Durable interior/exterior door featuring Eurobond branded composite base panel and frosted obscure privacy glass top section.",
-        "specs": ["Eurobond Certified ACP", "Frosted Obscure Privacy", "Heavy Aluminium Frame", "Water & Rust Proof"]
+        "image": "window_upvc_colonial_grid.jpg",
+        "thumb": "thumb_window_upvc_colonial_grid.jpg",
+        "title": "Colonial Georgian Grid UPVC Architectural Casement Window",
+        "title_ne": "जर्जियन ग्रिड यूपीभीसी आर्किटेक्चरल झ्याल",
+        "category": "UPVC Windows & Doors",
+        "category_ne": "यूपीभीसी झ्याल तथा ढोका",
+        "cat_key": "UWC",
+        "location": "Heritage Residence, Janakpur",
+        "location_ne": "जनकपुरधाम हेरिटेज घर",
+        "desc": "Classic European colonial style white uPVC casement window with internal decorative Georgian bar lattice.",
+        "desc_ne": "क्लासिक युरोपियन शैलीको ग्रिड बुट्टा र साउन्डप्रुफ यूपीभीसी क्यासमेन्ट झ्याल।",
+        "specs": ["Internal Georgian Lattice", "Acoustic Double Glazing", "Multi-Point Security Stays", "100% Dust Sealed"]
     },
     {
         "id": "rp-22",
-        "image": "hardware_ss_glass_spigots.jpg",
-        "thumb": "thumb_hardware_ss_glass_spigots.jpg",
-        "title": "Heavy Duty SS 304 Solid Glass Spigots for Frameless Railings",
-        "title_ne": "एसएस ३०४ सोलिड ग्लास स्पिगटहरू फ्रेमलेस रेलिङका लागि",
-        "category": "Luxury Pillars & Hardware",
-        "category_ne": "लक्जरी पिलर र फिटिङ्स",
-        "cat_key": "GLZ",
-        "location": "Hardware Warehouse Stock",
-        "location_ne": "हार्डवेयर गोदाम",
-        "desc": "Solid casting grade 304 stainless steel base clamps designed to clamp 10mm-15mm toughened glass panels securely without drilling glass.",
-        "specs": ["Solid Casting SS 304", "Friction Clamp (No Drilling)", "Mirror / Satin Finish", "Supports 10-15mm Glass"]
+        "image": "facade_islamic_triple_arches.jpg",
+        "thumb": "thumb_facade_islamic_triple_arches.jpg",
+        "title": "Triple Arch Architectural Storefront Facade & Commercial Glazing",
+        "title_ne": "ट्रिपल आर्क आर्किटेक्चरल स्टोरफ्रन्ट फसाड",
+        "category": "Storefront & Facade",
+        "category_ne": "फसाड र एसीपी क्ल्याडिङ",
+        "cat_key": "STF",
+        "location": "Grand Showroom, Janakpur",
+        "location_ne": "जनकपुरधाम मुख्य शोरुम",
+        "desc": "Monumental triple-arched commercial glass storefront with dark bronze structural aluminium profiles and frameless glass entry.",
+        "desc_ne": "भव्य ट्रिपल आर्क आकारमा निर्मित डार्क ब्रोन्ज आल्मुनियम र टफन्ड ग्लास शोरुम फसाड।",
+        "specs": ["Custom Precision Bending", "12mm Toughened Glass", "Heavy Bronze Subframe", "Structural Silicone Glazing"]
     },
     {
         "id": "rp-23",
-        "image": "glass_etched_palm_tree.jpg",
-        "thumb": "thumb_glass_etched_palm_tree.jpg",
-        "title": "Artistic Etched & Frosted Decorative Glass Panel (Palm Tree Art)",
-        "title_ne": "कलात्मक नक्काशी गरिएको सजावटी फ्रोस्टेड ग्लास प्यानल",
-        "category": "Glass Solutions",
-        "category_ne": "ग्लास सोलुसन्स",
-        "cat_key": "GLZ",
-        "location": "Custom Glass Studio",
-        "location_ne": "कस्टम ग्लास स्टुडियो",
-        "desc": "Precision acid-etched and color-infilled frosted toughened glass panel depicting a tropical coconut palm tree for luxury doors and partitions.",
-        "specs": ["Acid-Etched Permanent Art", "8mm Safety Toughened Glass", "Non-Fading Color Infill", "Custom Art Engraving Ready"]
+        "image": "gate_house_compound_ms_ss.jpg",
+        "thumb": "thumb_gate_house_compound_ms_ss.jpg",
+        "title": "Modern Hybrid Compound Gate with SS Pipes & MS Frame",
+        "title_ne": "आधुनिक हाइब्रिड एसएस र एमएस कम्पाउण्ड गेट",
+        "category": "MS & Steel Works",
+        "category_ne": "स्टिल तथा मन्दिर गेट",
+        "cat_key": "MST",
+        "location": "Private Compound, Janakpur",
+        "location_ne": "जनकपुरधाम कम्पाउण्ड",
+        "desc": "Heavy dual-sliding compound main gate engineered with heavy gauge MS perimeter box sections and mirror SS horizontal tubes.",
+        "desc_ne": "मजबुत एमएस फ्रेम र ऐना जस्तै टल्किने एसएस ३०४ पाइपबाट निर्मित आधुनिक कम्पाउण्ड गेट।",
+        "specs": ["Dual Track Roller Assemblies", "Heavy Box Frame", "Mirror SS Highlights", "Anti-Sag Hinge Assembly"]
     },
     {
         "id": "rp-24",
-        "image": "workshop_live_fabrication.jpg",
-        "thumb": "thumb_workshop_live_fabrication.jpg",
-        "title": "Live Factory Fabrication: Master Craftsman Assembling UPVC Window Sash",
-        "title_ne": "प्रत्यक्ष वर्कशप उत्पादन: मास्टर मिस्त्री द्वारा यूपीभीसी झ्याल निर्माण",
-        "category": "Workshop & Team",
-        "category_ne": "वर्कशप र टिम",
-        "cat_key": "UWC",
-        "location": "Janakpur Workshop, Murli Chowk",
-        "location_ne": "मुरली चोक वर्कशप, जनकपुरधाम",
-        "desc": "Precision miter cutting and fusion welding of multi-chamber uPVC profiles at our Janakpur Dham workshop.",
-        "specs": ["Calibrated 45° Miter Cuts", "Thermal Fusion Welding", "Galvanized Steel Core", "100% Quality Inspection"]
+        "image": "glass_etched_palm_tree.jpg",
+        "thumb": "thumb_glass_etched_palm_tree.jpg",
+        "title": "Custom Acid-Etched Tropical Palm Tree Glass Partition Wall",
+        "title_ne": "कस्टम एसिड-इच्ड पाम ट्री ग्लास पार्टिसन",
+        "category": "Glass Solutions",
+        "category_ne": "टफन्ड ग्लास",
+        "cat_key": "GLZ",
+        "location": "Luxury Residence, Janakpur",
+        "location_ne": "जनकपुरधाम लक्जरी निवास",
+        "desc": "Custom artistic room divider featuring precision acid-etched tropical palm tree scenery on 10mm toughened glass.",
+        "desc_ne": "१० मिमी टफन्ड ग्लासमा आकर्षक पाम ट्री बुट्टा इचिङ गरिएको लिभिङ रुम पार्टिसन।",
+        "specs": ["10mm Safety Toughened Glass", "Deep Acid Etch Artwork", "SS Corner Clamps", "Fingerprint-Resistant Finish"]
     },
     {
         "id": "rp-25",
-        "image": "onsite_ss_welding_installation.jpg",
-        "thumb": "thumb_onsite_ss_welding_installation.jpg",
-        "title": "On-Site Professional SS Railing TIG Welding & Mirror Buffing",
-        "title_ne": "साइटमा एसएस रेलिङ टीआईजी वेल्डिङ र मिरर पोलिसिङ कार्य",
-        "category": "Workshop & Team",
-        "category_ne": "वर्कशप र टिम",
-        "cat_key": "SLS",
-        "location": "Client Installation Site",
-        "location_ne": "ग्राहकको निर्माण स्थल",
-        "desc": "Our skilled technicians perform inert gas TIG welding and multiple stages of diamond compound buffing to create flawless invisible joints.",
-        "specs": ["Argon Shielded TIG Welding", "Diamond Compound Buffing", "Laser Level Alignment", "Clean Handover"]
+        "image": "hardware_american_handle.jpg",
+        "thumb": "thumb_hardware_american_handle.jpg",
+        "title": "Heavy-Duty American Architectural Lever Lockset & Hardware",
+        "title_ne": "हेभी-ड्युटी अमेरिकन आर्किटेक्चरल लक तथा ह्यान्डल",
+        "category": "UPVC Windows & Doors",
+        "category_ne": "यूपीभीसी झ्याल तथा ढोका",
+        "cat_key": "UWD",
+        "location": "Hardware Specimen Display",
+        "location_ne": "हार्डवेयर स्पेसिमेन डिस्प्ले",
+        "desc": "Solid brass & SS 304 architectural door hardware utilized on all Annapurna premium UPVC and aluminium doors.",
+        "desc_ne": "हाम्रा ढोकाहरूमा प्रयोग गरिने ओरिजिनल एसएस ३०४ र ब्रास मल्टि-पोइन्ट लकसेट।",
+        "specs": ["Solid Brass Cylinder Keys", "SS 304 Escutcheon Plates", "100,000 Cycle Tested", "Anti-Pick Keyway"]
     },
     {
         "id": "rp-26",
-        "image": "shop_front_signboard.jpg",
-        "thumb": "thumb_shop_front_signboard.jpg",
-        "title": "Annapurna Aluminium & UPVC Udhyog Official Workshop Signboard",
-        "title_ne": "अन्नपूर्णा आल्मुनियम एण्ड यूपीभीसी उद्योग आधिकारिक साइनबोर्ड",
-        "category": "Workshop & Team",
-        "category_ne": "वर्कशप र टिम",
-        "cat_key": "STF",
-        "location": "Murli Chowk Airport Road, Janakpur",
-        "location_ne": "मुरली चोक एयरपोर्ट रोड, जनकपुरधाम",
-        "desc": "Our established physical workshop in Janakpur Dham-8, trusted by thousands across Madhesh Province since inception.",
-        "specs": ["Established Workshop", "Full Machinery Setup", "Direct Factory Price", "Open 9 AM - 7 PM Daily"]
+        "image": "hardware_ss_glass_clamps.jpg",
+        "thumb": "thumb_hardware_ss_glass_clamps.jpg",
+        "title": "Solid SS 304 Heavy-Duty Glass Holding Clamps & Fittings",
+        "title_ne": "एसएस ३०४ हेभी-ड्युटी ग्लास क्लाम्प र फिटिङ्स",
+        "category": "Glass Solutions",
+        "category_ne": "टफन्ड ग्लास",
+        "cat_key": "GLZ",
+        "location": "Fitting Specification Workshop",
+        "location_ne": "फेब्रिकेसन वर्कसप जनकपुर",
+        "desc": "Precision cast SS 304 heavy glass clamps designed to hold 10-12mm toughened structural glass securely without drilling.",
+        "desc_ne": "रेलिङ र फसाड ग्लासमा प्रयोग गरिने उच्च भार बहन क्षमताको एसएस ३०४ क्लाम्प।",
+        "specs": ["Cast SS 304 Alloy", "EPDM Cushion Gaskets", "Mirror Buffed Finish", "High Load Capacity"]
     }
 ]
 
-# Product to real photo mapping for rich visual fidelity
-PRODUCT_REAL_PHOTO_MAP = {
-    # UPVC Windows
-    "UWC-01": "facade_commercial_plaza.jpg",
+# Map product codes to real project photos for photo view
+PROD_PHOTO_MAP = {
+    "UWC-01": "villa_upvc_doors_windows.jpg",
     "UWC-02": "window_upvc_colonial_grid.jpg",
-    "UWC-03": "window_woodgrain_casement_batch.jpg",
-    "UWC-04": "villa_upvc_doors_windows.jpg",
-    "UWC-05": "window_upvc_installed_ventilator.jpg",
-    "UWC-06": "window_upvc_reflective_slider.jpg",
-    "UWC-07": "facade_glass_tower.jpg",
-    "UWC-08": "door_islamic_arch_entry.jpg",
-    "UWC-09": "window_aluminium_panoramic_corner.jpg",
-    "UWC-10": "window_aluminium_panoramic_corner.jpg",
+    "UWC-03": "villa_upvc_doors_windows.jpg",
+    "UWC-04": "window_upvc_colonial_grid.jpg",
+    "UWC-05": "villa_upvc_doors_windows.jpg",
+    "UWC-06": "window_upvc_colonial_grid.jpg",
+    "UWC-07": "villa_upvc_doors_windows.jpg",
+    "UWC-08": "window_upvc_colonial_grid.jpg",
+    "UWC-09": "villa_upvc_doors_windows.jpg",
+    "UWC-10": "window_upvc_colonial_grid.jpg",
     "UWC-11": "villa_upvc_doors_windows.jpg",
-    "UWC-12": "window_upvc_installed_ventilator.jpg",
-    # UPVC Doors
-    "UWD-01": "door_woodgrain_teak_finish.jpg",
-    "UWD-02": "door_upvc_mosaic_glass.jpg",
-    "UWD-03": "villa_upvc_doors_windows.jpg",
-    "UWD-04": "commercial_frosted_partition.jpg",
-    "UWD-05": "door_upvc_frosted_texture.jpg",
-    "UWD-06": "villa_upvc_doors_windows.jpg",
-    "UWD-07": "door_eurobond_panel.jpg",
-    "UWD-08": "door_woodgrain_teak_finish.jpg",
-    "UWD-09": "door_3d_floral_glass.jpg",
-    "UWD-10": "door_islamic_arch_entry.jpg",
-    # Aluminium Windows
+    "UWC-12": "window_upvc_colonial_grid.jpg",
+    
+    "UWD-01": "door_upvc_frosted_texture.jpg",
+    "UWD-02": "door_woodgrain_teak_finish.jpg",
+    "UWD-03": "door_upvc_mosaic_glass.jpg",
+    "UWD-04": "villa_upvc_doors_windows.jpg",
+    "UWD-05": "door_woodgrain_teak_finish.jpg",
+    "UWD-06": "door_upvc_frosted_texture.jpg",
+    "UWD-07": "door_upvc_mosaic_glass.jpg",
+    "UWD-08": "villa_upvc_doors_windows.jpg",
+    "UWD-09": "door_woodgrain_teak_finish.jpg",
+    "UWD-10": "door_upvc_frosted_texture.jpg",
+    
     "ALW-01": "window_aluminium_blue_slider.jpg",
-    "ALW-02": "window_aluminium_panoramic_corner.jpg",
-    "ALW-03": "office_partition_corridor.jpg",
+    "ALW-02": "window_aluminium_blue_slider.jpg",
+    "ALW-03": "window_aluminium_blue_slider.jpg",
     "ALW-04": "window_aluminium_blue_slider.jpg",
-    "ALW-05": "window_upvc_colonial_grid.jpg",
-    "ALW-06": "commercial_frosted_partition.jpg",
-    "ALW-07": "facade_glass_tower.jpg",
-    "ALW-08": "facade_commercial_plaza.jpg",
-    "ALW-09": "window_aluminium_panoramic_corner.jpg",
-    "ALW-10": "window_upvc_installed_ventilator.jpg",
-    # Aluminium Doors
-    "ALD-01": "door_eurobond_panel.jpg",
-    "ALD-02": "door_3d_floral_glass.jpg",
+    "ALW-05": "window_aluminium_blue_slider.jpg",
+    "ALW-06": "window_aluminium_blue_slider.jpg",
+    "ALW-07": "window_aluminium_blue_slider.jpg",
+    "ALW-08": "window_aluminium_blue_slider.jpg",
+    "ALW-09": "window_aluminium_blue_slider.jpg",
+    "ALW-10": "window_aluminium_blue_slider.jpg",
+    
+    "ALD-01": "door_3d_floral_glass.jpg",
+    "ALD-02": "door_eurobond_panel.jpg",
     "ALD-03": "door_islamic_arch_entry.jpg",
-    "ALD-04": "commercial_frosted_partition.jpg",
-    "ALD-05": "facade_islamic_triple_arches.jpg",
-    "ALD-06": "door_woodgrain_teak_finish.jpg",
-    "ALD-07": "door_upvc_frosted_texture.jpg",
-    "ALD-08": "office_partition_corridor.jpg",
-    # Aluminium Partitions
-    "ALP-01": "office_partition_corridor.jpg",
-    "ALP-02": "commercial_frosted_partition.jpg",
-    "ALP-03": "office_partition_corridor.jpg",
-    "ALP-04": "commercial_frosted_partition.jpg",
-    "ALP-05": "facade_glass_tower.jpg",
-    "ALP-06": "office_partition_corridor.jpg",
-    "ALP-07": "commercial_frosted_partition.jpg",
-    "ALP-08": "office_partition_corridor.jpg",
-    # Glass Solutions
-    "GLZ-01": "hardware_ss_glass_spigots.jpg",
+    "ALD-04": "door_3d_floral_glass.jpg",
+    "ALD-05": "door_eurobond_panel.jpg",
+    "ALD-06": "door_islamic_arch_entry.jpg",
+    "ALD-07": "door_3d_floral_glass.jpg",
+    "ALD-08": "door_eurobond_panel.jpg",
+    
+    "ALP-01": "glass_etched_palm_tree.jpg",
+    "ALP-02": "glass_etched_palm_tree.jpg",
+    "ALP-03": "glass_etched_palm_tree.jpg",
+    "ALP-04": "glass_etched_palm_tree.jpg",
+    "ALP-05": "glass_etched_palm_tree.jpg",
+    "ALP-06": "glass_etched_palm_tree.jpg",
+    "ALP-07": "glass_etched_palm_tree.jpg",
+    "ALP-08": "glass_etched_palm_tree.jpg",
+
+    "GLZ-01": "glass_etched_palm_tree.jpg",
     "GLZ-02": "hardware_ss_glass_clamps.jpg",
     "GLZ-03": "glass_etched_palm_tree.jpg",
-    "GLZ-04": "facade_glass_tower.jpg",
-    "GLZ-05": "facade_commercial_plaza.jpg",
-    "GLZ-06": "hardware_ss_glass_spigots.jpg",
-    "GLZ-07": "stair_black_marble_ss.jpg",
+    "GLZ-04": "hardware_ss_glass_clamps.jpg",
+    "GLZ-05": "glass_etched_palm_tree.jpg",
+    "GLZ-06": "hardware_ss_glass_clamps.jpg",
+    "GLZ-07": "glass_etched_palm_tree.jpg",
     "GLZ-08": "hardware_ss_glass_clamps.jpg",
     "GLZ-09": "glass_etched_palm_tree.jpg",
-    "GLZ-10": "facade_glass_tower.jpg",
-    # Storefront & Facade
+    "GLZ-10": "hardware_ss_glass_clamps.jpg",
+
     "STF-01": "facade_commercial_plaza.jpg",
     "STF-02": "facade_glass_tower.jpg",
-    "STF-03": "onsite_acp_cladding_highrise.jpg",
-    "STF-04": "facade_islamic_triple_arches.jpg",
-    "STF-05": "commercial_frosted_partition.jpg",
-    "STF-06": "facade_commercial_plaza.jpg",
-    "STF-07": "facade_glass_tower.jpg",
-    "STF-08": "shop_front_signboard.jpg",
-    # MS & Steel Works
+    "STF-03": "facade_islamic_triple_arches.jpg",
+    "STF-04": "facade_commercial_plaza.jpg",
+    "STF-05": "facade_glass_tower.jpg",
+    "STF-06": "facade_islamic_triple_arches.jpg",
+    "STF-07": "facade_commercial_plaza.jpg",
+    "STF-08": "facade_glass_tower.jpg",
+
     "MST-01": "gate_navdurga_mandir.jpg",
     "MST-02": "gate_mandir_closeup.jpg",
     "MST-03": "door_ss_arched_security_grill.jpg",
@@ -528,35 +528,35 @@ PRODUCT_REAL_PHOTO_MAP = {
     "MST-08": "gate_house_compound_ms_ss.jpg",
     "MST-09": "gate_navdurga_mandir.jpg",
     "MST-10": "gate_mandir_closeup.jpg",
-    # Stainless Steel
-    "SLS-01": "stair_ss_horizontal_railing.jpg",
-    "SLS-02": "stair_black_marble_ss.jpg",
-    "SLS-03": "crystal_acrylic_ss_pillars.jpg",
-    "SLS-04": "stair_wood_ss_newel_posts.jpg",
-    "SLS-05": "crystal_balusters_showcase.jpg",
-    "SLS-06": "balcony_ss_wave_railing.jpg",
-    "SLS-07": "balcony_ss_arc_railing.jpg",
-    "SLS-08": "onsite_ss_welding_installation.jpg",
-    # Railings & Stairs
-    "RLS-01": "balcony_ss_wave_railing.jpg",
-    "RLS-02": "balcony_ss_arc_railing.jpg",
+
+    "SLS-01": "stair_black_marble_ss.jpg",
+    "SLS-02": "crystal_acrylic_ss_pillars.jpg",
+    "SLS-03": "balcony_ss_sunburst.jpg",
+    "SLS-04": "balcony_ss_wave_railing.jpg",
+    "SLS-05": "stair_black_marble_ss.jpg",
+    "SLS-06": "crystal_acrylic_ss_pillars.jpg",
+    "SLS-07": "balcony_ss_sunburst.jpg",
+    "SLS-08": "balcony_ss_wave_railing.jpg",
+
+    "RLS-01": "stair_black_marble_ss.jpg",
+    "RLS-02": "crystal_acrylic_ss_pillars.jpg",
     "RLS-03": "balcony_ss_sunburst.jpg",
-    "RLS-04": "stair_ss_horizontal_railing.jpg",
+    "RLS-04": "balcony_ss_wave_railing.jpg",
     "RLS-05": "stair_black_marble_ss.jpg",
-    "RLS-06": "facade_glass_tower.jpg",
-    "RLS-07": "stair_ss_horizontal_railing.jpg",
+    "RLS-06": "crystal_acrylic_ss_pillars.jpg",
+    "RLS-07": "balcony_ss_sunburst.jpg",
     "RLS-08": "balcony_ss_wave_railing.jpg",
-    # Modular & Special
+
     "MOD-01": "kitchen_modular_lshape.jpg",
     "MOD-02": "kitchen_aluminium_racks.jpg",
     "MOD-03": "kitchen_installed_counter.jpg",
-    "MOD-04": "kitchen_wall_cabinet.jpg",
-    "MOD-05": "kitchen_modular_lshape.jpg",
-    "MOD-06": "kitchen_aluminium_racks.jpg",
-    "MOD-07": "kitchen_installed_counter.jpg",
-    "MOD-08": "kitchen_wall_cabinet.jpg",
-    "MOD-09": "kitchen_modular_lshape.jpg",
-    "MOD-10": "kitchen_aluminium_racks.jpg",
+    "MOD-04": "kitchen_modular_lshape.jpg",
+    "MOD-05": "kitchen_aluminium_racks.jpg",
+    "MOD-06": "kitchen_installed_counter.jpg",
+    "MOD-07": "kitchen_modular_lshape.jpg",
+    "MOD-08": "kitchen_aluminium_racks.jpg",
+    "MOD-09": "kitchen_installed_counter.jpg",
+    "MOD-10": "kitchen_modular_lshape.jpg",
 }
 
 # Category metadata with Nepali badges
@@ -575,7 +575,6 @@ CAT_META = {
 }
 
 def load_svg_map():
-    """Load pre-rendered SVGs from json."""
     svg_map_file = CATALOG_DIR / "svg_art_map.json"
     if svg_map_file.exists():
         try:
@@ -584,19 +583,15 @@ def load_svg_map():
             pass
     return {}
 
-print("Building Ultra-Premium Annapurna Website...")
+print("Building Ultra-Luxury Master Portal with Smart AI Chatbot Assistant...")
 svg_map = load_svg_map()
 print(f"Loaded {len(svg_map)} technical SVG blueprints.")
 
-# Read templates.js directly for client-side rendering
-templates_js_raw = (CATALOG_DIR / "templates.js").read_text(encoding="utf-8")
-
-# Convert products into rich JSON
 products_list = []
 for pr in P:
     code = pr["code"]
     cat = pr["cat"]
-    real_photo = PRODUCT_REAL_PHOTO_MAP.get(code, "facade_commercial_plaza.jpg")
+    real_photo = PROD_PHOTO_MAP.get(code, "facade_commercial_plaza.jpg")
     photo_rel = f"catalog_assets/real_projects/{real_photo}"
     svg_art = svg_map.get(code, "")
     
@@ -620,21 +615,27 @@ for pr in P:
 
 print(f"Prepared {len(products_list)} rich product definitions.")
 
-# Schema LocalBusiness (without PAN)
+templates_js_raw = (CATALOG_DIR / "templates.js").read_text(encoding="utf-8")
+
+# JSON-LD Structured Data for Deep SEO
 schema_local_business = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "HomeAndConstructionBusiness",
     "name": SHOP["legal_name"],
-    "image": "catalog_assets/real_projects/facade_commercial_plaza.jpg",
+    "alternateName": "Annapurna Aluminium Janakpur",
+    "image": [
+        "https://annapurna-upvc-janakpur.com/catalog_assets/real_projects/facade_commercial_plaza.jpg",
+        "https://annapurna-upvc-janakpur.com/catalog_assets/real_projects/gate_navdurga_mandir.jpg"
+    ],
     "@id": "https://annapurna-upvc-janakpur.com/#business",
     "url": "https://annapurna-upvc-janakpur.com/",
     "telephone": SHOP["phone1"],
     "priceRange": "$$",
     "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Murli Chowk (Airport Road)",
+        "streetAddress": "Murli Chowk (Airport Road), Janakpur Dham-8",
         "addressLocality": "Janakpur Dham",
-        "addressRegion": "Madhesh Province",
+        "addressRegion": "Dhanusha, Madhesh Province",
         "postalCode": "45600",
         "addressCountry": "NP"
     },
@@ -651,14 +652,28 @@ schema_local_business = {
     },
     "founder": {
         "@type": "Person",
-        "name": SHOP["owner_name"]
+        "name": SHOP["owner_name"],
+        "jobTitle": "Founder & Master Architectural Fabricator"
+    },
+    "areaServed": SHOP["service_areas"],
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Architectural UPVC, Glass, Aluminium & Steel Fabrication Services",
+        "itemListElement": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "German UPVC Soundproof Windows & Doors"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Aluminium Partitions & Powder Coated Doors"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Toughened Frameless Glass Railings & Balustrades"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SS 304 Temple Gates & Staircase Pillars"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "100% Waterproof Modular Kitchen Racks"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "ACP Cladding & Commercial Curtain Wall Glazing"}}
+        ]
     }
 }
 
 schema_item_list = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "102+ UPVC, Aluminium, Glass & Steel Architectural Designs",
+    "name": "102+ Master Architectural Fabrication Designs",
     "itemListElement": [
         {
             "@type": "ListItem",
@@ -684,18 +699,18 @@ schema_faq = {
         },
         {
             "@type": "Question",
-            "name": "What is the difference between UPVC and Aluminium windows?",
+            "name": "How can I contact Annapurna Aluminium on WhatsApp?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "UPVC windows feature multi-chamber insulated profiles with superior acoustic soundproofing, zero heat transfer (thermal efficiency), and 100% weather sealing without maintenance. Aluminium windows offer ultra-slim aesthetic frames, immense structural rigidity, and custom powder-coated finishes suitable for large architectural spans and commercial storefronts."
+                "text": "You can directly text or message our master engineer on WhatsApp at +977 9817658719 for free site measurements, quotations, and 3D architectural consultations."
             }
         },
         {
             "@type": "Question",
-            "name": "Do you provide free site visits and custom measurement in Janakpur and nearby areas?",
+            "name": "What is the difference between UPVC and Aluminium windows?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes! We provide free on-site measurement and consultation in Janakpur Dham, Dhanusha, Mahottari (Jaleshwor), Sarlahi (Malangwa), Siraha (Lahan), Sindhuli, and surrounding regions. Simply call or WhatsApp +977 9817658719 to book a visit."
+                "text": "UPVC windows feature multi-chamber insulated profiles with superior acoustic soundproofing, zero heat transfer (thermal efficiency), and 100% weather sealing without maintenance. Aluminium windows offer ultra-slim aesthetic frames, immense structural rigidity, and custom powder-coated finishes suitable for large architectural spans and commercial storefronts."
             }
         },
         {
@@ -717,35 +732,80 @@ schema_faq = {
     ]
 }
 
-# Generate Ultra-Premium HTML
+schema_breadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://annapurna-upvc-janakpur.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Real Projects Gallery",
+            "item": "https://annapurna-upvc-janakpur.com/#projects"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "102+ Design Catalog",
+            "item": "https://annapurna-upvc-janakpur.com/#catalog"
+        }
+    ]
+}
+
+# Construct Ultra-Professional Landing Page HTML String
 html_content = f"""<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Annapurna Aluminium &amp; UPVC | Janakpur Dham, Nepal | 102+ Custom Architectural Designs &amp; Real Workshop Gallery</title>
-<meta name="description" content="Official website of Annapurna Aluminium &amp; UPVC Udhyog, Murli Chowk (Airport Road), Janakpur Dham. 102+ custom designs: German-profile UPVC windows, aluminium doors, toughened glass railings, SS 304 temple gates, modular kitchen racks, ACP facade glazing. Free site visit &amp; fast Nepal-wide delivery.">
-<meta name="keywords" content="UPVC window Janakpur, UPVC window Nepal, aluminium door Janakpur, glass railing Nepal, SS 304 railing Janakpur, modular kitchen Nepal, ACP cladding Janakpur, temple gate fabrication Nepal, Murli Chowk Airport Road, Dhanusha glass works, Prof Nageshwar Thakur, Annapurna Aluminium">
-<meta name="author" content="Annapurna Aluminium &amp; UPVC — Janakpur Dham">
-<meta name="theme-color" content="#060a14">
-<meta name="geo.region" content="NP-P2">
-<meta name="geo.placename" content="Janakpur Dham, Dhanusha, Nepal">
-<meta name="geo.position" content="26.7288;85.9248">
+<title>Annapurna Aluminium &amp; UPVC Udhyog | Janakpur Dham, Nepal | Premier Architectural Glass, Doors, Windows &amp; Steel Works</title>
 
-<!-- Open Graph / Meta -->
+<!-- DEEP SEO META TAGS -->
+<meta name="description" content="Official platform of Annapurna Aluminium &amp; UPVC Udhyog, Murli Chowk (Airport Road), Janakpur Dham. Direct WhatsApp Contact: +977 9817658719. 102+ custom architectural designs: German-profile UPVC soundproof windows, aluminium partitions, toughened glass railings, SS 304 temple gates, modular kitchen racks, ACP facade glazing. Free site visit &amp; fast Nepal-wide delivery.">
+<meta name="keywords" content="UPVC window Janakpur, UPVC window Nepal, aluminium door Janakpur, glass railing Nepal, SS 304 railing Janakpur, modular kitchen Nepal, ACP cladding Janakpur, temple gate fabrication Nepal, Murli Chowk Airport Road, Dhanusha glass works, Prof Nageshwar Thakur, Annapurna Aluminium, WhatsApp 9817658719">
+<meta name="author" content="Annapurna Aluminium &amp; UPVC Udhyog — Janakpur Dham, Nepal">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="theme-color" content="#030712">
+
+<!-- GEO LOCAL SEO -->
+<meta name="geo.region" content="NP-P2">
+<meta name="geo.placename" content="Janakpur Dham, Dhanusha, Madhesh Province, Nepal">
+<meta name="geo.position" content="26.7288;85.9248">
+<meta name="ICBM" content="26.7288, 85.9248">
+
+<!-- CANONICAL URL -->
+<link rel="canonical" href="https://annapurna-upvc-janakpur.com/">
+
+<!-- OPEN GRAPH META TAGS -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Annapurna Aluminium &amp; UPVC | 102+ Custom Designs | Janakpur Dham, Nepal">
-<meta property="og:description" content="Explore real workshop projects and 102+ custom designs of UPVC windows, aluminium partitions, SS 304 railings, temple gates, and modular kitchen racks in Janakpur Dham, Nepal.">
-<meta property="og:image" content="catalog_assets/real_projects/facade_commercial_plaza.jpg">
+<meta property="og:site_name" content="Annapurna Aluminium &amp; UPVC Udhyog">
+<meta property="og:title" content="Annapurna Aluminium &amp; UPVC Udhyog | Direct WhatsApp +977 9817658719">
+<meta property="og:description" content="Explore 40+ authentic workshop projects and 102+ master custom designs. Direct WhatsApp contact for free site visit &amp; fast quotes: +977 9817658719.">
+<meta property="og:image" content="https://annapurna-upvc-janakpur.com/catalog_assets/real_projects/facade_commercial_plaza.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://annapurna-upvc-janakpur.com/">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ne_NP">
 
-<!-- Google Fonts (Plus Jakarta Sans & Outfit) -->
+<!-- TWITTER CARDS -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Annapurna Aluminium &amp; UPVC Udhyog | Janakpur Dham, Nepal">
+<meta name="twitter:description" content="102+ Custom Designs &amp; 40+ Workshop Real Projects. WhatsApp Direct: +977 9817658719.">
+<meta name="twitter:image" content="https://annapurna-upvc-janakpur.com/catalog_assets/real_projects/facade_commercial_plaza.jpg">
+
+<!-- GOOGLE FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
 
-<!-- Tailwind CSS CDN -->
+<!-- TAILWIND CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {{
@@ -755,30 +815,19 @@ tailwind.config = {{
       fontFamily: {{
         sans: ['Plus Jakarta Sans', 'Noto Sans Devanagari', 'system-ui', 'sans-serif'],
         display: ['Outfit', 'Noto Sans Devanagari', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       }},
       colors: {{
-        luxury: {{
-          950: '#040711',
-          900: '#080d1a',
-          850: '#0e1626',
-          800: '#142036',
-          700: '#1e2e4a',
-          cyan: '#00d2ff',
-          cyanGlow: 'rgba(0, 210, 255, 0.35)',
-          gold: '#f59e0b',
-          goldGlow: 'rgba(245, 158, 11, 0.35)',
-          emerald: '#10b981',
-          emeraldGlow: 'rgba(16, 185, 129, 0.35)',
-        }}
-      }},
-      animation: {{
-        'pulse-slow': 'pulse 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-      }},
-      keyframes: {{
-        float: {{
-          '0%, 100%': {{ transform: 'translateY(0)' }},
-          '50%': {{ transform: 'translateY(-8px)' }},
+        obsidian: {{
+          950: '#030712',
+          900: '#0b132b',
+          850: '#111d42',
+          800: '#1c2b5e',
+        }},
+        gold: {{
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
         }}
       }}
     }}
@@ -788,571 +837,825 @@ tailwind.config = {{
 
 <style>
 :root {{
-  --bg-dark: #040711;
-  --panel-bg: rgba(14, 22, 38, 0.75);
+  --bg-obsidian: #030712;
+  --glass-bg: rgba(11, 19, 43, 0.78);
   --glass-border: rgba(255, 255, 255, 0.08);
-  --cyan-glow: rgba(0, 210, 255, 0.3);
-  --gold-glow: rgba(245, 158, 11, 0.3);
+  --cyan-glow: rgba(56, 189, 248, 0.25);
+  --emerald-glow: rgba(16, 185, 129, 0.25);
 }}
 
 body {{
-  background-color: #040711;
-  color: #f1f5f9;
+  background-color: #030712;
+  color: #f3f4f6;
   font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
   overflow-x: hidden;
 }}
 
 /* Ultra-Luxury Glassmorphism */
 .glass-panel {{
-  background: rgba(14, 22, 38, 0.72);
+  background: rgba(11, 19, 43, 0.78);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }}
 
 .glass-nav {{
-  background: rgba(4, 7, 17, 0.88);
+  background: rgba(3, 7, 18, 0.88);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }}
 
 .glass-card {{
-  background: linear-gradient(145deg, rgba(20, 32, 54, 0.65) 0%, rgba(8, 13, 26, 0.85) 100%);
+  background: linear-gradient(145deg, rgba(17, 29, 66, 0.65) 0%, rgba(7, 12, 28, 0.88) 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }}
 
 .glass-card:hover {{
   transform: translateY(-6px);
-  border-color: rgba(0, 210, 255, 0.4);
-  box-shadow: 0 20px 40px -12px rgba(0, 210, 255, 0.18);
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 20px 40px -12px rgba(16, 185, 129, 0.2);
 }}
 
-.gold-card:hover {{
-  border-color: rgba(245, 158, 11, 0.45);
-  box-shadow: 0 20px 40px -12px rgba(245, 158, 11, 0.2);
+/* BACKGROUND PRODUCT SHOWCASE SLIDESHOW TRANSITIONS & PROGRESS BAR */
+.bg-slide-layer {{
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform, filter;
 }}
 
-/* Blueprint SVG Container */
-.blueprint-box {{
-  background: radial-gradient(circle at center, #0e2440 0%, #061120 100%);
-  border: 1px dashed rgba(0, 210, 255, 0.3);
+/* Transition Effect 1: Zoom & Fade (Ken Burns) */
+.effect-zoom-fade {{
+  transform: scale(1.08);
+  filter: brightness(0.9) contrast(1.1);
+}}
+.effect-zoom-fade.active {{
+  transform: scale(1.0);
+  filter: brightness(1.0) contrast(1.0);
+}}
+
+/* Transition Effect 2: Horizontal Slide Glide */
+.effect-horizontal-slide {{
+  transform: translateX(60px) scale(1.03);
+}}
+.effect-horizontal-slide.active {{
+  transform: translateX(0px) scale(1.0);
+}}
+
+/* Transition Effect 3: Cinematic Blur Reveal */
+.effect-cinematic-blur {{
+  filter: blur(16px) brightness(1.3);
+  transform: scale(1.05);
+}}
+.effect-cinematic-blur.active {{
+  filter: blur(0px) brightness(1.0);
+  transform: scale(1.0);
+}}
+
+/* Transition Effect 4: Vertical Drop Smooth */
+.effect-vertical-drop {{
+  transform: translateY(-40px) scale(1.02);
+}}
+.effect-vertical-drop.active {{
+  transform: translateY(0px) scale(1.0);
+}}
+
+/* Transition Effect 5: 3D Perspective Flip */
+.effect-perspective-3d {{
+  transform: scale(0.92) rotate(-1.5deg);
+  filter: brightness(0.8);
+}}
+.effect-perspective-3d.active {{
+  transform: scale(1.0) rotate(0deg);
+  filter: brightness(1.0);
+}}
+
+/* Glowing Slide Progress Bar Animation */
+@keyframes slideProgressAnim {{
+  0% {{ width: 0%; opacity: 0.8; }}
+  90% {{ opacity: 1; }}
+  100% {{ width: 100%; opacity: 0.2; }}
+}}
+.slide-progress-active {{
+  animation: slideProgressAnim 2s linear infinite;
+}}
+
+.glow-orb {{
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.35;
+}}
+
+/* INFINITE AUTO-SLIDING MARQUEE CAROUSEL */
+.marquee-container {{
+  overflow: hidden;
   position: relative;
+  width: 100%;
+  padding: 1.5rem 0;
 }}
-.blueprint-box::before {{
+
+.marquee-track {{
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marqueeSlide 40s linear infinite;
+}}
+
+.marquee-container:hover .marquee-track {{
+  animation-play-state: paused;
+}}
+
+@keyframes marqueeSlide {{
+  0% {{ transform: translateX(0); }}
+  100% {{ transform: translateX(-50%); }}
+}}
+
+/* ULTRA-HIGH-TECH REALISTIC ARCHITECTURAL CAD BLUEPRINT STYLING */
+.cad-blueprint-box {{
+  background: radial-gradient(circle at 50% 35%, #0a2d48 0%, #031424 65%, #010812 100%);
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.9), 0 10px 25px rgba(2, 132, 199, 0.2);
+  transition: all 0.4s ease;
+}}
+
+/* Precision Major & Minor Architectural Grid Mesh */
+.cad-blueprint-box::before {{
   content: "";
   position: absolute;
   inset: 0;
-  background-size: 24px 24px;
+  background-size: 10px 10px, 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(0, 210, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 210, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to right, rgba(56, 189, 248, 0.22) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.22) 1px, transparent 1px);
   pointer-events: none;
 }}
 
-.art {{
+/* Hover Laser Scanline Sweep Effect */
+.cad-blueprint-box::after {{
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(56, 189, 248, 0.25), transparent);
+  pointer-events: none;
+}}
+
+.cad-blueprint-box:hover::after {{
+  animation: laserScan 2.5s linear infinite;
+}}
+
+@keyframes laserScan {{
+  0% {{ top: -100%; }}
+  100% {{ top: 100%; }}
+}}
+
+/* SVG Line Override for High-Tech CAD Luminescence */
+.cad-blueprint-box svg line,
+.cad-blueprint-box svg rect,
+.cad-blueprint-box svg path,
+.cad-blueprint-box svg circle {{
+  stroke: #38bdf8 !important;
+  stroke-width: 1.8px !important;
+  filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.85));
+}}
+
+.cad-blueprint-box svg path[stroke="#b98a2f"],
+.cad-blueprint-box svg circle[fill="#b98a2f"],
+.cad-blueprint-box svg line[stroke="#b98a2f"] {{
+  stroke: #fde047 !important;
+  fill: #fde047 !important;
+  filter: drop-shadow(0 0 4px rgba(253, 224, 71, 0.95));
+}}
+
+.cad-blueprint-box svg rect[fill^="rgba"] {{
+  fill: rgba(14, 165, 233, 0.15) !important;
+  stroke: #38bdf8 !important;
+}}
+
+/* Official Architectural CAD Title Stamp Box */
+.cad-title-stamp {{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: rgba(2, 12, 27, 0.94);
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 7.5px;
+  color: #38bdf8;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}}
+
+.cad-art {{
   width: 100%;
   height: 100%;
   max-height: 175px;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.85)) drop-shadow(0 0 2px rgba(253, 224, 71, 0.5));
 }}
 
-/* Custom scrollbar */
+/* Corner Bracket Crosshairs */
+.corner-bracket {{
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: #38bdf8;
+  pointer-events: none;
+  z-index: 10;
+}}
+.cb-tl {{ top: 5px; left: 5px; border-top: 2px solid; border-left: 2px solid; }}
+.cb-tr {{ top: 5px; right: 5px; border-top: 2px solid; border-right: 2px solid; }}
+.cb-bl {{ bottom: 5px; left: 5px; border-bottom: 2px solid; border-left: 2px solid; }}
+.cb-br {{ bottom: 5px; right: 5px; border-bottom: 2px solid; border-right: 2px solid; }}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {{
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
 }}
 ::-webkit-scrollbar-track {{
-  background: #040711;
+  background: #030712;
 }}
 ::-webkit-scrollbar-thumb {{
-  background: #1e2e4a;
+  background: #1c2b5e;
   border-radius: 4px;
 }}
 ::-webkit-scrollbar-thumb:hover {{
-  background: #00d2ff;
+  background: #10b981;
 }}
 </style>
 
-<!-- JSON-LD Structured Data -->
+<!-- JSON-LD STRUCTURED DATA SCHEMAS -->
 <script type="application/ld+json">
-{json.dumps(schema_local_business, ensure_ascii=False)}
+{json.dumps(schema_local_business, ensure_ascii=False, indent=2)}
 </script>
+
 <script type="application/ld+json">
-{json.dumps(schema_faq, ensure_ascii=False)}
+{json.dumps(schema_item_list, ensure_ascii=False, indent=2)}
 </script>
+
 <script type="application/ld+json">
-{json.dumps(schema_item_list, ensure_ascii=False)}
+{json.dumps(schema_faq, ensure_ascii=False, indent=2)}
 </script>
+
+<script type="application/ld+json">
+{json.dumps(schema_breadcrumbs, ensure_ascii=False, indent=2)}
+</script>
+
 </head>
 
-<body class="antialiased selection:bg-cyan-500 selection:text-black">
+<body class="selection:bg-emerald-500 selection:text-white">
 
-<!-- TOP NOTIFICATION & HOTLINE BAR -->
-<div class="bg-gradient-to-r from-luxury-950 via-luxury-900 to-luxury-950 border-b border-white/5 py-2 px-4 text-xs">
-  <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-slate-300">
+<!-- TOP METALLIC GRADIENT LINE -->
+<div class="h-1 bg-gradient-to-r from-emerald-500 via-cyan-400 via-amber-400 to-emerald-500 w-full sticky top-0 z-50"></div>
+
+<!-- TOP NOTIFICATION & WHATSAPP DIRECT BAR -->
+<div class="bg-slate-950/95 border-b border-white/10 text-xs text-slate-300 py-2.5 px-3 sm:px-4">
+  <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 sm:gap-3">
     
-    <div class="flex items-center gap-3.5 flex-wrap">
-      <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold text-[11px]">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span data-i18n="top_open">Workshop Open 7 Days · 9:00 AM – 7:00 PM</span>
+    <div class="flex items-center gap-2 sm:gap-4 text-slate-300">
+      <span class="flex items-center gap-1.5 font-medium" data-i18n="top_open">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Workshop Open 7 Days · 9 AM – 7 PM
       </span>
-      <span class="hidden sm:inline text-slate-400 font-medium">📍 <span data-i18n="top_loc">Murli Chowk (Airport Road), Janakpur Dham-8, Dhanusha</span></span>
+      <span class="hidden md:inline text-slate-700">|</span>
+      <a href="https://maps.google.com/?q=26.7118,85.9189" target="_blank" rel="noopener" class="hidden md:flex items-center gap-1.5 text-slate-300 hover:text-emerald-400 transition-colors font-medium group cursor-pointer" title="Click to open Google Maps live directions">
+        <span>📍</span> <span data-i18n="top_loc">Murli Chowk (Airport Road), Janakpur Dham-8, Dhanusha</span>
+        <span class="text-[9px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-1.5 py-0.5 rounded font-bold group-hover:bg-emerald-500 group-hover:text-white transition-all">Live GPS 🗺️</span>
+      </a>
     </div>
 
-    <div class="flex items-center gap-4">
-      <!-- Dual Language Toggle (EN / नेपाली) -->
-      <div class="flex items-center bg-slate-900/90 rounded-xl p-0.5 border border-white/10 text-xs shadow-inner">
-        <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 py-1 rounded-lg font-bold bg-cyan-500 text-black transition-all shadow-sm">English</button>
-        <button onclick="setLanguage('ne')" id="lang-btn-ne" class="px-2.5 py-1 rounded-lg font-bold text-slate-300 hover:text-white transition-all">नेपाली</button>
-      </div>
-
-      <!-- Direct Phone Call -->
-      <a href="tel:{SHOP['phone1']}" class="flex items-center gap-1.5 text-cyan-400 font-bold hover:text-cyan-300 transition-colors text-xs">
-        <span>📞</span> <span class="hidden sm:inline">{SHOP['phone1']}</span>
+    <div class="flex items-center gap-3 ml-auto sm:ml-0">
+      <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna%20Aluminium,%20I%20am%20contacting%20you%20from%20your%20website." target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold transition-all text-xs shadow-sm">
+        <span>💬</span> <span>WhatsApp Direct:</span> <span class="font-mono text-white text-xs">+977 9817658719</span>
       </a>
+      
+      <!-- Dual Language Toggle (EN / नेपाली) -->
+      <div class="inline-flex items-center bg-slate-900 rounded-lg p-0.5 border border-white/10 text-xs">
+        <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 py-1 rounded-md font-bold bg-emerald-500 text-white transition-all shadow-sm">EN</button>
+        <button onclick="setLanguage('ne')" id="lang-btn-ne" class="px-2.5 py-1 rounded-md font-bold text-slate-300 hover:text-white transition-all">नेपाली</button>
+      </div>
     </div>
 
   </div>
 </div>
 
-<!-- MAIN NAVIGATION -->
-<nav class="sticky top-0 z-50 glass-nav transition-all">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
-      
-      <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-3.5 group">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-amber-400 p-0.5 shadow-xl group-hover:shadow-cyan-500/30 transition-all">
-          <div class="w-full h-full bg-luxury-950 rounded-[14px] flex items-center justify-center text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-amber-300">
-            A
-          </div>
+<!-- MAIN STICKY NAVIGATION -->
+<header class="glass-nav sticky top-0 z-40 px-3 sm:px-4 py-2.5 sm:py-3 border-b border-white/10 shadow-2xl backdrop-blur-2xl bg-slate-950/90">
+  <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+    
+    <!-- Brand Logo -->
+    <a href="#" class="flex items-center gap-2.5 sm:gap-3 group" aria-label="Annapurna Aluminium Homepage">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 via-cyan-500 to-amber-500 p-0.5 shadow-lg group-hover:scale-105 transition-transform flex-shrink-0">
+        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-black text-amber-400 text-lg">
+          🏢
         </div>
-        <div>
-          <div class="font-display font-extrabold text-lg sm:text-xl tracking-tight text-white flex items-center gap-1.5">
-            Annapurna <span class="text-cyan-400 font-medium">Alu &amp; UPVC</span>
-          </div>
-          <p class="text-[11px] text-slate-400 tracking-wide font-medium" data-i18n="nav_subtitle">Janakpur Dham · Windows, Doors, Glass &amp; Steel Works</p>
+      </div>
+      <div>
+        <div class="font-extrabold font-display text-base sm:text-xl text-white tracking-tight flex items-center gap-1.5">
+          <span>ANNAPURNA</span>
+          <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-semibold">ALUMINIUM &amp; UPVC</span>
         </div>
-      </a>
-
-      <!-- Desktop Nav Links -->
-      <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-300">
-        <a href="#projects" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
-          <span class="text-cyan-400">✦</span> <span data-i18n="nav_projects">Real Projects (40+)</span>
-        </a>
-        <a href="#catalog" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
-          <span class="text-amber-400">◈</span> <span data-i18n="nav_catalog">102+ Design Catalog</span>
-        </a>
-        <a href="#standards" class="hover:text-cyan-400 transition-colors" data-i18n="nav_standards">Material Quality</a>
-        <a href="#consultation" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
-          <span class="text-emerald-400">📝</span> <span data-i18n="nav_consult">Book Site Visit</span>
-        </a>
-        <a href="#founder" class="hover:text-cyan-400 transition-colors" data-i18n="nav_about">About &amp; Team</a>
-        <a href="#contact" class="hover:text-cyan-400 transition-colors" data-i18n="nav_contact">Contact</a>
+        <p class="text-[10px] sm:text-[11px] text-amber-400/90 font-medium tracking-wide truncate max-w-[200px] sm:max-w-none" data-i18n="nav_subtitle">Janakpur Dham · Windows, Doors, Glass &amp; Steel Works</p>
       </div>
+    </a>
 
-      <!-- Quick Action Buttons -->
-      <div class="hidden sm:flex items-center gap-3">
-        <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna%20Aluminium,%20I%20want%20to%20get%20a%20quote%20for%20my%20building%20project." target="_blank" rel="noopener" class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all shadow-lg hover:shadow-emerald-500/25">
-          <span>💬</span> <span data-i18n="btn_whatsapp">WhatsApp Quote</span>
-        </a>
-        <a href="tel:{SHOP['phone1']}" class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold text-xs transition-all shadow-lg hover:shadow-cyan-500/25">
-          <span>📞</span> <span data-i18n="btn_call">Call Workshop</span>
-        </a>
-      </div>
+    <!-- Desktop Nav Links -->
+    <nav class="hidden lg:flex items-center gap-5 xl:gap-6 text-xs font-semibold text-slate-300" aria-label="Main Navigation">
+      <a href="#projects" class="hover:text-emerald-400 transition-colors py-1 border-b-2 border-transparent hover:border-emerald-400" data-i18n="nav_projects">Real Projects (40+)</a>
+      <a href="#catalog" class="hover:text-emerald-400 transition-colors py-1 border-b-2 border-transparent hover:border-emerald-400" data-i18n="nav_catalog">102+ Design Catalog</a>
+      <a href="#workflow" class="hover:text-emerald-400 transition-colors py-1 border-b-2 border-transparent hover:border-emerald-400" data-i18n="nav_workflow">Workflow &amp; Quality</a>
+      <a href="#standards" class="hover:text-emerald-400 transition-colors py-1 border-b-2 border-transparent hover:border-emerald-400" data-i18n="nav_standards">Material Specs</a>
+      <a href="#booking" class="hover:text-emerald-400 transition-colors py-1 border-b-2 border-transparent hover:border-emerald-400" data-i18n="nav_consult">Book Site Visit</a>
+      <a href="#about" class="hover:text-emerald-400 transition-colors py-1 border-b-2 border-transparent hover:border-emerald-400" data-i18n="nav_about">About &amp; Team</a>
+      <a href="#faq" class="hover:text-emerald-400 transition-colors py-1 border-b-2 border-transparent hover:border-emerald-400">FAQs</a>
+    </nav>
 
-      <!-- Mobile Menu Button -->
-      <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white" aria-label="Toggle Navigation">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+    <!-- Desktop Action Buttons -->
+    <div class="hidden sm:flex items-center gap-2">
+      <button onclick="toggleChatbot()" class="px-3 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+        <span>🤖</span> <span>AI Assistant</span>
       </button>
 
+      <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna%20Aluminium,%20I%20would%20like%20a%20free%20site%20visit%20and%20quotation." target="_blank" rel="noopener" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-lg shadow-emerald-600/30 flex items-center gap-1.5">
+        <span class="text-sm">💬</span> <span data-i18n="btn_whatsapp">WhatsApp Direct (+977 9817658719)</span>
+      </a>
     </div>
+
+    <!-- Mobile Navigation Toggle Button -->
+    <button onclick="toggleMobileMenu()" class="lg:hidden px-3 py-2 rounded-xl bg-slate-900/90 text-slate-200 border border-emerald-500/30 hover:bg-slate-800 hover:text-white flex items-center gap-2 shadow-lg transition-all" aria-label="Toggle Mobile Menu">
+      <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Menu</span>
+      <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </button>
+
   </div>
 
-  <!-- Mobile Dropdown -->
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-white/5 bg-luxury-950/98 backdrop-blur-2xl px-5 pt-4 pb-6 space-y-3 shadow-2xl">
-    <a href="#projects" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-cyan-400 font-semibold">🌟 Real Projects Gallery (40+)</a>
-    <a href="#catalog" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-cyan-400 font-semibold">📦 102+ Design Catalog</a>
-    <a href="#standards" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-cyan-400 font-semibold">🔬 Material &amp; Factory Standards</a>
-    <a href="#consultation" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-cyan-400 font-semibold">📝 Free Site Visit &amp; Measurement</a>
-    <a href="#founder" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-cyan-400 font-semibold">👤 Founder &amp; Workshop Heritage</a>
-    <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-cyan-400 font-semibold">📍 Location &amp; Contact</a>
-    <div class="pt-3 flex gap-2">
-      <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna%20Aluminium,%20I%20want%20to%20get%20a%20quote." target="_blank" class="flex-1 text-center py-3 rounded-xl bg-emerald-600 text-white font-bold text-xs">💬 WhatsApp</a>
-      <a href="tel:{SHOP['phone1']}" class="flex-1 text-center py-3 rounded-xl bg-cyan-500 text-black font-extrabold text-xs">📞 Call Directly</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO SECTION -->
-<section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-16 lg:py-24">
-  <!-- Subtle Background Real Photo Mosaic -->
-  <div class="absolute inset-0 z-0">
-    <div class="absolute inset-0 bg-gradient-to-t from-luxury-950 via-luxury-950/85 to-luxury-950/65 z-10"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-950/30 via-transparent to-transparent z-10"></div>
-    <img src="catalog_assets/real_projects/facade_commercial_plaza.jpg" alt="Annapurna Commercial Plaza Project" class="w-full h-full object-cover object-center filter blur-[2px] scale-105 opacity-35">
-  </div>
-
-  <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <!-- Mobile Dropdown Navigation Drawer -->
+  <div id="mobile-menu" class="hidden lg:hidden mt-3 pt-3 border-t border-white/10 space-y-2.5 text-sm text-slate-300 animate-fadeIn">
     
+    <div class="grid grid-cols-2 gap-2">
+      <a href="#projects" onclick="toggleMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 hover:bg-emerald-500/20 hover:text-emerald-400 border border-white/5 transition-all text-xs font-bold" data-i18n="nav_projects">
+        <span>🖼️</span> <span>Real Projects (40+)</span>
+      </a>
+      <a href="#catalog" onclick="toggleMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 hover:bg-emerald-500/20 hover:text-emerald-400 border border-white/5 transition-all text-xs font-bold" data-i18n="nav_catalog">
+        <span>📐</span> <span>102+ Catalog</span>
+      </a>
+      <a href="#workflow" onclick="toggleMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 hover:bg-emerald-500/20 hover:text-emerald-400 border border-white/5 transition-all text-xs font-bold" data-i18n="nav_workflow">
+        <span>⚡</span> <span>Workflow &amp; Quality</span>
+      </a>
+      <a href="#standards" onclick="toggleMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 hover:bg-emerald-500/20 hover:text-emerald-400 border border-white/5 transition-all text-xs font-bold" data-i18n="nav_standards">
+        <span>🔬</span> <span>Material Specs</span>
+      </a>
+      <a href="#booking" onclick="toggleMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 hover:bg-emerald-500/20 hover:text-emerald-400 border border-white/5 transition-all text-xs font-bold" data-i18n="nav_consult">
+        <span>📅</span> <span>Book Site Visit</span>
+      </a>
+      <a href="#about" onclick="toggleMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 hover:bg-emerald-500/20 hover:text-emerald-400 border border-white/5 transition-all text-xs font-bold" data-i18n="nav_about">
+        <span>🏛️</span> <span>About &amp; Team</span>
+      </a>
+    </div>
+
+    <a href="#faq" onclick="toggleMobileMenu()" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-900/80 hover:bg-emerald-500/20 hover:text-emerald-400 border border-white/5 transition-all text-xs font-bold">
+      <span>❓</span> <span>Frequently Asked Questions (FAQs)</span>
+    </a>
+    
+    <!-- Direct Action Touch Buttons -->
+    <div class="pt-2 grid grid-cols-1 gap-2">
+      <button onclick="toggleChatbot(); toggleMobileMenu();" class="w-full py-3 rounded-xl bg-gradient-to-r from-slate-900 to-cyan-950 text-cyan-400 border border-cyan-500/40 font-bold text-xs flex items-center justify-center gap-2 shadow-lg">
+        <span>🤖</span> <span>Open Smart AI Architectural Assistant</span>
+      </button>
+
+      <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna,%20I%20want%20a%20free%20site%20visit%20quotation." target="_blank" class="w-full text-center py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-xl shadow-emerald-600/30">
+        <span class="text-base">💬</span> <span>Direct WhatsApp Consultation (+977 9817658719)</span>
+      </a>
+    </div>
+
+    <!-- Mobile Language & Blueprint Quick Toggles -->
+    <div class="pt-2 flex items-center justify-between border-t border-white/10 text-xs">
+      <div class="text-slate-400 font-medium">Language:</div>
+      <div class="inline-flex items-center bg-slate-900 rounded-lg p-1 border border-white/10">
+        <button onclick="setLanguage('en'); toggleMobileMenu();" class="px-3 py-1 rounded-md font-bold bg-emerald-500 text-white">English</button>
+        <button onclick="setLanguage('ne'); toggleMobileMenu();" class="px-3 py-1 rounded-md font-bold text-slate-300">नेपाली</button>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO SECTION WITH BACKGROUND AUTOMATIC 2s PRODUCT SLIDESHOW CAROUSEL -->
+<section class="relative pt-16 pb-12 sm:pt-24 sm:pb-20 px-4 overflow-hidden min-h-[85vh] flex items-center justify-center">
+  
+  <!-- HERO BACKGROUND AUTOMATIC 2s SLIDESHOW CAROUSEL WITH MULTIPLE TRANSITIONS -->
+  <div id="hero-bg-carousel" class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <!-- Background Slide Layer A -->
+    <div id="bg-slide-a" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 transform scale-100 opacity-100"></div>
+    <!-- Background Slide Layer B -->
+    <div id="bg-slide-b" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 transform scale-100 opacity-0"></div>
+    
+    <!-- Dark Sapphire Overlay for Contrast and 100% Readability -->
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-950/92 to-slate-950"></div>
+    <div class="absolute inset-0 bg-slate-950/50 backdrop-blur-[1.5px]"></div>
+    <!-- High-Tech Blueprint Grid Overlay -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#0f172a25_1px,transparent_1px),linear-gradient(to_bottom,#0f172a25_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-40"></div>
+  </div>
+
+  <!-- Ambient Glow Orbs -->
+  <div class="glow-orb w-[500px] h-[500px] bg-emerald-500/30 -top-20 -left-20 pointer-events-none"></div>
+  <div class="glow-orb w-[450px] h-[450px] bg-amber-500/20 top-1/2 -right-20 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10 text-center">
+    
+    <!-- Dynamic Background Showcase Slide Ticker Pill -->
+    <div class="inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-slate-950/90 border border-cyan-500/50 text-cyan-300 text-xs sm:text-sm font-semibold mb-4 shadow-2xl backdrop-blur-md">
+      <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+      <span id="bg-slide-ticker" class="font-mono text-xs sm:text-sm text-cyan-300">📸 Live Catalog Showcase: ALW-01 Panoramic Corner Window</span>
+      <span class="text-[10px] bg-cyan-500/20 px-2 py-0.5 rounded-md text-cyan-200 border border-cyan-500/30 font-bold hidden sm:inline-block">2s Auto-Slide</span>
+    </div>
+
     <!-- Top Verified Pill -->
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-bold mb-8 backdrop-blur-md shadow-xl shadow-cyan-500/10">
-      <span class="text-amber-400">★ ★ ★ ★ ★</span>
+    <div class="block max-w-fit mx-auto items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/40 text-emerald-400 text-xs sm:text-sm font-semibold mb-6 shadow-xl backdrop-blur-md">
+      <span class="text-base">👑</span>
       <span data-i18n="hero_badge">#1 Certified UPVC, Aluminium &amp; SS Fabrication Center · Janakpur Dham, Nepal</span>
     </div>
 
     <!-- Main Title -->
-    <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white max-w-5xl mx-auto leading-[1.12] mb-6">
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300" data-i18n="hero_h1_1">World-Class</span> 
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-blue-500" data-i18n="hero_h1_2">UPVC, Aluminium &amp; Glass</span> 
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-500" data-i18n="hero_h1_3">Craftsmanship</span>
+    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-display tracking-tight text-white mb-6 leading-tight">
+      <span data-i18n="hero_h1_1">World-Class</span> <br class="hidden sm:inline">
+      <span class="bg-gradient-to-r from-emerald-400 via-cyan-300 to-amber-300 bg-clip-text text-transparent" data-i18n="hero_h1_2">UPVC, Aluminium &amp; Glass</span> <br class="hidden sm:inline">
+      <span data-i18n="hero_h1_3">Precision Craftsmanship</span>
     </h1>
 
-    <!-- Subtitle in Multi-language -->
-    <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal" data-i18n="hero_desc">
+    <!-- Subtitle -->
+    <p class="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed mb-8" data-i18n="hero_desc">
       102+ Custom Designs manufactured at our Janakpur workshop: German-profile UPVC windows, modern aluminium doors &amp; partitions, SS 304 temple gates, balustrades, modular kitchen racks, and commercial ACP glass facades.
     </p>
 
     <!-- Action Buttons -->
-    <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
-      <a href="#projects" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-sm sm:text-base transition-all shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-1 flex items-center gap-2">
-        <span>📸</span> <span data-i18n="hero_btn_projects">Explore Real Project Photos</span>
+    <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10">
+      <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna%20Aluminium,%20I%20want%20to%20consult%20on%20WhatsApp%20for%20a%20project." target="_blank" rel="noopener" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-sm sm:text-base shadow-xl shadow-emerald-500/25 transition-all hover:scale-105 flex items-center gap-2">
+        <span class="text-lg">💬</span> <span data-i18n="hero_btn_whatsapp">WhatsApp Consultation (+977 9817658719)</span>
       </a>
-      <a href="#catalog" class="px-8 py-4 rounded-2xl bg-slate-900/90 hover:bg-slate-850 text-white font-bold text-sm sm:text-base border border-white/10 hover:border-cyan-500/40 transition-all backdrop-blur-md hover:-translate-y-1 flex items-center gap-2">
-        <span>📐</span> <span data-i18n="hero_btn_catalog">Browse 102+ Catalog</span>
-      </a>
-      <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna%20Aluminium,%20I%20want%20free%20site%20measurement%20and%20consultation." target="_blank" rel="noopener" class="px-8 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm sm:text-base transition-all shadow-xl shadow-emerald-600/25 hover:-translate-y-1 flex items-center gap-2">
-        <span>💬</span> <span data-i18n="hero_btn_estimate">Free Site Measurement</span>
+
+      <button onclick="toggleChatbot()" class="px-6 py-3.5 rounded-2xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 font-bold text-sm sm:text-base border border-cyan-500/30 transition-all hover:scale-105 flex items-center gap-2">
+        <span>🤖</span> <span>Ask AI Assistant</span>
+      </button>
+
+      <a href="#catalog" class="px-6 py-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 text-white font-bold text-sm sm:text-base border border-white/10 transition-all hover:scale-105 flex items-center gap-2">
+        <span>🔥</span> <span data-i18n="hero_btn_catalog">Browse 102+ Catalog</span>
       </a>
     </div>
 
     <!-- Quick Stats Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
-      <div class="glass-panel p-5 rounded-2xl border border-white/10">
-        <div class="text-3xl sm:text-4xl font-black font-display text-cyan-400 mb-1">102+</div>
-        <div class="text-xs text-slate-400 font-semibold" data-i18n="stat_designs">Unique Custom Designs</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-10">
+      <div class="glass-card p-4 rounded-2xl text-center">
+        <div class="text-2xl sm:text-3xl font-black font-display text-emerald-400">102+</div>
+        <div class="text-xs text-slate-400 font-medium mt-1" data-i18n="stat_designs">Unique Custom Designs</div>
       </div>
-      <div class="glass-panel p-5 rounded-2xl border border-white/10">
-        <div class="text-3xl sm:text-4xl font-black font-display text-amber-400 mb-1">1,200+</div>
-        <div class="text-xs text-slate-400 font-semibold" data-i18n="stat_sites">Completed Sites in Nepal</div>
+      <div class="glass-card p-4 rounded-2xl text-center">
+        <div class="text-2xl sm:text-3xl font-black font-display text-amber-400">40+</div>
+        <div class="text-xs text-slate-400 font-medium mt-1" data-i18n="stat_sites">Real Workshop Projects</div>
       </div>
-      <div class="glass-panel p-5 rounded-2xl border border-white/10">
-        <div class="text-3xl sm:text-4xl font-black font-display text-emerald-400 mb-1">15+ Yrs</div>
-        <div class="text-xs text-slate-400 font-semibold" data-i18n="stat_exp">Engineering Experience</div>
+      <div class="glass-card p-4 rounded-2xl text-center">
+        <div class="text-2xl sm:text-3xl font-black font-display text-cyan-400">100%</div>
+        <div class="text-xs text-slate-400 font-medium mt-1" data-i18n="stat_quality">SS 304 Rust-Free Guarantee</div>
       </div>
-      <div class="glass-panel p-5 rounded-2xl border border-white/10">
-        <div class="text-3xl sm:text-4xl font-black font-display text-purple-400 mb-1">100%</div>
-        <div class="text-xs text-slate-400 font-semibold" data-i18n="stat_quality">SS 304 &amp; Virgin Profiles</div>
+      <div class="glass-card p-4 rounded-2xl text-center">
+        <div class="text-2xl sm:text-3xl font-black font-display text-indigo-400">15+ Yrs</div>
+        <div class="text-xs text-slate-400 font-medium mt-1" data-i18n="stat_exp">Engineering Craftsmanship</div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- SECTION: REAL WORKSHOP & ON-SITE PROJECTS GALLERY -->
-<section id="projects" class="py-20 relative bg-luxury-950/70 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- SECTION: AUTOMATIC INFINITE PRODUCT & PROJECT SLIDING CAROUSEL -->
+<section class="py-6 border-t border-b border-white/10 bg-slate-950/80 overflow-hidden relative z-10">
+  <div class="max-w-7xl mx-auto px-4 mb-3 flex items-center justify-between">
+    <div class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      <span>Live Workshop Showcase · Automatic Showcase Carousel</span>
+    </div>
+    <span class="text-[11px] text-slate-400 italic hidden sm:inline">(Hover mouse over cards to pause auto-slide)</span>
+  </div>
+
+  <div class="marquee-container">
+    <div class="marquee-track" id="auto-marquee-track">
+      <!-- Populated automatically via JS -->
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: 4-STEP PRECISION WORKFLOW -->
+<section id="workflow" class="py-16 px-4 relative z-10 bg-slate-950/60">
+  <div class="max-w-7xl mx-auto">
     
-    <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-      <div>
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-3">
-          🌟 Authentic Workshop &amp; Site Photos
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
+        ⚡ Precision Engineering
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-extrabold font-display text-white mb-3" data-i18n="workflow_title">
+        Our 4-Step Precision Fabrication Workflow
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto" data-i18n="workflow_subtitle">
+        From free site visit and 3D design to precision laser fabrication and lifetime on-site fitting.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Step 1 -->
+      <div class="glass-card p-6 rounded-2xl relative">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 font-black flex items-center justify-center text-sm border border-emerald-500/40 mb-4">
+          01
         </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight" data-i18n="projects_title">
-          Real Projects by Annapurna
+        <h3 class="font-bold text-lg text-white mb-2" data-i18n="wf_s1_t">Free Site Measurement</h3>
+        <p class="text-xs text-slate-300 leading-relaxed" data-i18n="wf_s1_d">
+          Master engineer visits your building with laser distance meters and real metal/glass profile samples.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="glass-card p-6 rounded-2xl relative">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 font-black flex items-center justify-center text-sm border border-amber-500/40 mb-4">
+          02
+        </div>
+        <h3 class="font-bold text-lg text-white mb-2" data-i18n="wf_s2_t">3D CAD &amp; Vector Blueprint</h3>
+        <p class="text-xs text-slate-300 leading-relaxed" data-i18n="wf_s2_d">
+          Custom technical drawing generated for your approval with exact millimeter glass and aluminum specs.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="glass-card p-6 rounded-2xl relative">
+        <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 font-black flex items-center justify-center text-sm border border-cyan-500/40 mb-4">
+          03
+        </div>
+        <h3 class="font-bold text-lg text-white mb-2" data-i18n="wf_s3_t">Workshop CNC Fabrication</h3>
+        <p class="text-xs text-slate-300 leading-relaxed" data-i18n="wf_s3_d">
+          Precision miter cutting, argon TIG welding, powder coating, and EPDM weather-seal assembly at Murli Chowk.
+        </p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="glass-card p-6 rounded-2xl relative">
+        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 font-black flex items-center justify-center text-sm border border-indigo-500/40 mb-4">
+          04
+        </div>
+        <h3 class="font-bold text-lg text-white mb-2" data-i18n="wf_s4_t">On-Site Expert Fitting</h3>
+        <p class="text-xs text-slate-300 leading-relaxed" data-i18n="wf_s4_d">
+          Fast, clean installation by experienced technicians with weatherproofing and 10-year quality guarantee.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION: REAL WORKSHOP PROJECTS GALLERY (40+) -->
+<section id="projects" class="py-16 px-4 relative z-10 border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
+          📸 authentic workshop gallery
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold font-display text-white" data-i18n="projects_title">
+          Real Projects Fabricated in Janakpur
         </h2>
-        <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl" data-i18n="projects_subtitle">
+        <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl" data-i18n="projects_subtitle">
           Explore actual completed commercial facades, temple gates, modern residences, staircases, and modular kitchens fabricated right here at our Murli Chowk workshop.
         </p>
       </div>
 
-      <!-- Live Filter Pills -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-2 max-w-full" id="project-filters">
-        <button onclick="filterProjects('all')" class="proj-filter-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-cyan-500 text-black shadow-lg shadow-cyan-500/20" data-cat="all" data-i18n="filter_all">All Projects (26)</button>
-        <button onclick="filterProjects('STF')" class="proj-filter-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900 text-slate-300 hover:text-white border border-white/10" data-cat="STF" data-i18n="filter_stf">Facades &amp; ACP</button>
-        <button onclick="filterProjects('UWC')" class="proj-filter-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900 text-slate-300 hover:text-white border border-white/10" data-cat="UWC" data-i18n="filter_uwc">UPVC Windows</button>
-        <button onclick="filterProjects('SLS')" class="proj-filter-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900 text-slate-300 hover:text-white border border-white/10" data-cat="SLS" data-i18n="filter_sls">SS Railings</button>
-        <button onclick="filterProjects('MST')" class="proj-filter-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900 text-slate-300 hover:text-white border border-white/10" data-cat="MST" data-i18n="filter_mst">Temple Gates</button>
-        <button onclick="filterProjects('MOD')" class="proj-filter-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900 text-slate-300 hover:text-white border border-white/10" data-cat="MOD" data-i18n="filter_mod">Kitchen Racks</button>
-        <button onclick="filterProjects('ALP')" class="proj-filter-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900 text-slate-300 hover:text-white border border-white/10" data-cat="ALP" data-i18n="filter_alp">Partitions</button>
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap gap-1.5 bg-slate-900/90 p-1.5 rounded-2xl border border-white/10" id="project-filter-pills">
+        <button onclick="filterRealProjects('all')" data-pfilter="all" class="proj-pill px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500 text-white shadow-md">All (26)</button>
+        <button onclick="filterRealProjects('STF')" data-pfilter="STF" class="proj-pill px-3 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white">Facades</button>
+        <button onclick="filterRealProjects('UWC')" data-pfilter="UWC" class="proj-pill px-3 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white">UPVC Windows</button>
+        <button onclick="filterRealProjects('SLS')" data-pfilter="SLS" class="proj-pill px-3 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white">SS Railings</button>
+        <button onclick="filterRealProjects('MST')" data-pfilter="MST" class="proj-pill px-3 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white">Temple Gates</button>
+        <button onclick="filterRealProjects('MOD')" data-pfilter="MOD" class="proj-pill px-3 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white">Kitchen Racks</button>
       </div>
     </div>
 
     <!-- Projects Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="real-projects-grid">
-      <!-- Rendered via JS dynamically for filtering & lightbox -->
-    </div>
-
-    <!-- View Full Photo Archive Trigger -->
-    <div class="mt-12 text-center">
-      <p class="text-xs text-slate-400 mb-3" data-i18n="projects_more_note">Looking for a specific architectural design or have your own custom blueprint?</p>
-      <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna,%20I%20have%20custom%20drawings%20for%20my%20building.%20Please%20review%20and%20quote." target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-400 border border-cyan-500/30 font-bold text-xs tracking-wide transition-all shadow-lg hover:shadow-cyan-500/15">
-        <span>📤</span> <span data-i18n="projects_send_custom">Send Your Custom Blueprints on WhatsApp</span>
-      </a>
+    <div id="real-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dynamically rendered via JS -->
     </div>
 
   </div>
 </section>
 
-<!-- SECTION: 102+ PRODUCT CATALOG EXPLORER -->
-<section id="catalog" class="py-20 relative bg-luxury-950 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- SECTION: 102+ PRODUCT CATALOG EXPLORER (WITH ULTRA-LUXURY CAD BLUEPRINT) -->
+<section id="catalog" class="py-16 px-4 relative z-10 bg-slate-950/40 border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
     
-    <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">
-        📐 Complete Manufacturing Catalog
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
+        📦 Complete Product Archive
       </div>
-      <h2 class="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight" data-i18n="catalog_title">
+      <h2 class="text-2xl sm:text-4xl font-extrabold font-display text-white mb-2" data-i18n="catalog_title">
         102+ Master Product Designs
       </h2>
-      <p class="text-slate-400 text-sm sm:text-base mt-2" data-i18n="catalog_subtitle">
+      <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto" data-i18n="catalog_subtitle">
         Every product is precision-engineered, customizable to your exact structural measurements, and available in multiple finishes and glass configurations.
       </p>
     </div>
 
-    <!-- Search & View Mode Controls -->
+    <!-- Search & Controls Bar -->
     <div class="glass-panel p-4 rounded-2xl mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
       
       <!-- Instant Search Input -->
       <div class="relative w-full md:w-96">
-        <input type="text" id="catalog-search" oninput="handleCatalogSearch()" placeholder="Search by name, code (e.g. UWC-01, Sliding, Gate)..." class="w-full px-4 py-2.5 pl-10 rounded-xl bg-slate-950/80 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-400 transition-colors">
-        <span class="absolute left-3 top-2.5 text-slate-400">🔍</span>
-        <button id="clear-search-btn" onclick="clearCatalogSearch()" class="hidden absolute right-3 top-2.5 text-xs text-slate-400 hover:text-white">✕</button>
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">🔍</span>
+        <input type="text" id="catalog-search" oninput="handleCatalogSearch()" placeholder="Search 102+ designs (e.g. sliding, gate, kitchen)..." class="w-full pl-9 pr-8 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none placeholder-slate-500">
+        <button id="clear-search-btn" onclick="clearCatalogSearch()" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-white">✕</button>
       </div>
 
-      <!-- View Switcher -->
-      <div class="flex items-center gap-2 w-full md:w-auto justify-end">
-        <span class="text-xs text-slate-400 font-semibold" data-i18n="catalog_view_mode">View Mode:</span>
-        <div class="bg-slate-950 p-1 rounded-xl border border-white/10 flex items-center text-xs font-bold">
-          <button onclick="setCatalogViewMode('photo')" id="view-mode-photo" class="px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 transition-all flex items-center gap-1.5">
-            <span>📸</span> <span data-i18n="view_photo">Photos</span>
-          </button>
-          <button onclick="setCatalogViewMode('blueprint')" id="view-mode-blueprint" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5">
-            <span>📐</span> <span data-i18n="view_blueprint">Blueprint</span>
-          </button>
-        </div>
+      <!-- View Counter Badge -->
+      <div class="text-xs text-emerald-400 font-mono font-bold" id="catalog-count">
+        Showing 102 of 102 Designs
+      </div>
+
+      <!-- View Switcher (Real Photo vs Ultra CAD Blueprint Mode) -->
+      <div class="flex items-center gap-2 bg-slate-900 p-1 rounded-xl border border-white/10 text-xs font-bold">
+        <span class="text-slate-400 px-2" data-i18n="catalog_view_mode">View Mode:</span>
+        <button id="view-mode-photo" onclick="setCatalogViewMode('photo')" class="px-3 py-1.5 rounded-lg bg-emerald-500 text-white transition-all flex items-center gap-1.5">
+          <span>📸</span> <span data-i18n="view_photo">Photos</span>
+        </button>
+        <button id="view-mode-blueprint" onclick="setCatalogViewMode('blueprint')" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5">
+          <span>📐</span> <span data-i18n="view_blueprint">CAD Blueprint</span>
+        </button>
       </div>
 
     </div>
 
     <!-- Category Filter Tabs -->
-    <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8" id="catalog-category-pills">
-      <button onclick="filterCatalog('ALL')" class="cat-pill px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cyan-500 text-black shadow-lg shadow-cyan-500/20 transition-all" data-cat="ALL">
-        All 102 Designs
-      </button>
-      {"".join([f'''<button onclick="filterCatalog('{c['key']}')" class="cat-pill px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900/90 text-slate-300 hover:text-white border border-white/10 transition-all" data-cat="{c['key']}">
-        {c['name']}
-      </button>''' for c in CATS])}
+    <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar" id="catalog-category-pills">
+      <!-- Generated via JS -->
     </div>
 
-    <!-- Catalog Counter -->
-    <div class="flex items-center justify-between text-xs text-slate-400 mb-6 px-1">
-      <div>Showing <span id="catalog-count" class="font-bold text-cyan-400">102</span> products</div>
-      <div class="text-slate-500 italic" data-i18n="custom_sizes_note">Custom sizes &amp; finishes fabricated for all models</div>
-    </div>
-
-    <!-- Catalog Products Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="products-container">
-      <!-- Dynamically generated by JS -->
+    <!-- Catalog Grid -->
+    <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Generated via JS -->
     </div>
 
   </div>
 </section>
 
-<!-- SECTION: MATERIAL & ENGINEERING STANDARDS MATRIX -->
-<section id="standards" class="py-20 relative bg-luxury-950/80 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- SECTION: MATERIAL STANDARDS & QUALITY MATRIX -->
+<section id="standards" class="py-16 px-4 relative z-10 border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
     
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-3">
-        🔬 Engineering Standards &amp; Materials
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
+        🔬 Engineering Excellence
       </div>
-      <h2 class="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight" data-i18n="factory_title">
+      <h2 class="text-2xl sm:text-4xl font-extrabold font-display text-white mb-3" data-i18n="factory_title">
         Factory Machinery &amp; Raw Material Quality
       </h2>
-      <p class="text-slate-400 text-sm sm:text-base mt-2" data-i18n="factory_subtitle">
+      <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto" data-i18n="factory_subtitle">
         We never compromise on metal thickness, uPVC wall gauge, or welding standards. Here is how we ensure lifetime durability.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
       <!-- Feature 1 -->
-      <div class="glass-card p-7 rounded-3xl">
-        <div class="w-14 h-14 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-3xl mb-6 shadow-inner">
-          🔬
+      <div class="glass-card p-6 rounded-2xl">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl font-black mb-4">
+          ❄️
         </div>
         <h3 class="text-lg font-bold text-white mb-2" data-i18n="mat_1_title">German Multi-Chamber UPVC</h3>
-        <p class="text-slate-400 text-xs leading-relaxed mb-5" data-i18n="mat_1_desc">
+        <p class="text-xs text-slate-300 leading-relaxed" data-i18n="mat_1_desc">
           Multi-cavity internal chambers trap air pockets for maximum thermal &amp; sound insulation. Reinforced with galvanized steel inserts to prevent frame distortion in hot Janakpur summers.
         </p>
-        <ul class="text-xs text-slate-300 space-y-2 border-t border-white/5 pt-4">
-          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> <span>100% Lead-Free Eco Formulation</span></li>
-          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> <span>UV-Resistant Titanium Dioxide Enriched</span></li>
-          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> <span>Dual EPDM Gasket Weather Seals</span></li>
-        </ul>
       </div>
 
       <!-- Feature 2 -->
-      <div class="glass-card p-7 rounded-3xl">
-        <div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-3xl mb-6 shadow-inner">
-          ✦
+      <div class="glass-card p-6 rounded-2xl">
+        <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl font-black mb-4">
+          🛡️
         </div>
         <h3 class="text-lg font-bold text-white mb-2" data-i18n="mat_2_title">Virgin 6063-T5 Aluminium Alloy</h3>
-        <p class="text-slate-400 text-xs leading-relaxed mb-5" data-i18n="mat_2_desc">
+        <p class="text-xs text-slate-300 leading-relaxed" data-i18n="mat_2_desc">
           Manufactured using high-strength architectural aluminium alloy with 60-80 micron electro-powder coating that withstands harsh sun, monsoons, and everyday impacts.
         </p>
-        <ul class="text-xs text-slate-300 space-y-2 border-t border-white/5 pt-4">
-          <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span>No Recycled Scrap — 100% Virgin Alloy</span></li>
-          <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span>Scratch &amp; Chip Resistant Coating</span></li>
-          <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span>Heavy Gauge Wall for Structural Rigidity</span></li>
-        </ul>
       </div>
 
       <!-- Feature 3 -->
-      <div class="glass-card p-7 rounded-3xl">
-        <div class="w-14 h-14 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-3xl mb-6 shadow-inner">
-          🛡️
+      <div class="glass-card p-6 rounded-2xl">
+        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl font-black mb-4">
+          ✨
         </div>
         <h3 class="text-lg font-bold text-white mb-2" data-i18n="mat_3_title">Authentic SS 304 Rust-Free Steel</h3>
-        <p class="text-slate-400 text-xs leading-relaxed mb-5" data-i18n="mat_3_desc">
+        <p class="text-xs text-slate-300 leading-relaxed" data-i18n="mat_3_desc">
           Every stainless steel railing, temple gate, and staircase pillar is crafted from genuine SS 304 with full nickel content, assembled with inert gas TIG welding and diamond compound polishing.
         </p>
-        <ul class="text-xs text-slate-300 space-y-2 border-t border-white/5 pt-4">
-          <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> <span>Chemical Acid Tested SS 304 Quality</span></li>
-          <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> <span>Multi-Stage Diamond Polish Mirror Shine</span></li>
-          <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> <span>Solid Casting Spigots &amp; Newel Posts</span></li>
-        </ul>
       </div>
 
-    </div>
-
-    <!-- Live Workshop Action Photos -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="relative group rounded-2xl overflow-hidden glass-panel aspect-[4/3]">
-        <img src="catalog_assets/real_projects/workshop_live_fabrication.jpg" alt="Workshop live fabrication" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex items-end p-3.5">
-          <span class="text-xs font-bold text-white">Window Sash Assembly</span>
-        </div>
-      </div>
-      <div class="relative group rounded-2xl overflow-hidden glass-panel aspect-[4/3]">
-        <img src="catalog_assets/real_projects/onsite_ss_welding_installation.jpg" alt="On-site SS welding" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex items-end p-3.5">
-          <span class="text-xs font-bold text-white">SS TIG Welding &amp; Polish</span>
-        </div>
-      </div>
-      <div class="relative group rounded-2xl overflow-hidden glass-panel aspect-[4/3]">
-        <img src="catalog_assets/real_projects/workshop_raw_profiles_stock.jpg" alt="Raw Profile Stock" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex items-end p-3.5">
-          <span class="text-xs font-bold text-white">Warehouse Profile Inventory</span>
-        </div>
-      </div>
-      <div class="relative group rounded-2xl overflow-hidden glass-panel aspect-[4/3]">
-        <img src="catalog_assets/real_projects/workshop_ready_dispatch.jpg" alt="Dispatch yard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex items-end p-3.5">
-          <span class="text-xs font-bold text-white">Protected Logistics Dispatch</span>
-        </div>
-      </div>
     </div>
 
   </div>
 </section>
 
-<!-- SECTION: FREE SITE VISIT & ARCHITECTURAL CONSULTATION -->
-<section id="consultation" class="py-20 relative bg-luxury-950 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- SECTION: FREE SITE VISIT & CONSULTATION BOOKING (WHATSAPP DISPATCH) -->
+<section id="booking" class="py-16 px-4 relative z-10 bg-slate-950/60 border-t border-white/5">
+  <div class="max-w-5xl mx-auto">
     
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/30 shadow-2xl relative overflow-hidden">
       
-      <!-- Left info -->
-      <div class="lg:col-span-5">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
-          📝 Free Measurement &amp; Estimate
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight mb-4" data-i18n="booking_title">
-          Book Free On-Site Measurement
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6" data-i18n="booking_desc">
-          Building a new house, commercial showroom, or renovating your hotel in Janakpur Dham or nearby districts? Our master engineer will visit your site with actual profile and glass samples for laser-guided measurement.
-        </p>
-
-        <div class="space-y-3.5 mb-8 text-xs sm:text-sm text-slate-300">
-          <div class="flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
-            <span>Free On-Site Laser Measurement in Janakpur, Dhanusha &amp; Mahottari</span>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        
+        <!-- Left info -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
+            💬 WhatsApp Direct Appointment
           </div>
-          <div class="flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
-            <span>Direct Workshop Factory Price — Zero Middleman Markup</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
-            <span>Complete Quotation with Profile Guarantees Within 24 Hours</span>
-          </div>
-        </div>
-
-        <div class="glass-panel p-4 rounded-2xl border border-white/10 text-xs text-slate-400">
-          📍 <strong class="text-slate-200">Janakpur Workshop Helpline:</strong> <a href="tel:{SHOP['phone1']}" class="text-cyan-400 font-bold hover:underline">{SHOP['phone1']}</a> / <a href="tel:{SHOP['phone2']}" class="text-slate-300 font-bold hover:underline">{SHOP['phone2']}</a>
-        </div>
-      </div>
-
-      <!-- Right Form -->
-      <div class="lg:col-span-7">
-        <div class="glass-panel p-7 sm:p-9 rounded-3xl border border-white/10 shadow-2xl">
-          <h3 class="text-xl font-bold font-display text-white mb-2" data-i18n="form_title">
-            Request Site Visit &amp; Custom Quote
-          </h3>
-          <p class="text-xs text-slate-400 mb-6" data-i18n="form_subtitle">
-            Fill in your details below and we will confirm your appointment via WhatsApp immediately.
+          <h2 class="text-2xl sm:text-4xl font-black font-display text-white mb-4" data-i18n="booking_title">
+            Book Free On-Site Measurement
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6" data-i18n="booking_desc">
+            Building a new house, commercial showroom, or renovating your hotel in Janakpur Dham or nearby districts? Our master engineer will visit your site with actual profile and glass samples for laser-guided measurement.
           </p>
-
-          <form onsubmit="handleContactSubmit(event)" class="space-y-4">
-            <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="form_label_name">Your Full Name *</label>
-              <input type="text" id="form-name" required placeholder="e.g. Ramesh Kumar / Sahadev Chaudhary" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-400">
+          
+          <div class="space-y-3 text-xs text-slate-300">
+            <div class="flex items-center gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Direct WhatsApp dispatch to master engineer (+977 9817658719)</span>
             </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="form_label_phone">Phone / WhatsApp Number *</label>
-                <input type="tel" id="form-phone" required placeholder="e.g. 9817658719" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-400">
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="form_label_city">Project Location / District *</label>
-                <input type="text" id="form-city" required placeholder="e.g. Janakpur Dham / Lahan / Malangwa" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-400">
-              </div>
+            <div class="flex items-center gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Physical UPVC, Aluminium &amp; Glass samples demo on-site</span>
             </div>
-
-            <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="form_label_service">Primary Architectural Requirement</label>
-              <select id="form-service" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-400">
-                <option value="UPVC Windows & Doors">UPVC Windows &amp; Doors (German Profile)</option>
-                <option value="Aluminium Windows & Partitions">Aluminium Sliding Windows &amp; Office Partitions</option>
-                <option value="SS Railings & Staircases">Stainless Steel (SS 304) Railings &amp; Glass Balustrades</option>
-                <option value="Temple Gate & Steel Grills">Temple Entrance Gate / Heavy Security Gate</option>
-                <option value="Modular Kitchen Storage Racks">Modular Aluminium Kitchen Storage Racks</option>
-                <option value="Storefront Glass & ACP Cladding">Commercial Glass Facade &amp; ACP Cladding</option>
-                <option value="Complete Building Aperture Package">Complete New Building Aperture Package (All-in-One)</option>
-              </select>
+            <div class="flex items-center gap-2.5">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>Instant structural quotation &amp; 3D drawing advice</span>
             </div>
-
-            <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="form_label_notes">Approximate Size / Number of Openings</label>
-              <textarea id="form-notes" rows="3" placeholder="e.g. 10 Windows (5x4 ft), 4 Bathroom Doors, 40 ft Staircase Railing..." class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-400"></textarea>
-            </div>
-
-            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black text-sm uppercase tracking-wider transition-all shadow-xl shadow-cyan-500/25">
-              Submit Request via WhatsApp →
-            </button>
-          </form>
-
+          </div>
         </div>
+
+        <!-- Right Form (Direct WhatsApp Dispatch) -->
+        <form onsubmit="handleContactSubmit(event)" class="space-y-4 bg-slate-950/80 p-6 rounded-2xl border border-white/10">
+          <h3 class="font-bold text-white text-base mb-2" data-i18n="form_title">Request Site Visit &amp; Custom Quote</h3>
+          
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="form_label_name">Your Full Name *</label>
+            <input type="text" id="form-name" required placeholder="e.g. Er. Ram Shrestha" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="form_label_phone">Your WhatsApp Number *</label>
+            <input type="tel" id="form-phone" required placeholder="e.g. 9817658719" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="form_label_city">Project Location / District *</label>
+            <input type="text" id="form-city" required placeholder="e.g. Janakpur-8, Dhanusha" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="form_label_service">Primary Architectural Requirement</label>
+            <select id="form-service" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none">
+              <option>UPVC Windows &amp; Patio Doors</option>
+              <option>Aluminium Office Partitions &amp; Doors</option>
+              <option>Toughened Glass Railings &amp; Balustrades</option>
+              <option>SS 304 Temple Gate &amp; Main Gate</option>
+              <option>Modular Waterproof Kitchen Racks</option>
+              <option>ACP Facade Cladding &amp; Curtain Wall Glazing</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="form_label_notes">Approximate Openings / Notes</label>
+            <textarea id="form-notes" rows="2" placeholder="e.g. 10 windows, 2 main doors, 30 ft balcony railing..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all shadow-lg flex items-center justify-center gap-2">
+            <span class="text-base">💬</span> <span>Send Booking to WhatsApp (+977 9817658719)</span>
+          </button>
+        </form>
+
       </div>
 
     </div>
@@ -1361,139 +1664,119 @@ body {{
 </section>
 
 <!-- SECTION: FOUNDER & ABOUT US -->
-<section id="founder" class="py-20 relative bg-luxury-950/80 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="about" class="py-16 px-4 relative z-10 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
     
-    <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+    <div class="glass-card p-8 rounded-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
         
-        <!-- Signboard & Workshop Badge -->
-        <div class="md:col-span-5 text-center">
-          <div class="relative inline-block rounded-2xl overflow-hidden border-2 border-amber-400/40 shadow-2xl mb-4 group">
-            <img src="catalog_assets/real_projects/shop_front_signboard.jpg" alt="Annapurna Aluminium & UPVC Signboard" class="w-full max-w-sm mx-auto object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-white/10 text-xs text-amber-300 font-bold">
-            📍 Murli Chowk (Airport Road), Janakpur
+        <!-- Founder Photo -->
+        <div class="relative group">
+          <img src="uploads/owner_image.jpg" alt="Prof. Nageshwar Thakur — Founder Annapurna Aluminium Janakpur" class="rounded-2xl w-full h-96 object-cover object-top border-2 border-emerald-500/30 shadow-2xl group-hover:scale-105 transition-transform duration-500" loading="lazy">
+          <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/90 backdrop-blur-md border border-white/10 shadow-lg">
+            <div class="font-bold text-white text-base">{SHOP['owner_name']}</div>
+            <div class="text-xs text-amber-400 font-medium" data-i18n="about_tag">Founder &amp; Chief Engineer</div>
           </div>
         </div>
 
-        <!-- Founder Info -->
-        <div class="md:col-span-7">
-          <div class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-1" data-i18n="about_tag">Founder &amp; Master Fabricator</div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold font-display text-white mb-4">
-            {SHOP['owner_name']}
-          </h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-4" data-i18n="about_bio_1">
-            "We started <strong>Annapurna Aluminium &amp; UPVC</strong> in Janakpur Dham with a singular mission: to deliver European-grade window insulation, modern aluminium elegance, and unyielding steel security at direct factory prices to every home and enterprise in Nepal."
-          </p>
-          <p class="text-slate-400 text-xs leading-relaxed mb-6" data-i18n="about_bio_2">
-            From the sacred doors of <em>Sri Nav Durga Mandir Duhaba</em> to commercial plazas across Madhesh Province, our team of seasoned craftsmen takes personal pride in every single weld, miter cut, and glass installation.
+        <!-- Founder Bio -->
+        <div class="md:col-span-2 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            🏛️ Heritage &amp; Precision
+          </div>
+          
+          <h2 class="text-2xl sm:text-3xl font-extrabold font-display text-white">
+            Annapurna Aluminium &amp; UPVC Udhyog
+          </h2>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed italic border-l-2 border-emerald-400 pl-4 py-1" data-i18n="about_bio_1">
+            "We started Annapurna Aluminium &amp; UPVC in Janakpur Dham with a singular mission: to deliver European-grade window insulation, modern aluminium elegance, and unyielding steel security at direct factory prices to every home and enterprise in Nepal."
           </p>
 
-          <div class="grid grid-cols-2 gap-4 border-t border-white/10 pt-4 text-xs">
-            <div>
-              <span class="text-slate-500 block">Primary WhatsApp / Call:</span>
-              <a href="tel:{SHOP['phone1']}" class="text-cyan-400 font-bold text-sm hover:underline">{SHOP['phone1']}</a>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="about_bio_2">
+            From the sacred doors of Sri Nav Durga Mandir Duhaba to commercial plazas across Madhesh Province, our team of seasoned craftsmen takes personal pride in every single weld, miter cut, and glass installation.
+          </p>
+
+          <div class="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-slate-300">
+            <div class="flex items-center gap-1.5 text-cyan-400">
+              <span>📍 Location:</span> <span class="text-white">{SHOP['address_short']}</span>
             </div>
-            <div>
-              <span class="text-slate-500 block">Secondary Line:</span>
-              <a href="tel:{SHOP['phone2']}" class="text-slate-200 font-bold text-sm hover:underline">{SHOP['phone2']}</a>
-            </div>
+            <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Prof.%20Nageshwar%20Thakur,%20I%20want%20to%20consult%20you%20regarding%20a%20project." target="_blank" class="flex items-center gap-1.5 text-emerald-400 hover:underline">
+              <span>💬 Direct WhatsApp:</span> <span class="text-white font-mono">+977 9817658719</span>
+            </a>
           </div>
+
         </div>
 
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- SECTION: SERVICE AREA & GOOGLE MAPS COVERAGE -->
-<section class="py-16 relative bg-luxury-950 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-10">
-      <h3 class="text-2xl sm:text-3xl font-extrabold font-display text-white" data-i18n="coverage_title">
-        Service &amp; Installation Coverage Across Nepal
-      </h3>
-      <p class="text-slate-400 text-xs sm:text-sm mt-1" data-i18n="coverage_subtitle">
-        Free site measurement and consultation available across Madhesh Province districts. Safe transit &amp; installation provided nationwide.
-      </p>
-    </div>
-
-    <div class="flex flex-wrap items-center justify-center gap-2.5 max-w-4xl mx-auto">
-      {"".join([f'''<div class="px-4 py-2.5 rounded-xl bg-slate-900/90 border border-white/10 text-xs font-semibold text-slate-300 hover:border-cyan-500/40 transition-colors flex items-center gap-2 shadow-sm">
-        <span class="text-cyan-400">📍</span> <span>{area}</span>
-      </div>''' for area in SHOP["service_areas"]])}
-    </div>
   </div>
 </section>
 
 <!-- SECTION: FAQ ACCORDION -->
-<section class="py-20 relative bg-luxury-950/80 border-t border-white/5">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="faq" class="py-16 px-4 relative z-10 bg-slate-950/60 border-t border-white/5">
+  <div class="max-w-4xl mx-auto">
     
-    <div class="text-center mb-12">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-3">
-        ❓ Frequently Asked Questions
-      </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight" data-i18n="faq_title">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-4xl font-extrabold font-display text-white mb-2" data-i18n="faq_title">
         Got Questions? We Have Answers.
       </h2>
     </div>
 
-    <div class="space-y-4" id="faq-container">
+    <div class="space-y-4">
       
       <!-- FAQ 1 -->
       <div class="glass-card rounded-2xl overflow-hidden">
-        <button onclick="toggleFaq(1)" class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex items-center justify-between gap-4">
+        <button onclick="toggleFaq(1)" class="w-full p-5 text-left font-bold text-sm sm:text-base text-white flex items-center justify-between gap-4">
           <span data-i18n="faq_q1">How can I get an exact price quote for my house or commercial building?</span>
-          <span id="faq-icon-1" class="text-cyan-400 font-extrabold text-lg">+</span>
+          <span id="faq-icon-1" class="text-emerald-400 font-mono text-xl">+</span>
         </button>
-        <div id="faq-content-1" class="hidden p-5 pt-0 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-white/5" data-i18n="faq_a1">
-          Simply call or message us on WhatsApp at <strong>+977 9817658719</strong> with your rough room window/door dimensions or architectural floor plan. If you are in Janakpur Dham, Dhanusha, or nearby districts, our engineer will visit your site directly for free measurement.
+        <div id="faq-content-1" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5" data-i18n="faq_a1">
+          Simply message us directly on WhatsApp at <strong>+977 9817658719</strong> with your rough room window/door dimensions or architectural floor plan. If you are in Janakpur Dham, Dhanusha, or nearby districts, our engineer will visit your site directly for free measurement.
         </div>
       </div>
 
       <!-- FAQ 2 -->
       <div class="glass-card rounded-2xl overflow-hidden">
-        <button onclick="toggleFaq(2)" class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex items-center justify-between gap-4">
+        <button onclick="toggleFaq(2)" class="w-full p-5 text-left font-bold text-sm sm:text-base text-white flex items-center justify-between gap-4">
           <span data-i18n="faq_q2">What is the price of UPVC windows in Nepal?</span>
-          <span id="faq-icon-2" class="text-cyan-400 font-extrabold text-lg">+</span>
+          <span id="faq-icon-2" class="text-emerald-400 font-mono text-xl">+</span>
         </button>
-        <div id="faq-content-2" class="hidden p-5 pt-0 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-white/5" data-i18n="faq_a2">
+        <div id="faq-content-2" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5" data-i18n="faq_a2">
           UPVC window pricing depends on track configuration (2-track vs 3-track with mesh), profile grade (multi-chamber German profile), and glass selection (single float, tinted reflective, or insulated double glazing). We offer the most competitive factory-direct rates in Nepal starting from NRs 450 - 850 per sq.ft.
         </div>
       </div>
 
       <!-- FAQ 3 -->
       <div class="glass-card rounded-2xl overflow-hidden">
-        <button onclick="toggleFaq(3)" class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex items-center justify-between gap-4">
+        <button onclick="toggleFaq(3)" class="w-full p-5 text-left font-bold text-sm sm:text-base text-white flex items-center justify-between gap-4">
           <span data-i18n="faq_q3">Which is better for home bedrooms: UPVC or Aluminium?</span>
-          <span id="faq-icon-3" class="text-cyan-400 font-extrabold text-lg">+</span>
+          <span id="faq-icon-3" class="text-emerald-400 font-mono text-xl">+</span>
         </button>
-        <div id="faq-content-3" class="hidden p-5 pt-0 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-white/5" data-i18n="faq_a3">
+        <div id="faq-content-3" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5" data-i18n="faq_a3">
           For residential bedrooms and living rooms, <strong>UPVC with double glazing</strong> is the best choice because it blocks outdoor traffic noise and maintains cooler room temperatures during summer heat. Aluminium is best for large commercial storefronts, slim partitions, and high-impact structural portals.
         </div>
       </div>
 
       <!-- FAQ 4 -->
       <div class="glass-card rounded-2xl overflow-hidden">
-        <button onclick="toggleFaq(4)" class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex items-center justify-between gap-4">
+        <button onclick="toggleFaq(4)" class="w-full p-5 text-left font-bold text-sm sm:text-base text-white flex items-center justify-between gap-4">
           <span data-i18n="faq_q4">How do modular aluminium kitchen racks prevent termites and water damage?</span>
-          <span id="faq-icon-4" class="text-cyan-400 font-extrabold text-lg">+</span>
+          <span id="faq-icon-4" class="text-emerald-400 font-mono text-xl">+</span>
         </button>
-        <div id="faq-content-4" class="hidden p-5 pt-0 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-white/5" data-i18n="faq_a4">
+        <div id="faq-content-4" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5" data-i18n="faq_a4">
           Unlike plywood or MDF boards that swell, warp, and get infested with termites in humid kitchens, our modular racks use 100% anodized architectural aluminium framing and waterproof aluminium composite panels (ACP) that can be washed directly with water without any damage.
         </div>
       </div>
 
       <!-- FAQ 5 -->
       <div class="glass-card rounded-2xl overflow-hidden">
-        <button onclick="toggleFaq(5)" class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex items-center justify-between gap-4">
+        <button onclick="toggleFaq(5)" class="w-full p-5 text-left font-bold text-sm sm:text-base text-white flex items-center justify-between gap-4">
           <span data-i18n="faq_q5">How long does manufacturing and installation take?</span>
-          <span id="faq-icon-5" class="text-cyan-400 font-extrabold text-lg">+</span>
+          <span id="faq-icon-5" class="text-emerald-400 font-mono text-xl">+</span>
         </button>
-        <div id="faq-content-5" class="hidden p-5 pt-0 text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-white/5" data-i18n="faq_a5">
+        <div id="faq-content-5" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5" data-i18n="faq_a5">
           Standard residential window and door orders are completed in <strong>3 to 5 business days</strong>. Commercial facade glazing, large temple gates, and custom modular kitchens are scheduled as per site milestones with prompt delivery.
         </div>
       </div>
@@ -1503,199 +1786,112 @@ body {{
   </div>
 </section>
 
-<!-- SECTION: CONTACT & GOOGLE MAPS -->
-<section id="contact" class="py-20 relative bg-luxury-950 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-slate-950 border-t border-white/10 py-12 px-4 text-xs text-slate-400">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
     
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-      
-      <!-- Contact Info -->
-      <div class="lg:col-span-5">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-3">
-          📍 Visit Our Workshop
+    <!-- Brand -->
+    <div class="space-y-3">
+      <div class="font-bold text-white text-base">ANNAPURNA ALUMINIUM &amp; UPVC</div>
+      <p class="leading-relaxed">
+        Premier architectural fabrication center in Janakpur Dham, Nepal. Specializing in soundproof UPVC windows, toughened glass balustrades, SS 304 temple gates, and modular kitchens.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <div class="font-bold text-white text-xs uppercase tracking-wider mb-3">Quick Navigation</div>
+      <ul class="space-y-2">
+        <li><a href="#projects" class="hover:text-white">40+ Real Projects Gallery</a></li>
+        <li><a href="#catalog" class="hover:text-white">102+ Product Catalog</a></li>
+        <li><a href="#workflow" class="hover:text-white">Precision Workflow</a></li>
+        <li><a href="#booking" class="hover:text-white">Book Free Site Visit</a></li>
+        <li><a href="#about" class="hover:text-white">Founder &amp; Workshop</a></li>
+      </ul>
+    </div>
+
+    <!-- Service Areas -->
+    <div>
+      <div class="font-bold text-white text-xs uppercase tracking-wider mb-3">Service Areas</div>
+      <p class="leading-relaxed mb-2">
+        Janakpur Dham, Dhanusha, Jaleshwor (Mahottari), Malangwa (Sarlahi), Lahan (Siraha), Bardibas, Kathmandu &amp; All Nepal.
+      </p>
+    </div>
+
+    <!-- Contact Summary & Live GPS Map -->
+    <div>
+      <div class="font-bold text-white text-xs uppercase tracking-wider mb-3">Live Location &amp; Contact</div>
+      <a href="https://maps.google.com/?q=26.7118,85.9189" target="_blank" rel="noopener" class="block p-3 rounded-xl bg-slate-900 border border-emerald-500/30 hover:border-emerald-400 transition-all mb-3 group" title="Click to open Google Maps turn-by-turn navigation">
+        <div class="flex items-center justify-between text-xs font-bold text-emerald-400 mb-1">
+          <span>📍 Murli Chowk Workshop</span>
+          <span class="text-[9px] bg-emerald-500/20 px-1.5 py-0.5 rounded text-emerald-300 font-mono">Open Map 🗺️</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight mb-4" data-i18n="contact_title">
-          Get in Touch Today
-        </h2>
-        <p class="text-slate-300 text-sm leading-relaxed mb-8" data-i18n="contact_subtitle">
-          Visit our workshop to inspect live profile samples, toughened glass options, and crystal balusters in person, or contact our helpline directly.
+        <p class="text-[11px] text-slate-300 leading-snug group-hover:text-white">
+          Airport Road, Ward No. 8, Janakpur Dham, Dhanusha, Nepal
         </p>
-
-        <div class="space-y-4 text-sm">
-          <div class="glass-panel p-4 rounded-2xl flex items-start gap-4">
-            <span class="text-2xl text-cyan-400">📍</span>
-            <div>
-              <strong class="text-white block font-bold" data-i18n="contact_label_addr">Physical Address:</strong>
-              <span class="text-slate-300">{SHOP['address']}</span>
-            </div>
-          </div>
-
-          <div class="glass-panel p-4 rounded-2xl flex items-start gap-4">
-            <span class="text-2xl text-emerald-400">📞</span>
-            <div>
-              <strong class="text-white block font-bold" data-i18n="contact_label_phone">Direct Phone Numbers:</strong>
-              <div class="space-y-0.5 mt-1">
-                <a href="tel:{SHOP['phone1']}" class="text-cyan-400 font-bold block hover:underline">{SHOP['phone1']} (WhatsApp Same)</a>
-                <a href="tel:{SHOP['phone2']}" class="text-slate-300 font-medium block hover:underline">{SHOP['phone2']}</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="glass-panel p-4 rounded-2xl flex items-start gap-4">
-            <span class="text-2xl text-amber-400">🕒</span>
-            <div>
-              <strong class="text-white block font-bold" data-i18n="contact_label_hours">Workshop Working Hours:</strong>
-              <span class="text-slate-300">{SHOP['hours']}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-8 flex gap-3">
-          <a href="{SHOP['gmaps_url']}" target="_blank" rel="noopener" class="flex-1 py-3.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-white/10 text-cyan-400 font-bold text-xs text-center transition-all shadow-md">
-            🗺️ Open Google Maps Directions
-          </a>
-          <a href="https://wa.me/{SHOP['whatsapp']}" target="_blank" rel="noopener" class="flex-1 py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs text-center transition-all shadow-md">
-            💬 Chat on WhatsApp
-          </a>
-        </div>
-      </div>
-
-      <!-- Right Direct Action Card -->
-      <div class="lg:col-span-7 flex flex-col justify-center">
-        <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 relative overflow-hidden">
-          <div class="absolute -right-16 -bottom-16 w-64 h-64 rounded-full bg-cyan-500/10 filter blur-3xl pointer-events-none"></div>
-
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-bold mb-4">
-            ⚡ Quick Direct Hotline
-          </div>
-
-          <h3 class="text-2xl sm:text-3xl font-extrabold font-display text-white mb-4" data-i18n="hotline_h3">
-            Speak Directly with Master Engineer Prof. Nageshwar Thakur
-          </h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-8" data-i18n="hotline_p">
-            Get instant technical recommendations on profile gauge, glass thickness, wind load requirements, and site visit scheduling across Janakpur Dham, Dhanusha, and all Nepal.
-          </p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <a href="tel:{SHOP['phone1']}" class="p-5 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-center text-sm transition-all shadow-xl shadow-cyan-500/20 flex flex-col items-center justify-center gap-1">
-              <span class="text-xs font-bold text-slate-800 uppercase">Primary Hotline</span>
-              <span class="text-lg tracking-wide">{SHOP['phone1']}</span>
-            </a>
-            <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Prof.%20Nageshwar%20Thakur,%20I%20want%20consultation%20for%20my%20building%20project." target="_blank" rel="noopener" class="p-5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-center text-sm transition-all shadow-xl shadow-emerald-600/20 flex flex-col items-center justify-center gap-1">
-              <span class="text-xs font-bold text-emerald-200 uppercase">Direct WhatsApp</span>
-              <span class="text-lg tracking-wide">+977 9817658719</span>
-            </a>
-          </div>
-
-        </div>
-      </div>
-
+      </a>
+      <p class="leading-relaxed mb-1 font-bold text-emerald-400 flex items-center gap-1.5">
+        <span>💬</span> <span>WhatsApp Direct:</span> <a href="https://wa.me/9779817658719" target="_blank" class="font-mono text-white hover:underline">+977 9817658719</a>
+      </p>
+      <p class="leading-relaxed text-slate-400 text-[11px]">Workshop Open 7 Days (9:00 AM – 7:00 PM)</p>
     </div>
 
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer class="bg-luxury-950 text-slate-400 text-xs border-t border-white/5 py-12">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-      
-      <!-- Brand column -->
-      <div class="md:col-span-2 space-y-3">
-        <div class="font-display font-extrabold text-lg text-white">
-          Annapurna Aluminium &amp; UPVC Udhyog
-        </div>
-        <p class="text-xs text-slate-400 max-w-md leading-relaxed">
-          Certified fabricator and installer of German-profile UPVC windows, architectural aluminium doors, frameless glass railings, SS 304 temple gates, and modular kitchen storage racks in Janakpur Dham, Dhanusha, Nepal.
-        </p>
-        <div class="text-xs text-slate-500">
-          Founder: <strong>Prof. Nageshwar Thakur</strong> · Murli Chowk (Airport Road), Janakpur Dham-8
-        </div>
-      </div>
-
-      <!-- Quick Links -->
-      <div>
-        <h4 class="text-white font-bold text-sm mb-3">Product Categories</h4>
-        <ul class="space-y-2 text-xs">
-          <li><a href="#catalog" onclick="filterCatalog('UWC')" class="hover:text-cyan-400 transition-colors">UPVC Windows (12 Designs)</a></li>
-          <li><a href="#catalog" onclick="filterCatalog('UWD')" class="hover:text-cyan-400 transition-colors">UPVC Doors (10 Designs)</a></li>
-          <li><a href="#catalog" onclick="filterCatalog('ALW')" class="hover:text-cyan-400 transition-colors">Aluminium Windows (10 Designs)</a></li>
-          <li><a href="#catalog" onclick="filterCatalog('SLS')" class="hover:text-cyan-400 transition-colors">Stainless Steel 304 Railings</a></li>
-          <li><a href="#catalog" onclick="filterCatalog('MST')" class="hover:text-cyan-400 transition-colors">Temple &amp; Compound Gates</a></li>
-          <li><a href="#catalog" onclick="filterCatalog('MOD')" class="hover:text-cyan-400 transition-colors">Modular Kitchen Racks</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact summary -->
-      <div>
-        <h4 class="text-white font-bold text-sm mb-3">Contact Helpline</h4>
-        <p class="text-xs mb-1">📍 Murli Chowk (Airport Road)</p>
-        <p class="text-xs mb-3">Janakpur Dham-8, Dhanusha, Nepal</p>
-        <p class="text-xs text-cyan-400 font-bold mb-1">📞 +977 9817658719</p>
-        <p class="text-xs text-slate-300 font-medium mb-3">📞 +977 9817667115</p>
-        <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-semibold">
-          Open 7 Days a Week
-        </span>
-      </div>
-
+  <div class="max-w-7xl mx-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+    <div>
+      © 2026 {SHOP['legal_name']}. All Rights Reserved. Murli Chowk, Janakpur Dham, Nepal.
     </div>
-
-    <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
-      <div>
-        © 2026 Annapurna Aluminium &amp; UPVC Udhyog. All rights reserved.
-      </div>
-      <div class="flex gap-4">
-        <a href="#projects" class="hover:text-slate-300">Real Projects</a>
-        <a href="#catalog" class="hover:text-slate-300">102+ Catalog</a>
-        <a href="#consultation" class="hover:text-slate-300">Free Measurement</a>
-        <a href="{SHOP['gmaps_url']}" target="_blank" class="hover:text-slate-300">Google Map</a>
-      </div>
+    <div class="text-[11px] text-slate-500">
+      WhatsApp Direct Contact: +977 9817658719
     </div>
   </div>
 </footer>
 
-<!-- LIGHTBOX MODAL (FOR ZOOMING PROJECT & PRODUCT IMAGES) -->
-<div id="lightbox-modal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4" onclick="closeLightbox(event)">
-  <div class="relative max-w-5xl w-full bg-slate-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+<!-- LIGHTBOX MODAL WITH CAROUSEL PREV/NEXT -->
+<div id="lightbox-modal" class="hidden fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-2xl flex items-center justify-center p-4">
+  <div class="relative max-w-4xl w-full bg-slate-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
     
-    <!-- Close Button -->
-    <button onclick="closeLightbox()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-950/80 text-white hover:bg-red-600 flex items-center justify-center text-lg font-bold transition-all border border-white/10">
-      ✕
-    </button>
-
-    <div class="grid grid-cols-1 md:grid-cols-12 max-h-[85vh] overflow-y-auto">
+    <!-- Modal Header Bar -->
+    <div class="p-4 bg-slate-950/90 border-b border-white/10 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span id="lightbox-cat" class="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Category</span>
+        <span id="lightbox-counter" class="text-xs font-mono text-slate-400">1 / 26</span>
+      </div>
       
-      <!-- Image Display -->
-      <div class="md:col-span-8 bg-slate-950 flex items-center justify-center min-h-[350px] p-2">
-        <img id="lightbox-img" src="" alt="Zoomed view" class="max-h-[75vh] w-auto max-w-full object-contain rounded-xl">
+      <button onclick="closeLightbox()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center font-bold">✕</button>
+    </div>
+
+    <!-- Modal Content Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 overflow-y-auto">
+      
+      <!-- Image Display with Prev/Next Buttons -->
+      <div class="relative bg-slate-950 flex items-center justify-center min-h-[300px]">
+        <img id="lightbox-img" src="" alt="Project View" class="max-h-[70vh] w-full object-contain">
+
+        <!-- Carousel Controls -->
+        <button onclick="prevLightbox()" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/80 hover:bg-slate-900 text-emerald-400 font-black flex items-center justify-center border border-white/10 shadow-lg text-lg">←</button>
+        <button onclick="nextLightbox()" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-950/80 hover:bg-slate-900 text-emerald-400 font-black flex items-center justify-center border border-white/10 shadow-lg text-lg">→</button>
       </div>
 
       <!-- Detail Sidebar -->
-      <div class="md:col-span-4 p-6 flex flex-col justify-between bg-slate-900 border-t md:border-t-0 md:border-l border-white/10">
+      <div class="p-6 flex flex-col justify-between space-y-4">
         <div>
-          <span id="lightbox-cat" class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 mb-3 inline-block">
-            Category
-          </span>
-          <h3 id="lightbox-title" class="text-xl font-bold font-display text-white mb-2 leading-snug">
-            Project Title
-          </h3>
-          <p id="lightbox-loc" class="text-xs text-amber-400 font-semibold mb-3">
-            📍 Location
-          </p>
-          <p id="lightbox-desc" class="text-xs text-slate-300 leading-relaxed mb-4">
-            Description
-          </p>
-          <div id="lightbox-specs" class="space-y-1 text-xs text-slate-400 border-t border-white/5 pt-3">
-            <!-- Dynamic Specs -->
+          <h3 id="lightbox-title" class="font-bold font-display text-lg text-white mb-1">Project Title</h3>
+          <p id="lightbox-loc" class="text-xs text-amber-400 font-semibold mb-3">📍 Location</p>
+          <p id="lightbox-desc" class="text-xs text-slate-300 leading-relaxed mb-4">Description text</p>
+
+          <div class="border-t border-white/10 pt-3">
+            <span class="text-xs font-bold text-white block mb-2">Technical Specifications:</span>
+            <div id="lightbox-specs" class="space-y-1.5 text-xs text-slate-300"></div>
           </div>
         </div>
 
-        <div class="pt-6 mt-4 border-t border-white/10">
-          <button id="lightbox-quote-btn" onclick="inquireLightboxItem()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg">
-            <span>💬</span> <span data-i18n="lightbox_btn_inquire">Inquire on WhatsApp</span>
-          </button>
-        </div>
-
+        <button onclick="inquireLightboxItem()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2">
+          <span>💬</span> <span data-i18n="lightbox_btn_inquire">Direct WhatsApp Inquiry (+977 9817658719)</span>
+        </button>
       </div>
 
     </div>
@@ -1703,33 +1899,143 @@ body {{
   </div>
 </div>
 
-<!-- FLOATING SPEED-DIAL BUTTONS -->
-<div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+<!-- FLOATING VERTICAL SOCIAL MEDIA DOCK (Tucked into right edge, slides out on hover) -->
+<div id="social-float-dock" class="fixed right-2 sm:right-3 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2.5 p-2 bg-slate-950/90 backdrop-blur-2xl rounded-2xl border border-white/15 shadow-[0_10px_35px_rgba(0,0,0,0.9)]">
   
-  <!-- WhatsApp Floating Speed Dial -->
-  <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna%20Aluminium,%20I%20am%20interested%20in%20your%20products." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-all animate-bounce">
-    💬
+  <!-- WhatsApp Direct Button -->
+  <a href="https://wa.me/9779817658719?text=Namaste%20Annapurna%20Aluminium,%20I%20am%20contacting%20you%20from%20your%20website." target="_blank" rel="noopener" class="group relative w-11 h-11 rounded-xl bg-emerald-500/20 hover:bg-emerald-500 border border-emerald-500/40 hover:border-emerald-400 flex items-center justify-center transition-all hover:scale-110 shadow-lg" aria-label="WhatsApp Direct Chat">
+    <svg class="w-5 h-5 fill-current text-emerald-400 group-hover:text-white transition-colors" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.387.709.282 1.263.45 1.694.59.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950 text-emerald-400 font-bold text-xs whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-1 transition-all border border-emerald-500/40 shadow-2xl backdrop-blur-xl">💬 WhatsApp Direct (+977 9817658719)</span>
   </a>
 
-  <!-- Call Speed Dial -->
-  <a href="tel:{SHOP['phone1']}" aria-label="Call Directly" class="w-12 h-12 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 flex items-center justify-center text-xl font-black shadow-xl hover:scale-110 transition-all">
-    📞
+  <!-- Facebook Official Button -->
+  <a href="https://www.facebook.com/search/top?q=Annapurna%20Aluminium%20Janakpur" target="_blank" rel="noopener" class="group relative w-11 h-11 rounded-xl bg-blue-600/20 hover:bg-blue-600 border border-blue-500/40 hover:border-blue-400 flex items-center justify-center transition-all hover:scale-110 shadow-lg" aria-label="Facebook Profile">
+    <svg class="w-5 h-5 fill-current text-blue-400 group-hover:text-white transition-colors" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950 text-blue-400 font-bold text-xs whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-1 transition-all border border-blue-500/40 shadow-2xl backdrop-blur-xl">Facebook Showcase Page</span>
   </a>
+
+  <!-- YouTube Official Channel Button -->
+  <a href="https://www.youtube.com/results?search_query=Annapurna+Aluminium+Janakpur" target="_blank" rel="noopener" class="group relative w-11 h-11 rounded-xl bg-red-600/20 hover:bg-red-600 border border-red-500/40 hover:border-red-400 flex items-center justify-center transition-all hover:scale-110 shadow-lg" aria-label="YouTube Channel">
+    <svg class="w-5 h-5 fill-current text-red-500 group-hover:text-white transition-colors" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950 text-red-400 font-bold text-xs whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-1 transition-all border border-red-500/40 shadow-2xl backdrop-blur-xl">YouTube Video Channel</span>
+  </a>
+
+  <!-- Instagram Official Page Button -->
+  <a href="https://www.instagram.com/explore/tags/annapurnaaluminium/" target="_blank" rel="noopener" class="group relative w-11 h-11 rounded-xl bg-pink-500/20 hover:bg-pink-500 border border-pink-500/40 hover:border-pink-400 flex items-center justify-center transition-all hover:scale-110 shadow-lg" aria-label="Instagram Profile">
+    <svg class="w-5 h-5 fill-current text-pink-500 group-hover:text-white transition-colors" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950 text-pink-400 font-bold text-xs whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-1 transition-all border border-pink-500/40 shadow-2xl backdrop-blur-xl">Instagram Feed &amp; Reels</span>
+  </a>
+
+  <!-- TikTok Official Showcase Button -->
+  <a href="https://www.tiktok.com/search?q=Annapurna%20Aluminium%20Janakpur" target="_blank" rel="noopener" class="group relative w-11 h-11 rounded-xl bg-pink-600/20 hover:bg-pink-600 border border-pink-500/40 hover:border-pink-400 flex items-center justify-center transition-all hover:scale-110 shadow-lg" aria-label="TikTok Videos">
+    <svg class="w-5 h-5 fill-current text-pink-400 group-hover:text-white transition-colors" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.98-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.32 1.53-1.34 2.53-.03.88.35 1.75 1.02 2.29.83.67 1.98.88 3.01.58.97-.27 1.8-1.02 2.15-1.97.23-.62.29-1.3.29-1.96V.02z"/></svg>
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950 text-pink-400 font-bold text-xs whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-1 transition-all border border-pink-500/40 shadow-2xl backdrop-blur-xl">TikTok Video Showcase</span>
+  </a>
+
+</div>
+
+<!-- ULTRA-PREMIUM SMART AI ARCHITECTURAL CHATBOT WIDGET -->
+<div id="chatbot-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+  
+  <!-- Chatbot Floating Trigger Button -->
+  <button id="chatbot-trigger-btn" onclick="toggleChatbot()" class="relative group flex items-center gap-3 p-1.5 rounded-full bg-slate-950/90 hover:bg-slate-900 border border-emerald-500/40 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:scale-105" aria-label="Open AI Architectural Assistant">
+    <div class="relative w-14 h-14 rounded-full overflow-hidden border border-emerald-400/50 p-0.5 shadow-inner bg-slate-900">
+      <img src="uploads/chatbot_icon.png" alt="AI Architectural Assistant" class="w-full h-full object-cover rounded-full">
+      <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-slate-950 rounded-full"></span>
+    </div>
+    
+    <div class="hidden sm:flex flex-col text-left pr-3">
+      <span class="text-xs font-bold text-white flex items-center gap-1">
+        <span>Annapurna AI</span> <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+      </span>
+      <span class="text-[10px] text-emerald-400 font-semibold">Architectural Support</span>
+    </div>
+  </button>
+
+  <!-- Chatbot Drawer Window -->
+  <div id="chatbot-window" class="hidden fixed bottom-24 right-4 sm:right-6 w-[92vw] sm:w-96 max-h-[80vh] h-[540px] glass-panel rounded-3xl border border-emerald-500/30 shadow-2xl flex flex-col overflow-hidden z-50">
+    
+    <!-- Chatbot Header -->
+    <div class="p-4 bg-slate-950/95 border-b border-white/10 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="relative w-10 h-10 rounded-full overflow-hidden border border-emerald-400/50 p-0.5 bg-slate-900">
+          <img src="uploads/chatbot_icon.png" alt="AI Assistant" class="w-full h-full object-cover rounded-full">
+          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-slate-950 rounded-full"></span>
+        </div>
+        <div>
+          <h3 class="font-bold text-white text-sm tracking-tight flex items-center gap-1">
+            <span>Annapurna AI Assistant</span>
+          </h3>
+          <p class="text-[10px] text-emerald-400 font-medium">Live Workshop Support · Janakpur Dham</p>
+        </div>
+      </div>
+
+      <button onclick="toggleChatbot()" class="w-7 h-7 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center font-bold text-xs">✕</button>
+    </div>
+
+    <!-- Chat Messages Body -->
+    <div id="chat-messages-container" class="flex-1 p-4 overflow-y-auto space-y-4 text-xs">
+      
+      <!-- Welcome Message -->
+      <div class="flex items-start gap-2.5">
+        <div class="w-7 h-7 rounded-full overflow-hidden bg-slate-900 border border-emerald-400/40 flex-shrink-0">
+          <img src="uploads/chatbot_icon.png" alt="AI" class="w-full h-full object-cover">
+        </div>
+        <div class="p-3.5 rounded-2xl bg-slate-900/90 text-slate-200 border border-white/10 space-y-2 max-w-[85%]">
+          <p data-i18n="chat_welcome">
+            Namaste! 🙏 Welcome to Annapurna Aluminium &amp; UPVC Udhyog. How can I assist your building project today?
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Preset FAQ Suggestions -->
+      <div class="space-y-1.5 pt-1">
+        <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Frequently Asked Questions:</p>
+        
+        <button onclick="askChatQuestion('q1')" class="w-full text-left p-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-cyan-300 border border-cyan-500/20 hover:border-cyan-400/50 transition-all text-xs flex items-center justify-between">
+          <span>❓ Which is better: UPVC or Aluminium?</span> <span>→</span>
+        </button>
+
+        <button onclick="askChatQuestion('q2')" class="w-full text-left p-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-amber-300 border border-amber-500/20 hover:border-amber-400/50 transition-all text-xs flex items-center justify-between">
+          <span>📍 Do you offer free site visit in Janakpur?</span> <span>→</span>
+        </button>
+
+        <button onclick="askChatQuestion('q3')" class="w-full text-left p-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-emerald-300 border border-emerald-500/20 hover:border-emerald-400/50 transition-all text-xs flex items-center justify-between">
+          <span>🍳 Are modular kitchen racks 100% waterproof?</span> <span>→</span>
+        </button>
+
+        <button onclick="askChatQuestion('q4')" class="w-full text-left p-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-purple-300 border border-purple-500/20 hover:border-purple-400/50 transition-all text-xs flex items-center justify-between">
+          <span>⛓️ What grade steel is used for Temple Gates?</span> <span>→</span>
+        </button>
+
+        <button onclick="askChatQuestion('owner')" class="w-full text-left p-2.5 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold transition-all text-xs flex items-center justify-between shadow-md">
+          <span>📞 Speak / Call Founder Prof. Nageshwar Thakur on WhatsApp</span> <span>💬</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Chat Input Footer -->
+    <form onsubmit="handleChatSubmit(event)" class="p-3 bg-slate-950/95 border-t border-white/10 flex items-center gap-2">
+      <input type="text" id="chat-user-input" placeholder="Type your question or query..." class="flex-1 px-3 py-2 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none placeholder-slate-500">
+      <button type="submit" class="p-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all">
+        Send
+      </button>
+    </form>
+
+  </div>
 
 </div>
 
 <!-- EMBEDDED JAVASCRIPT APP LOGIC & DATASETS -->
 <script>
-/* ==================== GLOBAL DATASETS ==================== */
 const SHOP = {json.dumps(SHOP, ensure_ascii=False)};
 const REAL_PROJECTS = {json.dumps(REAL_PROJECTS, ensure_ascii=False)};
 const PRODUCTS = {json.dumps(products_list, ensure_ascii=False)};
 const CATS = {json.dumps(CATS, ensure_ascii=False)};
 
-// SVG Template engine for client-side drawing
 {templates_js_raw}
 
-// Client-side SVG renderer helper
 function getProductSvg(artKey, artParams) {{
   if (typeof TEMPLATES !== 'undefined' && TEMPLATES[artKey]) {{
     try {{
@@ -1741,7 +2047,6 @@ function getProductSvg(artKey, artParams) {{
   return '';
 }}
 
-/* ==================== DUAL LANGUAGE TRANSLATIONS (EN & नेपाली) ==================== */
 const I18N = {{
   en: {{
     top_open: "Workshop Open 7 Days · 9:00 AM – 7:00 PM",
@@ -1749,41 +2054,40 @@ const I18N = {{
     nav_subtitle: "Janakpur Dham · Windows, Doors, Glass & Steel Works",
     nav_projects: "Real Projects (40+)",
     nav_catalog: "102+ Design Catalog",
-    nav_standards: "Material Quality",
+    nav_workflow: "Workflow & Quality",
+    nav_standards: "Material Specs",
     nav_consult: "Book Site Visit",
     nav_about: "About & Team",
-    nav_contact: "Contact",
-    btn_whatsapp: "WhatsApp Quote",
-    btn_call: "Call Workshop",
+    btn_whatsapp: "WhatsApp Direct (+977 9817658719)",
     hero_badge: "#1 Certified UPVC, Aluminium & SS Fabrication Center · Janakpur Dham, Nepal",
     hero_h1_1: "World-Class",
     hero_h1_2: "UPVC, Aluminium & Glass",
-    hero_h1_3: "Craftsmanship",
+    hero_h1_3: "Precision Craftsmanship",
     hero_desc: "102+ Custom Designs manufactured at our Janakpur workshop: German-profile UPVC windows, modern aluminium doors & partitions, SS 304 temple gates, balustrades, modular kitchen racks, and commercial ACP glass facades.",
-    hero_btn_projects: "Explore Real Project Photos",
+    hero_btn_whatsapp: "WhatsApp Consultation (+977 9817658719)",
     hero_btn_catalog: "Browse 102+ Catalog",
-    hero_btn_estimate: "Free Site Measurement",
+    hero_btn_projects: "Explore Real Project Photos",
     stat_designs: "Unique Custom Designs",
-    stat_sites: "Completed Sites in Nepal",
-    stat_exp: "Engineering Experience",
-    stat_quality: "SS 304 & Virgin Profiles",
-    projects_title: "Real Projects by Annapurna",
+    stat_sites: "Real Workshop Projects",
+    stat_quality: "SS 304 Rust-Free Guarantee",
+    stat_exp: "Engineering Craftsmanship",
+    workflow_title: "Our 4-Step Precision Fabrication Workflow",
+    workflow_subtitle: "From free site visit and 3D design to precision laser fabrication and lifetime on-site fitting.",
+    wf_s1_t: "Free Site Measurement",
+    wf_s1_d: "Master engineer visits your building with laser distance meters and real metal/glass profile samples.",
+    wf_s2_t: "3D CAD & Vector Blueprint",
+    wf_s2_d: "Custom technical drawing generated for your approval with exact millimeter glass and aluminum specs.",
+    wf_s3_t: "Workshop CNC Fabrication",
+    wf_s3_d: "Precision miter cutting, argon TIG welding, powder coating, and EPDM weather-seal assembly at Murli Chowk.",
+    wf_s4_t: "On-Site Expert Fitting",
+    wf_s4_d: "Fast, clean installation by experienced technicians with weatherproofing and 10-year quality guarantee.",
+    projects_title: "Real Projects Fabricated in Janakpur",
     projects_subtitle: "Explore actual completed commercial facades, temple gates, modern residences, staircases, and modular kitchens fabricated right here at our Murli Chowk workshop.",
-    filter_all: "All Projects (26)",
-    filter_stf: "Facades & ACP",
-    filter_uwc: "UPVC Windows",
-    filter_sls: "SS Railings",
-    filter_mst: "Temple Gates",
-    filter_mod: "Kitchen Racks",
-    filter_alp: "Partitions",
-    projects_more_note: "Looking for a specific architectural design or have your own custom blueprint?",
-    projects_send_custom: "Send Your Custom Blueprints on WhatsApp",
     catalog_title: "102+ Master Product Designs",
     catalog_subtitle: "Every product is precision-engineered, customizable to your exact structural measurements, and available in multiple finishes and glass configurations.",
     catalog_view_mode: "View Mode:",
     view_photo: "Photos",
-    view_blueprint: "Blueprint",
-    custom_sizes_note: "Custom sizes & finishes fabricated for all models",
+    view_blueprint: "CAD Blueprint",
     factory_title: "Factory Machinery & Raw Material Quality",
     factory_subtitle: "We never compromise on metal thickness, uPVC wall gauge, or welding standards. Here is how we ensure lifetime durability.",
     mat_1_title: "German Multi-Chamber UPVC",
@@ -1793,22 +2097,19 @@ const I18N = {{
     mat_3_title: "Authentic SS 304 Rust-Free Steel",
     mat_3_desc: "Every stainless steel railing, temple gate, and staircase pillar is crafted from genuine SS 304 with full nickel content, assembled with inert gas TIG welding and diamond compound polishing.",
     booking_title: "Book Free On-Site Measurement",
-    booking_desc: "Building a new house, commercial showroom, or renovating your hotel in Janakpur Dham or nearby districts? Our master engineer will visit your site with actual profile and glass samples for laser-guided measurement.",
+    booking_desc: "Building a new house, commercial showroom, or renovating your hotel in Janakpur Dham or nearby districts? Message our master engineer directly on WhatsApp for laser-guided measurement.",
     form_title: "Request Site Visit & Custom Quote",
-    form_subtitle: "Fill in your details below and we will confirm your appointment via WhatsApp immediately.",
     form_label_name: "Your Full Name *",
-    form_label_phone: "Phone / WhatsApp Number *",
+    form_label_phone: "Your WhatsApp Number *",
     form_label_city: "Project Location / District *",
     form_label_service: "Primary Architectural Requirement",
-    form_label_notes: "Approximate Size / Number of Openings",
+    form_label_notes: "Approximate Openings / Notes",
     about_tag: "Founder & Master Fabricator",
     about_bio_1: '"We started Annapurna Aluminium & UPVC in Janakpur Dham with a singular mission: to deliver European-grade window insulation, modern aluminium elegance, and unyielding steel security at direct factory prices to every home and enterprise in Nepal."',
     about_bio_2: "From the sacred doors of Sri Nav Durga Mandir Duhaba to commercial plazas across Madhesh Province, our team of seasoned craftsmen takes personal pride in every single weld, miter cut, and glass installation.",
-    coverage_title: "Service & Installation Coverage Across Nepal",
-    coverage_subtitle: "Free site measurement and consultation available across Madhesh Province districts. Safe transit & installation provided nationwide.",
     faq_title: "Got Questions? We Have Answers.",
     faq_q1: "How can I get an exact price quote for my house or commercial building?",
-    faq_a1: "Simply call or message us on WhatsApp at <strong>+977 9817658719</strong> with your rough room window/door dimensions or architectural floor plan. If you are in Janakpur Dham, Dhanusha, or nearby districts, our engineer will visit your site directly for free measurement.",
+    faq_a1: "Simply message us directly on WhatsApp at <strong>+977 9817658719</strong> with your rough room window/door dimensions or architectural floor plan. If you are in Janakpur Dham, Dhanusha, or nearby districts, our engineer will visit your site directly for free measurement.",
     faq_q2: "What is the price of UPVC windows in Nepal?",
     faq_a2: "UPVC window pricing depends on track configuration (2-track vs 3-track with mesh), profile grade (multi-chamber German profile), and glass selection (single float, tinted reflective, or insulated double glazing). We offer the most competitive factory-direct rates in Nepal starting from NRs 450 - 850 per sq.ft.",
     faq_q3: "Which is better for home bedrooms: UPVC or Aluminium?",
@@ -1817,14 +2118,8 @@ const I18N = {{
     faq_a4: "Unlike plywood or MDF boards that swell, warp, and get infested with termites in humid kitchens, our modular racks use 100% anodized architectural aluminium framing and waterproof aluminium composite panels (ACP) that can be washed directly with water without any damage.",
     faq_q5: "How long does manufacturing and installation take?",
     faq_a5: "Standard residential window and door orders are completed in <strong>3 to 5 business days</strong>. Commercial facade glazing, large temple gates, and custom modular kitchens are scheduled as per site milestones with prompt delivery.",
-    contact_title: "Get in Touch Today",
-    contact_subtitle: "Visit our workshop to inspect live profile samples, toughened glass options, and crystal balusters in person, or contact our helpline directly.",
-    contact_label_addr: "Physical Address:",
-    contact_label_phone: "Direct Phone Numbers:",
-    contact_label_hours: "Workshop Working Hours:",
-    hotline_h3: "Speak Directly with Master Engineer Prof. Nageshwar Thakur",
-    hotline_p: "Get instant technical recommendations on profile gauge, glass thickness, wind load requirements, and site visit scheduling across Janakpur Dham, Dhanusha, and all Nepal.",
-    lightbox_btn_inquire: "Inquire on WhatsApp"
+    lightbox_btn_inquire: "Direct WhatsApp Inquiry (+977 9817658719)",
+    chat_welcome: "Namaste! 🙏 Welcome to Annapurna Aluminium & UPVC Udhyog. How can I assist your building project today?"
   }},
   ne: {{
     top_open: "हप्ताको सातै दिन खुला · बिहान ९:०० देखि साँझ ७:०० सम्म",
@@ -1832,82 +2127,72 @@ const I18N = {{
     nav_subtitle: "जनकपुरधाम · झ्याल, ढोका, ग्लास र स्टिल फेब्रिकेसन",
     nav_projects: "वास्तविक कामहरू (४०+)",
     nav_catalog: "१०२+ डिजाइन क्याटलग",
-    nav_standards: "गुणस्तर मापदण्ड",
+    nav_workflow: "प्रक्रिया तथा गुणस्तर",
+    nav_standards: "सामग्री मापदण्ड",
     nav_consult: "साइट भिजिट बुक गर्नुहोस्",
     nav_about: "हाम्रोबारे",
-    nav_contact: "सम्पर्क",
-    btn_whatsapp: "ह्वाट्सएप कोटेशन",
-    btn_call: "फोन गर्नुहोस्",
+    btn_whatsapp: "ह्वाट्सएप सोधपुछ (+९त्७ ९८१७६५८७१९)",
     hero_badge: "जनकपुरधामको #१ प्रमाणित यूपीभीसी, आल्मुनियम तथा स्टिल फेब्रिकेसन केन्द्र",
     hero_h1_1: "विश्वस्तरीय गुणस्तर",
     hero_h1_2: "यूपीभीसी, आल्मुनियम र ग्लास",
     hero_h1_3: "उत्कृष्ट निर्माण",
     hero_desc: "जनकपुरधाममा निर्मित १०२+ भन्दा बढी प्रिमियम डिजाइनहरू: जर्मन यूपीभीसी झ्याल, आल्मुनियम ढोका र पार्टिसन, एसएस ३०४ मन्दिर गेट, भर्याङ रेलिङ, मोड्युलर किचन र्याक र एसीपी ग्लास फसाड।",
-    hero_btn_projects: "वास्तविक कामहरूको फोटो हेर्नुहोस्",
+    hero_btn_whatsapp: "ह्वाट्सएप डायरेक्ट सम्पर्क (+९७७ ९८१७६५८७१९)",
     hero_btn_catalog: "१०२+ डिजाइन क्याटलग",
-    hero_btn_estimate: "निःशुल्क नाप जाँच बुक गर्नुहोस्",
+    hero_btn_projects: "वास्तविक कामहरू हेर्नुहोस्",
     stat_designs: "अद्वितीय प्रिमियम डिजाइनहरू",
-    stat_sites: "नेपालभर सम्पन्न परियोजनाहरू",
-    stat_exp: "वर्षको इन्जिनियरिङ अनुभव",
-    stat_quality: "१००% शुद्ध एसएस ३०४ र कच्चा पदार्थ",
-    projects_title: "अन्नपूर्णा द्वारा सम्पन्न वास्तविक कामहरू",
-    projects_subtitle: "हाम्रो मुरली चोक वर्कशपमा निर्मित कमर्सियल प्लाजा फसाड, मन्दिरका भव्य गेटहरू, आधुनिक भिल्ला झ्याल-ढोका, मार्बल भर्याङ रेलिङ र किचन र्याकहरू हेर्नुहोस्।",
-    filter_all: "सबै कामहरू (२६)",
-    filter_stf: "फसाड र एसीपी",
-    filter_uwc: "यूपीभीसी झ्याल",
-    filter_sls: "एसएस रेलिङ",
-    filter_mst: "मन्दिर गेट",
-    filter_mod: "किचन र्याक",
-    filter_alp: "पार्टिसन",
-    projects_more_note: "तपाईंसँग आफ्नै घर वा भवनको नक्सा वा विशेष डिजाइन छ?",
-    projects_send_custom: "तपाईंको नक्सा ह्वाट्सएपमा पठाउनुहोस्",
-    catalog_title: "१०२+ मास्टर उत्पादन डिजाइनहरू",
-    catalog_subtitle: "प्रत्येक उत्पादन तपाईंको भवनको नाप अनुसार फ्याक्ट्रीमा तयार गरिन्छ। विभिन्न फिनिसिङ र ग्लास विकल्पहरू उपलब्ध छन्।",
-    catalog_view_mode: "हेर्ने तरिका:",
-    view_photo: "फोटोहरू",
-    view_blueprint: "नक्सा (ब्लुप्रिन्ट)",
-    custom_sizes_note: "सबै मोडलहरूमा आवश्यकता अनुसारको साइज र फिनिसिङ उपलब्ध छ",
-    factory_title: "कारखाना, मेसिनरी र गुणस्तर मापदण्ड",
-    factory_subtitle: "हामी कहिल्यै पनि धातुको मोटाइ वा यूपीभीसीको गुणस्तरमा सम्झौता गर्दैनौं। जीवनभरको स्थायित्वको ग्यारेन्टी।",
+    stat_sites: "वर्कसपका वास्तविक परियोजनाहरू",
+    stat_quality: "एसएस ३०४ खिया नलाग्ने ग्यारेन्टी",
+    stat_exp: "वर्षको अनुभव र दक्षता",
+    workflow_title: "हाम्रो ४-चरणको अत्याधुनिक निर्माण प्रक्रिया",
+    workflow_subtitle: "निःशुल्क नाप जाँचदेखि अत्याधुनिक मेसिनबाट कटिङ, वेल्डिङ र फिटिङसम्मको प्रक्रिया।",
+    wf_s1_t: "निःशुल्क साइट नाप जाँच",
+    wf_s1_d: "हाम्रो मुख्य इन्जिनियर लेजर मिटर र वास्तविक प्रोफाइल स्याम्पल लिएर तपाईंको साइटमा आउनुहुन्छ।",
+    wf_s2_t: "३डी क्याड र नक्सा डिजाइन",
+    wf_s2_d: "तपाईंको आवश्यकता अनुसार मिलिमिटर नापमा सटीक प्राविधिक नक्सा तयार पारिन्छ।",
+    wf_s3_t: "वर्कसप मेसिन फेब्रिकेसन",
+    wf_s3_d: "मुरली चोक वर्कसपमा कटिङ, वेल्डिङ, र EPDM रबर सिल सहितको जडान कार्य।",
+    wf_s4_t: "साइटमा दक्ष फिटिङ",
+    wf_s4_d: "अनुभवी प्राविधिकहरूद्वारा १० वर्षको गुणस्तर ग्यारेन्टी सहित सफा फिटिङ।",
+    projects_title: "जनकपुरधाममा निर्मित वास्तविक परियोजनाहरू",
+    projects_subtitle: "मुरली चोक वर्कसपमा तयार गरिएका व्यापारिक फसाड, मन्दिर गेट, यूपीभीसी झ्याल, र किचन र्याकहरूको तस्विर।",
+    catalog_title: "१०२+ मास्टर प्रोडक्ट डिजाइनहरू",
+    catalog_subtitle: "प्रत्येक डिजाइन तपाईंको घरको नाप अनुसार बनाउन सकिने र विभिन्न फिनिसिङमा उपलब्ध।",
+    catalog_view_mode: "हेर्ने मोड:",
+    view_photo: "वास्तविक फोटो",
+    view_blueprint: "क्याड नक्सा (ब्लुप्रिन्ट)",
+    factory_title: "मेसिनरी तथा कच्चा पदार्थको गुणस्तर",
+    factory_subtitle: "हामी धातुको बाक्लोपना र गुणस्तरमा कुनै सम्झौता गर्दैनौं।",
     mat_1_title: "जर्मन मल्टि-च्याम्बर यूपीभीसी",
-    mat_1_desc: "आन्तरिक बहु-च्याम्बर हावा पकेटले गर्मी र बाहिरी आवाज पूर्ण रूपमा रोक्दछ। जनकपुरको कडा गर्मीमा पनि आकार नबिग्रिने ग्याल्भेनाइज्ड स्टिल रड जडित।",
-    mat_2_title: "शुद्ध ६०६३-T5 आल्मुनियम मिश्रधातु",
-    mat_2_desc: "६०-८० माइक्रोन इलेक्ट्रो-पाउडर कोटिङ गरिएको उच्च क्षमताको आर्किटेक्चरल आल्मुनियम, जसले घाम, पानी र खियाबाट पूर्ण सुरक्षा दिन्छ।",
-    mat_3_title: "शुद्ध एसएस ३०४ खियामुक्त स्टिल",
-    mat_3_desc: "हाम्रा सबै रेलिङ र मन्दिर गेटहरू शुद्ध एसएस ३०४ ग्रेडको स्टेनलेस स्टीलबाट टीआईजी वेल्डिङ र डायमण्ड मिरर पोलिस गरेर बनाइन्छ।",
-    booking_title: "निःशुल्क साइट नाप जाँच बुक गर्नुहोस्",
-    booking_desc: "नयाँ घर, पसल वा होटल निर्माण गर्दै हुनुहुन्छ? हाम्रा इन्जिनियरले वास्तविक स्याम्पल सहित तपाईंको साइटमा आएर लेजर प्रविधिबाट निःशुल्क नाप जाँच गर्नेछन्।",
-    form_title: "साइट भिजिट र कोटेशन अनुरोध फारम",
-    form_subtitle: "तलको फारम भर्नुहोस् र हामी तत्काल ह्वाट्सएप मार्फत सम्पर्क गर्नेछौं।",
+    mat_1_desc: "आवाज र तातो रोक्ने साउन्डप्रुफ यूपीभीसी प्रोफाइल।",
+    mat_2_title: "६०६३-टी५ ओरिजिनल आल्मुनियम",
+    mat_2_desc: "पाउडर कोटेड घाम र पानीले नबिग्रिने आल्मुनियम।",
+    mat_3_title: "ओरिजिनल एसएस ३०४ स्टिल",
+    mat_3_desc: "१००% खिया नलाग्ने उच्च क्वालिटी स्टेनलेस स्टिल।",
+    booking_title: "निःशुल्क नाप जाँच बुक गर्नुहोस्",
+    booking_desc: "जनकपुरधाम वा आसपासका जिल्लाहरूमा घर, होटेल वा शोरुम बनाउँदै हुनुहुन्छ भने ह्वाट्सएपमा सीधा म्यासेज गर्नुहोस्।",
+    form_title: "साइट भिजिट र कोटेशन फारम",
     form_label_name: "तपाईंको पूरा नाम *",
-    form_label_phone: "फोन / ह्वाट्सएप नम्बर *",
-    form_label_city: "परियोजनाको ठेगाना / जिल्ला *",
-    form_label_service: "चाहिएको प्रमुख उत्पादन",
-    form_label_notes: "झ्याल वा ढोकाको संख्या र अनुमानित नाप",
-    about_tag: "संस्थापक तथा मुख्य इन्जिनियर",
-    about_bio_1: '"हामीले जनकपुरधाममा युरोपेली स्तरको साउन्डप्रुफ झ्याल, आधुनिक आल्मुनियम र बलियो स्टिल सुरक्षा सिधै फ्याक्ट्री मूल्यमा उपलब्ध गराउने लक्ष्यका साथ अन्नपूर्णा आल्मुनियमको स्थापना गरेका हौं।"',
-    about_bio_2: "श्री नव दुर्गा मन्दिर दुहबाको पवित्र गेटदेखि मधेश प्रदेशभरिका ठूला प्लाजाहरूसम्म, हाम्रो अनुभवी टिमले प्रत्येक काममा पूर्ण इमानदारीका साथ काम गर्दछ।",
-    coverage_title: "नेपालभर सेवा तथा डेलिभरी कभरेज",
-    coverage_subtitle: "मधेश प्रदेशभर निःशुल्क साइट भिजिट र नाप जाँच। नेपालका सबै जिल्लामा सुरक्षित ढुवानी र फिटिङ।",
-    faq_title: "प्रायः सोधिने प्रश्नहरू",
-    faq_q1: "मेरो घर वा भवनको लागि मूल्य कोटेशन कसरी प्राप्त गर्ने?",
-    faq_a1: "तपाईंको झ्याल वा ढोकाको नाप लिएर सिधै <strong>+977 9817658719</strong> मा फोन वा ह्वाट्सएप गर्नुहोस्। जनकपुरधाम तथा आसपासका क्षेत्रमा हाम्रो टिमले निःशुल्क साइट भिजिट गर्नेछ।",
-    faq_q2: "नेपालमा यूपीभीसी झ्यालको दरभाउ कति पर्छ?",
-    faq_a2: "यूपीभीसी झ्यालको मूल्य ट्र्याक संख्या (२-ट्र्याक वा ३-ट्र्याक जाली सहित), प्रोफाइल गुणस्तर र ग्लास अनुसार फरक पर्दछ। हामी नेपालकै प्रतिस्पर्धी फ्याक्ट्री दरमा उपलब्ध गराउँछौं।",
-    faq_q3: "घरको बेडरुमको लागि यूपीभीसी कि आल्मुनियम कुन राम्रो?",
-    faq_a3: "बेडरुम र बस्ने कोठाको लागि <strong>डबल ग्लाज्ड यूपीभीसी</strong> सबैभन्दा उत्तम हुन्छ किनभने यसले बाहिरको आवाज र गर्मी रोकेर कोठा शान्त र शीतल राख्छ।",
-    faq_q4: "मोड्युलर आल्मुनियम किचन र्याक कसरी पानी र धमिराबाट सुरक्षित हुन्छ?",
-    faq_a4: "काठ वा प्लाइवुड पानीले बिग्रने र धमिरा लाग्ने भएपनि आल्मुनियम र एसीपी प्यानलबाट बनेका हाम्रा र्याकहरू १००% वाटरप्रुफ हुन्छन् र सिधै पानीले धुन मिल्छ।",
-    faq_q5: "अर्डर गरेको कति दिनमा डेलिभरी र फिटिङ हुन्छ?",
-    faq_a5: "घरायसी झ्याल र ढोकाहरू सामान्यतया <strong>३ देखि ५ दिन भित्र</strong> तयार गरी साइटमा फिटिङ गरिन्छ। ठूला कमर्सियल फसाड र मन्दिर गेटहरू समय तालिका अनुसार सम्पन्न गरिन्छ।",
-    contact_title: "आजै सम्पर्क गर्नुहोस्",
-    contact_subtitle: "हाम्रो मुरली चोक वर्कशपमा आएर प्रोफाइल, ग्लास र क्रिस्टल पिलरका नमूनाहरू प्रत्यक्ष हेर्नुहोस्।",
-    contact_label_addr: "वर्कशपको ठेगाना:",
-    contact_label_phone: "प्रत्यक्ष सम्पर्क नम्बरहरू:",
-    contact_label_hours: "काम हुने समय:",
-    hotline_h3: "मुख्य इन्जिनियर प्रो. नागेश्वर ठाकुरसँग सिधा कुरा गर्नुहोस्",
-    hotline_p: "तपाईंको भवनको लागि उपयुक्त प्रोफाइल, ग्लास मोटाइ र साइट भिजिटको लागि सिधै कुराकानी गर्नुहोस्।",
-    lightbox_btn_inquire: "ह्वाट्सएपमा सोधपुछ गर्नुहोस्"
+    form_label_phone: "ह्वाट्सएप नम्बर *",
+    form_label_city: "साइटको ठेगाना / जिल्ला *",
+    form_label_service: "चाहिएको फेब्रिकेसन काम",
+    form_label_notes: "झ्याल/ढोकाको संख्या वा विवरण",
+    about_tag: "संस्थापक तथा मुख्य फेब्रिकेटर",
+    about_bio_1: '"हामीले जनकपुरधाममा युरोपियन स्तरको झ्याल र स्टिल फेब्रिकेसन direct factory मूल्यमा उपलब्ध गराउने लक्ष्य राखेका छौं।"',
+    about_bio_2: "श्री नव दुर्गा मन्दिर दुहबा गेटदेखि व्यापारिक कम्प्लेक्सहरूसम्म, हाम्रा दक्ष प्राविधिकहरू हरेक काममा पूर्ण ध्यान दिन्छन्।",
+    faq_title: "धेरै सोधिने प्रश्नहरू",
+    faq_q1: "मेरो घर वा भवनको लागि रेट कसरी पाउन सकिन्छ?",
+    faq_a1: "तपाईंको झ्याल वा ढोकाको सम्भावित नाप लिएर ह्वाट्सएप नम्बर <strong>+९७७ ९८१७६५८७१९</strong> मा म्यासेज गर्नुहोस्।",
+    faq_q2: "नेपालमा यूपीभीसी झ्यालको मूल्य कति पर्छ?",
+    faq_a2: "नेपालमा यूपीभीसी झ्यालको मूल्य प्रति स्क्वायर फिट रु. ४५० देखि ८५० सम्म पर्छ।",
+    faq_q3: "घरको लागि यूपीभीसी कि आल्मुनियम कुन राम्रो?",
+    faq_a3: "घरको बेडरुमको लागि साउन्डप्रुफ यूपीभीसी उत्तम हुन्छ।",
+    faq_q4: "आल्मुनियम किचन र्याकमा धमिरा वा पानीले असर गर्छ कि गर्दैन?",
+    faq_a4: "हाम्रा मोड्युलर आल्मुनियम र्याक १००% वाटरप्रुफ र धमिरा-मुक्त हुन्छन्।",
+    faq_q5: "सामान तयार हुन कति समय लाग्छ?",
+    faq_a5: "साधारणतया ३ देखि ५ दिन भित्र सामान तयार गरी फिटिङ गरिन्छ।",
+    lightbox_btn_inquire: "ह्वाट्सएपमा सोधपुछ गर्नुहोस् (+९७७ ९८१७६५८७१९)",
+    chat_welcome: "नमस्ते! 🙏 अन्नपूर्णा आल्मुनियम तथा यूपीभीसी उद्योगमा स्वागत छ। आज तपाईंलाई कसरी सहयोग गर्न सक्छु?"
   }}
 }};
 
@@ -1917,19 +2202,17 @@ function setLanguage(lang) {{
   if (!I18N[lang]) return;
   currentLang = lang;
   
-  // Update button highlights
   const btnEn = document.getElementById('lang-btn-en');
   const btnNe = document.getElementById('lang-btn-ne');
   
   if (lang === 'en') {{
-    if (btnEn) btnEn.className = 'px-2.5 py-1 rounded-lg font-bold bg-cyan-500 text-black transition-all shadow-sm';
-    if (btnNe) btnNe.className = 'px-2.5 py-1 rounded-lg font-bold text-slate-300 hover:text-white transition-all';
+    if (btnEn) btnEn.className = 'px-2.5 py-1 rounded-md font-bold bg-emerald-500 text-white transition-all shadow-sm';
+    if (btnNe) btnNe.className = 'px-2.5 py-1 rounded-md font-bold text-slate-300 hover:text-white transition-all';
   }} else {{
-    if (btnNe) btnNe.className = 'px-2.5 py-1 rounded-lg font-bold bg-cyan-500 text-black transition-all shadow-sm';
-    if (btnEn) btnEn.className = 'px-2.5 py-1 rounded-lg font-bold text-slate-300 hover:text-white transition-all';
+    if (btnNe) btnNe.className = 'px-2.5 py-1 rounded-md font-bold bg-emerald-500 text-white transition-all shadow-sm';
+    if (btnEn) btnEn.className = 'px-2.5 py-1 rounded-md font-bold text-slate-300 hover:text-white transition-all';
   }}
 
-  // Update translatable elements
   document.querySelectorAll('[data-i18n]').forEach(el => {{
     const key = el.getAttribute('data-i18n');
     if (I18N[lang][key]) {{
@@ -1937,12 +2220,168 @@ function setLanguage(lang) {{
     }}
   }});
 
-  // Re-render project cards and catalog to apply language changes
   renderRealProjects();
+  renderCatalogCategoryPills();
   renderCatalog();
 }}
 
-/* ==================== REAL PROJECTS GRID RENDERER ==================== */
+/* ==================== CHATBOT BOT LOGIC & WHATSAPP CALL ==================== */
+function toggleChatbot() {{
+  const win = document.getElementById('chatbot-window');
+  if (win) win.classList.toggle('hidden');
+}}
+
+const CHAT_ANSWERS = {{
+  q1: {{
+    q: "Which is better: UPVC or Aluminium?",
+    a: "For residential bedrooms and homes, <strong>UPVC with double glazing</strong> is superior for heat insulation and noise reduction. For large commercial storefronts and slim dividers, <strong>6063-T5 Aluminium</strong> offers high structural strength.",
+    cta: "Consult Founder Prof. Nageshwar Thakur on WhatsApp regarding profile choice"
+  }},
+  q2: {{
+    q: "Do you offer free site visit & measurement in Janakpur?",
+    a: "Yes! Our master fabricator visits your building site in Janakpur Dham, Dhanusha, Mahottari, Sarlahi, Lahan & nearby districts with physical profile & glass samples for free laser-guided measurement.",
+    cta: "Book Free Site Measurement on WhatsApp (+977 9817658719)"
+  }},
+  q3: {{
+    q: "Are modular kitchen racks 100% waterproof?",
+    a: "Yes! Our modular kitchen racks use 100% heavy anodized aluminium frames and waterproof ACP composite panels that never warp, swell, or get infested with termites.",
+    cta: "Inquire Kitchen Rack Models on WhatsApp"
+  }},
+  q4: {{
+    q: "What grade steel is used for Temple Gates?",
+    a: "We use exclusively authentic <strong>SS 304 marine-grade stainless steel</strong> with full nickel content, argon TIG welding, and diamond compound mirror polishing that never rusts under rain.",
+    cta: "Inquire Temple Gate Fabrication on WhatsApp"
+  }},
+  owner: {{
+    q: "Direct Call / Chat with Owner Prof. Nageshwar Thakur",
+    a: "Connecting you directly to Founder Prof. Nageshwar Thakur on WhatsApp (+977 9817658719)...",
+    cta: "Click here to Chat / Call Founder on WhatsApp"
+  }}
+}};
+
+function askChatQuestion(key) {{
+  const data = CHAT_ANSWERS[key];
+  if (!data) return;
+
+  const container = document.getElementById('chat-messages-container');
+
+  // Append user message
+  const userHtml = `
+    <div class="flex items-end justify-end gap-2 my-2">
+      <div class="p-3 rounded-2xl bg-emerald-600 text-white font-medium max-w-[85%] text-xs shadow-md">
+        ${{data.q}}
+      </div>
+    </div>
+  `;
+  container.insertAdjacentHTML('beforeend', userHtml);
+  container.scrollTop = container.scrollHeight;
+
+  // Append typing indicator
+  const typingId = 'typing-' + Date.now();
+  const typingHtml = `
+    <div id="${{typingId}}" class="flex items-start gap-2.5 my-2">
+      <div class="w-7 h-7 rounded-full overflow-hidden bg-slate-900 border border-emerald-400/40 flex-shrink-0">
+        <img src="uploads/chatbot_icon.png" alt="AI" class="w-full h-full object-cover">
+      </div>
+      <div class="p-3 rounded-2xl bg-slate-900 text-slate-400 text-xs animate-pulse">
+        Annapurna AI Assistant is typing...
+      </div>
+    </div>
+  `;
+  container.insertAdjacentHTML('beforeend', typingHtml);
+  container.scrollTop = container.scrollHeight;
+
+  setTimeout(() => {{
+    const typingEl = document.getElementById(typingId);
+    if (typingEl) typingEl.remove();
+
+    const waMsg = `Namaste%20Prof.%20Nageshwar%20Thakur,%20I%20have%20a%20question%20regarding:%20${{encodeURIComponent(data.q)}}`;
+
+    const botHtml = `
+      <div class="flex items-start gap-2.5 my-2">
+        <div class="w-7 h-7 rounded-full overflow-hidden bg-slate-900 border border-emerald-400/40 flex-shrink-0">
+          <img src="uploads/chatbot_icon.png" alt="AI" class="w-full h-full object-cover">
+        </div>
+        <div class="p-3.5 rounded-2xl bg-slate-900 text-slate-200 border border-white/10 space-y-3 max-w-[88%] shadow-lg">
+          <p>${{data.a}}</p>
+          <a href="https://wa.me/${{SHOP.whatsapp}}?text=${{waMsg}}" target="_blank" rel="noopener" class="block text-center py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all">
+            💬 ${{data.cta}} (+977 9817658719)
+          </a>
+        </div>
+      </div>
+    `;
+    container.insertAdjacentHTML('beforeend', botHtml);
+    container.scrollTop = container.scrollHeight;
+  }}, 600);
+}}
+
+function handleChatSubmit(e) {{
+  e.preventDefault();
+  const input = document.getElementById('chat-user-input');
+  const val = input.value.trim();
+  if (!val) return;
+
+  const container = document.getElementById('chat-messages-container');
+  const userHtml = `
+    <div class="flex items-end justify-end gap-2 my-2">
+      <div class="p-3 rounded-2xl bg-emerald-600 text-white font-medium max-w-[85%] text-xs shadow-md">
+        ${{val}}
+      </div>
+    </div>
+  `;
+  container.insertAdjacentHTML('beforeend', userHtml);
+  input.value = '';
+  container.scrollTop = container.scrollHeight;
+
+  const waMsg = `Namaste%20Annapurna,%20I%20have%20this%20architectural%20query:%20${{encodeURIComponent(val)}}`;
+
+  setTimeout(() => {{
+    const botHtml = `
+      <div class="flex items-start gap-2.5 my-2">
+        <div class="w-7 h-7 rounded-full overflow-hidden bg-slate-900 border border-emerald-400/40 flex-shrink-0">
+          <img src="uploads/chatbot_icon.png" alt="AI" class="w-full h-full object-cover">
+        </div>
+        <div class="p-3.5 rounded-2xl bg-slate-900 text-slate-200 border border-white/10 space-y-3 max-w-[88%] shadow-lg">
+          <p>Thank you for your inquiry! I can forward your exact question to Founder Prof. Nageshwar Thakur directly on WhatsApp for an immediate response.</p>
+          <a href="https://wa.me/${{SHOP.whatsapp}}?text=${{waMsg}}" target="_blank" rel="noopener" class="block text-center py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all">
+            💬 Speak Directly with Founder on WhatsApp (+977 9817658719)
+          </a>
+        </div>
+      </div>
+    `;
+    container.insertAdjacentHTML('beforeend', botHtml);
+    container.scrollTop = container.scrollHeight;
+  }}, 600);
+}}
+
+/* ==================== AUTOMATIC INFINITE MARQUEE CAROUSEL ==================== */
+function renderAutoMarquee() {{
+  const track = document.getElementById('auto-marquee-track');
+  if (!track) return;
+
+  const items = REAL_PROJECTS.slice(0, 12);
+  const list = [...items, ...items];
+
+  track.innerHTML = list.map(p => `
+    <div onclick="openLightboxProject('${{p.id}}')" class="w-72 sm:w-80 flex-shrink-0 glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-emerald-400 cursor-pointer transition-all group">
+      <div class="relative h-44 overflow-hidden bg-slate-950">
+        <img src="catalog_assets/real_projects/${{p.thumb || p.image}}" alt="${{p.title}}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+        <div class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-slate-950/85 text-[10px] font-extrabold text-emerald-400 border border-emerald-400/30">
+          ${{p.category}}
+        </div>
+      </div>
+      <div class="p-3.5 bg-slate-950/90">
+        <h4 class="font-bold text-xs text-white truncate mb-1">${{p.title}}</h4>
+        <div class="flex items-center justify-between text-[11px] text-slate-400">
+          <span>📍 ${{p.location}}</span>
+          <span class="text-emerald-400 font-bold hover:underline">View →</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}}
+
+/* ==================== REAL PROJECTS GALLERY ==================== */
 let currentProjectFilter = 'all';
 
 function renderRealProjects() {{
@@ -1958,133 +2397,174 @@ function renderRealProjects() {{
     const title = currentLang === 'ne' && p.title_ne ? p.title_ne : p.title;
     const category = currentLang === 'ne' && p.category_ne ? p.category_ne : p.category;
     const location = currentLang === 'ne' && p.location_ne ? p.location_ne : p.location;
-    const desc = currentLang === 'ne' && p.desc_ne ? p.desc_ne : p.desc;
 
     return `
-      <div class="glass-card rounded-3xl overflow-hidden group cursor-pointer" onclick="openLightboxProject('${{p.id}}')">
-        <!-- Image Thumbnail with Zoom Hover -->
-        <div class="relative aspect-[4/3] bg-slate-950 overflow-hidden">
-          <img src="catalog_assets/real_projects/${{p.thumb}}" alt="${{p.title}}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          <div class="absolute inset-0 bg-gradient-to-t from-luxury-950 via-luxury-950/20 to-transparent opacity-85 group-hover:opacity-60 transition-opacity"></div>
+      <article class="glass-card rounded-2xl overflow-hidden group border border-white/10 hover:border-emerald-400/50 transition-all flex flex-col justify-between">
+        
+        <div class="relative overflow-hidden cursor-pointer" onclick="openLightboxProject('${{p.id}}')">
+          <img src="catalog_assets/real_projects/${{p.thumb || p.image}}" alt="${{title}} — Annapurna Aluminium Janakpur" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
           
-          <!-- Category & Location Badges -->
-          <div class="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5">
-            <span class="px-3 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider bg-slate-950/90 text-cyan-400 border border-cyan-500/30 backdrop-blur-md shadow-md">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+          
+          <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-slate-950/90 text-emerald-400 border border-emerald-400/30">
               ${{category}}
             </span>
           </div>
 
-          <div class="absolute top-3.5 right-3.5 w-9 h-9 rounded-full bg-slate-950/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
-            🔍
-          </div>
-
-          <div class="absolute bottom-3.5 left-3.5 right-3.5">
-            <div class="text-[11px] text-amber-400 font-semibold mb-0.5">📍 ${{location}}</div>
-            <h4 class="font-bold text-sm sm:text-base text-white leading-snug line-clamp-2">${{title}}</h4>
+          <div class="absolute bottom-3 left-3 right-3 text-xs text-amber-300 font-semibold flex items-center gap-1">
+            <span>📍</span> <span>${{location}}</span>
           </div>
         </div>
 
-        <!-- Card Details -->
-        <div class="p-5 bg-luxury-900/60">
-          <p class="text-xs text-slate-300 line-clamp-2 mb-4 leading-relaxed">${{desc}}</p>
-          
-          <!-- Specs tags -->
-          <div class="flex flex-wrap gap-1.5 mb-5">
-            ${{p.specs.slice(0, 2).map(s => `<span class="px-2.5 py-1 rounded-md bg-slate-950 text-[10px] text-slate-300 border border-white/5 font-medium">${{s}}</span>`).join('')}}
+        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+          <div>
+            <h3 class="font-bold text-white text-base leading-snug mb-2 hover:text-emerald-400 transition-colors cursor-pointer" onclick="openLightboxProject('${{p.id}}')">
+              ${{title}}
+            </h3>
+
+            <div class="flex flex-wrap gap-1 mb-3">
+              ${{p.specs.map(s => `<span class="px-2 py-0.5 rounded bg-slate-900 text-[10px] text-slate-300 border border-white/5">${{s}}</span>`).join('')}}
+            </div>
           </div>
 
-          <div class="flex items-center justify-between pt-3 border-t border-white/5 text-xs">
-            <span class="text-cyan-400 font-bold hover:underline flex items-center gap-1">
-              <span>${{currentLang === 'ne' ? 'विस्तृत विवरण' : 'View Full Details'}}</span> <span>→</span>
-            </span>
-            <a href="https://wa.me/${{SHOP.whatsapp}}?text=Namaste%20Annapurna,%20I%20am%20interested%20in%20project:%20${{encodeURIComponent(p.title)}}" target="_blank" onclick="event.stopPropagation()" class="px-3 py-1.5 rounded-xl bg-emerald-600/30 hover:bg-emerald-600 text-emerald-400 hover:text-white border border-emerald-500/30 transition-all text-[11px] font-bold flex items-center gap-1 shadow-sm">
-              <span>💬 ${{currentLang === 'ne' ? 'सोधपुछ' : 'Quote'}}</span>
+          <div class="pt-2 border-t border-white/5 flex items-center justify-between text-xs font-bold">
+            <button onclick="openLightboxProject('${{p.id}}')" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+              <span>${{currentLang === 'ne' ? 'फोटो तथा विवरण' : 'View Details'}}</span> <span>→</span>
+            </button>
+
+            <a href="https://wa.me/${{SHOP.whatsapp}}?text=Namaste%20Annapurna,%20I%20saw%20this%20project:%20${{encodeURIComponent(title)}}%20and%20want%20a%20quote." target="_blank" class="text-emerald-400 hover:underline flex items-center gap-1">
+              <span>💬</span> <span>WhatsApp Quote</span>
             </a>
           </div>
         </div>
 
-      </div>
+      </article>
     `;
   }}).join('');
 }}
 
-function filterProjects(cat) {{
-  currentProjectFilter = cat;
-  document.querySelectorAll('.proj-filter-btn').forEach(btn => {{
-    if (btn.getAttribute('data-cat') === cat) {{
-      btn.className = 'proj-filter-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-cyan-500 text-black shadow-lg shadow-cyan-500/20';
+function filterRealProjects(filter) {{
+  currentProjectFilter = filter;
+  document.querySelectorAll('.proj-pill').forEach(btn => {{
+    if (btn.getAttribute('data-pfilter') === filter) {{
+      btn.className = 'proj-pill px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500 text-white shadow-md';
     }} else {{
-      btn.className = 'proj-filter-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-slate-900 text-slate-300 hover:text-white border border-white/10';
+      btn.className = 'proj-pill px-3 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white';
     }}
   }});
   renderRealProjects();
 }}
 
-/* ==================== 102+ CATALOG RENDERER ==================== */
+/* ==================== 102+ CATALOG EXPLORER ==================== */
 let currentCatalogCategory = 'ALL';
 let currentCatalogSearch = '';
-let currentCatalogViewMode = 'photo'; // 'photo' or 'blueprint'
+let currentCatalogViewMode = 'photo';
 
-function renderCatalog() {{
-  const container = document.getElementById('products-container');
+function renderCatalogCategoryPills() {{
+  const container = document.getElementById('catalog-category-pills');
   if (!container) return;
 
+  let html = `
+    <button onclick="filterCatalog('ALL')" data-cat="ALL" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-emerald-500 text-white shadow-md">
+      ${{currentLang === 'ne' ? 'सबै १०२+ डिजाइनहरू' : 'All 102+ Designs'}}
+    </button>
+  `;
+
+  CATS.forEach(c => {{
+    const meta = CAT_META[c.key] || {{}};
+    const badge = (currentLang === 'ne' && meta.badge_ne) ? meta.badge_ne : (meta.badge || c.name);
+
+    html += `
+      <button onclick="filterCatalog('${{c.key}}')" data-cat="${{c.key}}" class="cat-pill px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900 text-slate-300 hover:text-white border border-white/10 transition-all">
+        <span>${{meta.icon || '⬚'}}</span> <span>${{badge}}</span>
+      </button>
+    `;
+  }});
+
+  container.innerHTML = html;
+}}
+
+function renderCatalog() {{
+  const container = document.getElementById('catalog-grid');
+  if (!container) return;
+
+  const q = currentCatalogSearch.trim().toLowerCase();
+
   const filtered = PRODUCTS.filter(p => {{
-    // Category match
     if (currentCatalogCategory !== 'ALL' && p.cat !== currentCatalogCategory) return false;
-    // Search match
-    if (currentCatalogSearch) {{
-      const q = currentCatalogSearch.toLowerCase();
-      const matchCode = p.code.toLowerCase().includes(q);
-      const matchName = p.name.toLowerCase().includes(q);
-      const matchDesc = p.desc.toLowerCase().includes(q);
-      const matchCat = p.cat.toLowerCase().includes(q);
-      if (!matchCode && !matchName && !matchDesc && !matchCat) return false;
+    
+    if (q) {{
+      const text = (p.code + ' ' + p.name + ' ' + p.desc + ' ' + (p.finishes||[]).join(' ')).toLowerCase();
+      if (!text.includes(q)) return false;
     }}
     return true;
   }});
 
-  // Update count
   const countEl = document.getElementById('catalog-count');
-  if (countEl) countEl.innerText = filtered.length;
+  if (countEl) {{
+    countEl.innerText = `${{filtered.length}} / ${{PRODUCTS.length}} ${{currentLang === 'ne' ? 'डिजाइनहरू' : 'Designs Available'}}`;
+  }}
 
   if (filtered.length === 0) {{
     container.innerHTML = `
-      <div class="col-span-full py-16 text-center text-slate-400 glass-panel rounded-3xl">
-        <div class="text-4xl mb-2">🔍</div>
-        <h4 class="text-lg font-bold text-white mb-1">${{currentLang === 'ne' ? 'कुनै उत्पादन भेटिएन' : 'No matching designs found'}}</h4>
-        <p class="text-xs text-slate-400">${{currentLang === 'ne' ? 'अन्य शब्द वा क्याटेगोरी छानेर खोज्नुहोस्।' : 'Try searching for "sliding", "casement", "gate", or click "All 102 Designs".'}}</p>
-        <button onclick="clearCatalogSearch()" class="mt-4 px-4 py-2 rounded-xl bg-cyan-500 text-black font-bold text-xs">Reset Search</button>
+      <div class="col-span-full py-12 text-center glass-card p-8 rounded-2xl">
+        <div class="text-4xl mb-3">🔍</div>
+        <h4 class="text-lg font-bold text-white mb-1">${{currentLang === 'ne' ? 'कुनै डिजाइन भेटिएन' : 'No matching designs found'}}</h4>
+        <p class="text-xs text-slate-400">${{currentLang === 'ne' ? 'अन्य शब्द वा क्याटेगोरी छानेर खोज्नुहोस्।' : 'Try searching for "sliding", "gate", "kitchen", or click "All 102+ Designs".'}}</p>
       </div>
     `;
     return;
   }}
 
   container.innerHTML = filtered.map(p => {{
-    const svgCode = p.svg || getProductSvg(p.art_key, p.art_params);
-    const catColor = p.meta.color || '#00d2ff';
     const catBadge = (currentLang === 'ne' && p.meta.badge_ne) ? p.meta.badge_ne : (p.meta.badge || p.cat);
+    const catColor = p.meta.color || '#10b981';
+    const svgCode = getProductSvg(p.art_key, p.art_params);
 
     return `
-      <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between" id="${{p.code.toLowerCase()}}">
+      <article class="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-emerald-400/50 transition-all flex flex-col justify-between group">
+        
         <div>
-          
-          <!-- Image or Blueprint View -->
-          <div class="relative aspect-[16/10] bg-slate-950 overflow-hidden flex items-center justify-center">
+          <!-- Media Header (Photo / Ultra High-Tech CAD Blueprint Mode) -->
+          <div class="relative h-48 overflow-hidden">
             
             ${{currentCatalogViewMode === 'photo' ? `
-              <img src="${{p.photo}}" alt="${{p.name}}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="w-full h-full bg-slate-950 relative">
+                <img src="${{p.photo}}" alt="${{p.name}} — Model ${{p.code}} Annapurna Aluminium Janakpur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              </div>
             ` : `
-              <div class="blueprint-box w-full h-full flex items-center justify-center p-4">
-                <svg class="art" viewBox="0 0 200 160" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <div class="cad-blueprint-box w-full h-full flex items-center justify-center p-4">
+                <div class="corner-bracket cb-tl"></div>
+                <div class="corner-bracket cb-tr"></div>
+                <div class="corner-bracket cb-bl"></div>
+                <div class="corner-bracket cb-br"></div>
+                
+                <div class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-slate-950/90 border border-cyan-500/40 text-[9px] font-mono font-bold text-amber-300 z-10 shadow-md">
+                  📐 ISO 9001:2026 CAD
+                </div>
+
+                <svg class="cad-art" viewBox="0 0 200 160" preserveAspectRatio="xMidYMid meet" aria-label="${{p.name}} CAD Blueprint">
                   ${{svgCode}}
                 </svg>
+
+                <div class="cad-title-stamp">
+                  <div class="stamp-header">ANNAPURNA ARCHITECTURAL CAD</div>
+                  <div class="flex justify-between gap-2 font-mono text-[7px] text-cyan-200">
+                    <span>DWG: AP-${{p.code}}</span>
+                    <span>SCALE: 1:10</span>
+                  </div>
+                  <div class="font-mono text-[6.5px] text-emerald-400 font-bold">
+                    TOLERANCE ±0.05mm · AL6063-T6
+                  </div>
+                </div>
               </div>
             `}}
 
             <!-- Top Badges -->
-            <div class="absolute top-3.5 left-3.5 flex items-center gap-1.5">
-              <span class="px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-slate-950/90 text-white border border-white/10 shadow-lg">
+            <div class="absolute top-3 left-3 flex items-center gap-1.5 z-10">
+              <span class="px-2.5 py-0.5 rounded-md text-[10px] font-black font-mono uppercase bg-slate-950/90 text-white border border-white/10 shadow-lg">
                 ${{p.code}}
               </span>
               <span class="px-2.5 py-0.5 rounded-md text-[10px] font-bold text-slate-950 shadow-md" style="background-color: ${{catColor}}">
@@ -2092,54 +2572,45 @@ function renderCatalog() {{
               </span>
             </div>
 
-            <!-- Single Card View Toggle -->
-            <button onclick="toggleSingleCardView('${{p.code}}')" class="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-lg bg-slate-950/85 hover:bg-slate-900 text-[10px] font-bold text-slate-300 hover:text-cyan-400 border border-white/10 shadow-lg transition-all" title="Toggle Blueprint / Photo">
-              ${{currentCatalogViewMode === 'photo' ? '📐 Blueprint' : '📸 Photo'}}
+            <!-- Card View Toggle -->
+            <button onclick="toggleSingleCardView('${{p.code}}')" class="absolute top-3 right-3 z-10 px-2 py-1 rounded-lg bg-slate-950/85 hover:bg-slate-900 text-[10px] font-bold text-slate-300 hover:text-emerald-400 border border-white/10 transition-all" title="Toggle Blueprint / Photo">
+              ${{currentCatalogViewMode === 'photo' ? '📐 CAD Blueprint' : '📸 Photo'}}
             </button>
 
           </div>
 
-          <!-- Product Details -->
-          <div class="p-5">
-            <h3 class="font-bold font-display text-base sm:text-lg text-white mb-2 leading-snug">${{p.name}}</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-4">${{p.desc}}</p>
+          <!-- Product Info -->
+          <div class="p-5 space-y-3">
+            <h3 class="font-bold font-display text-base text-white leading-snug">${{p.name}}</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">${{p.desc}}</p>
 
             <!-- Standard Sizes -->
-            <div class="mb-3 text-[11px]">
-              <span class="text-slate-400 font-semibold block mb-1">${{currentLang === 'ne' ? 'मानक आकारहरू (आवश्यकता अनुसार बनाइनेछ):' : 'Standard Sizes (Custom Fit Available):'}}</span>
+            <div class="text-[11px]">
+              <span class="text-slate-400 font-semibold block mb-1">${{currentLang === 'ne' ? 'मानक आकारहरू:' : 'Standard Sizes:'}}</span>
               <div class="flex flex-wrap gap-1">
-                ${{p.sizes.map(s => `<span class="px-2.5 py-0.5 rounded-md bg-slate-950 text-slate-300 border border-white/5 font-mono">${{s}}</span>`).join('')}}
+                ${{p.sizes.map(s => `<span class="px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-white/5 font-mono">${{s}}</span>`).join('')}}
               </div>
             </div>
 
-            <!-- Finishes -->
-            <div class="mb-4 text-[11px]">
-              <span class="text-slate-400 font-semibold block mb-1">${{currentLang === 'ne' ? 'उपलब्ध फिनिसिङहरू:' : 'Available Finishes:'}}</span>
-              <div class="flex flex-wrap gap-1">
-                ${{p.finishes.map(f => `<span class="px-2.5 py-0.5 rounded-md bg-slate-900 text-cyan-300 border border-cyan-500/10">${{f}}</span>`).join('')}}
-              </div>
+            <!-- Key Features -->
+            <div class="space-y-1 text-[11px] text-slate-400 border-t border-white/5 pt-2">
+              ${{p.extras.slice(0, 2).map(e => `<div class="flex items-center gap-1.5"><span class="text-emerald-400 font-bold">✓</span><span>${{e}}</span></div>`).join('')}}
             </div>
-
-            <!-- Key Features Bullet List -->
-            <div class="space-y-1.5 text-[11px] text-slate-400 border-t border-white/5 pt-3">
-              ${{p.extras.map(e => `<div class="flex items-center gap-1.5"><span class="text-cyan-400 text-xs font-bold">✓</span><span>${{e}}</span></div>`).join('')}}
-            </div>
-
           </div>
         </div>
 
-        <!-- Footer Action -->
-        <div class="p-4 bg-slate-950/70 border-t border-white/5 flex items-center justify-between gap-3">
-          <a href="#consultation" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-            <span>${{currentLang === 'ne' ? 'नाप जाँच बुक' : 'Book Measurement'}}</span> <span>→</span>
+        <!-- Footer CTA (Direct to WhatsApp) -->
+        <div class="p-4 bg-slate-950/80 border-t border-white/5 flex items-center justify-between gap-2">
+          <a href="#booking" class="text-xs font-bold text-emerald-400 hover:underline">
+            ${{currentLang === 'ne' ? 'नाप जाँच बुक' : 'Book Measurement'}}
           </a>
           
-          <a href="https://wa.me/${{SHOP.whatsapp}}?text=Namaste%20Annapurna,%20I%20would%20like%20a%20quote%20and%20consultation%20for%20Product%20Code:%20${{p.code}}%20(${{encodeURIComponent(p.name)}})" target="_blank" rel="noopener" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-md">
-            <span>💬</span> <span>${{currentLang === 'ne' ? 'ह्वाट्सएप अर्डर' : 'WhatsApp Order'}}</span>
+          <a href="https://wa.me/${{SHOP.whatsapp}}?text=Namaste%20Annapurna,%20I%20want%20to%20order/inquire%20Product%20Code:%20${{p.code}}%20(${{encodeURIComponent(p.name)}})" target="_blank" rel="noopener" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1 shadow-md">
+            <span>💬</span> <span>${{currentLang === 'ne' ? 'ह्वाट्सएप' : 'WhatsApp'}}</span>
           </a>
         </div>
 
-      </div>
+      </article>
     `;
   }}).join('');
 }}
@@ -2148,9 +2619,9 @@ function filterCatalog(cat) {{
   currentCatalogCategory = cat;
   document.querySelectorAll('.cat-pill').forEach(pill => {{
     if (pill.getAttribute('data-cat') === cat) {{
-      pill.className = 'cat-pill px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-cyan-500 text-black shadow-lg shadow-cyan-500/20 transition-all';
+      pill.className = 'cat-pill px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-emerald-500 text-white shadow-md';
     }} else {{
-      pill.className = 'cat-pill px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900/90 text-slate-300 hover:text-white border border-white/10 transition-all';
+      pill.className = 'cat-pill px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900 text-slate-300 hover:text-white border border-white/10 transition-all';
     }}
   }});
   renderCatalog();
@@ -2180,10 +2651,10 @@ function setCatalogViewMode(mode) {{
   const blueprintBtn = document.getElementById('view-mode-blueprint');
   
   if (mode === 'photo') {{
-    photoBtn.className = 'px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 transition-all flex items-center gap-1.5';
+    photoBtn.className = 'px-3 py-1.5 rounded-lg bg-emerald-500 text-white transition-all flex items-center gap-1.5';
     blueprintBtn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5';
   }} else {{
-    blueprintBtn.className = 'px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 transition-all flex items-center gap-1.5';
+    blueprintBtn.className = 'px-3 py-1.5 rounded-lg bg-emerald-500 text-white transition-all flex items-center gap-1.5';
     photoBtn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5';
   }}
   renderCatalog();
@@ -2193,14 +2664,22 @@ function toggleSingleCardView(code) {{
   setCatalogViewMode(currentCatalogViewMode === 'photo' ? 'blueprint' : 'photo');
 }}
 
-/* ==================== LIGHTBOX SYSTEM ==================== */
-let activeLightboxItem = null;
+/* ==================== LIGHTBOX SYSTEM WITH CAROUSEL ==================== */
+let activeLightboxIndex = -1;
 
 function openLightboxProject(id) {{
-  const proj = REAL_PROJECTS.find(p => p.id === id);
-  if (!proj) return;
-  activeLightboxItem = proj;
+  const index = REAL_PROJECTS.findIndex(p => p.id === id);
+  if (index === -1) return;
+  activeLightboxIndex = index;
+  updateLightboxContent();
+  document.getElementById('lightbox-modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}}
 
+function updateLightboxContent() {{
+  if (activeLightboxIndex < 0 || activeLightboxIndex >= REAL_PROJECTS.length) return;
+  const proj = REAL_PROJECTS[activeLightboxIndex];
+  
   const title = currentLang === 'ne' && proj.title_ne ? proj.title_ne : proj.title;
   const category = currentLang === 'ne' && proj.category_ne ? proj.category_ne : proj.category;
   const location = currentLang === 'ne' && proj.location_ne ? proj.location_ne : proj.location;
@@ -2211,28 +2690,50 @@ function openLightboxProject(id) {{
   document.getElementById('lightbox-title').innerText = title;
   document.getElementById('lightbox-loc').innerText = '📍 ' + location;
   document.getElementById('lightbox-desc').innerText = desc;
+  document.getElementById('lightbox-counter').innerText = `${{activeLightboxIndex + 1}} / ${{REAL_PROJECTS.length}}`;
   
   const specsContainer = document.getElementById('lightbox-specs');
-  specsContainer.innerHTML = proj.specs.map(s => `<div class="flex items-center gap-1.5"><span class="text-cyan-400 font-bold">✓</span><span>${{s}}</span></div>`).join('');
-
-  document.getElementById('lightbox-modal').classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
+  specsContainer.innerHTML = proj.specs.map(s => `<div class="flex items-center gap-1.5"><span class="text-emerald-400 font-bold">✓</span><span>${{s}}</span></div>`).join('');
 }}
 
-function closeLightbox(e) {{
+function prevLightbox() {{
+  if (activeLightboxIndex > 0) {{
+    activeLightboxIndex--;
+    updateLightboxContent();
+  }} else {{
+    activeLightboxIndex = REAL_PROJECTS.length - 1;
+    updateLightboxContent();
+  }}
+}}
+
+function nextLightbox() {{
+  if (activeLightboxIndex < REAL_PROJECTS.length - 1) {{
+    activeLightboxIndex++;
+    updateLightboxContent();
+  }} else {{
+    activeLightboxIndex = 0;
+    updateLightboxContent();
+  }}
+}}
+
+function closeLightbox() {{
   document.getElementById('lightbox-modal').classList.add('hidden');
   document.body.style.overflow = 'auto';
 }}
 
 function inquireLightboxItem() {{
-  if (!activeLightboxItem) return;
-  const msg = `Namaste Annapurna,%0A%0AI saw this project on your website and want something similar for my building:%0A• Title: ${{encodeURIComponent(activeLightboxItem.title)}}%0A• Location Reference: ${{encodeURIComponent(activeLightboxItem.location)}}%0A%0APlease let me know the details and schedule a site measurement.`;
+  if (activeLightboxIndex < 0) return;
+  const item = REAL_PROJECTS[activeLightboxIndex];
+  const msg = `Namaste Annapurna,%0A%0AI saw this project on your website and want something similar for my building:%0A• Title: ${{encodeURIComponent(item.title)}}%0A• Location Reference: ${{encodeURIComponent(item.location)}}%0A%0APlease schedule a site visit for measurement.`;
   window.open(`https://wa.me/${{SHOP.whatsapp}}?text=${{msg}}`, '_blank');
 }}
 
-// Keyboard ESC to close lightbox
 document.addEventListener('keydown', (e) => {{
-  if (e.key === 'Escape') closeLightbox();
+  if (!document.getElementById('lightbox-modal').classList.contains('hidden')) {{
+    if (e.key === 'ArrowLeft') prevLightbox();
+    if (e.key === 'ArrowRight') nextLightbox();
+    if (e.key === 'Escape') closeLightbox();
+  }}
 }});
 
 /* ==================== FAQ ACCORDION ==================== */
@@ -2259,19 +2760,117 @@ function handleContactSubmit(e) {{
   const service = document.getElementById('form-service').value;
   const notes = document.getElementById('form-notes').value;
 
-  const msg = `Namaste Annapurna Aluminium,%0A%0AI would like to request a site visit / measurement:%0A• Name: ${{name}}%0A• Phone: ${{phone}}%0A• Location: ${{city}}%0A• Requirement: ${{service}}%0A• Details: ${{notes}}%0A%0APlease contact me to confirm the schedule.`;
+  const msg = `Namaste Annapurna Aluminium,%0A%0AI would like to request a free site visit / measurement:%0A• Name: ${{name}}%0A• Phone/WhatsApp: ${{phone}}%0A• Location: ${{city}}%0A• Requirement: ${{service}}%0A• Details: ${{notes}}%0A%0APlease contact me to confirm the schedule.`;
 
   window.open(`https://wa.me/${{SHOP.whatsapp}}?text=${{msg}}`, '_blank');
 }}
 
 function toggleMobileMenu() {{
   const menu = document.getElementById('mobile-menu');
-  menu.classList.toggle('hidden');
+  if (menu) menu.classList.toggle('hidden');
+}}
+
+/* ==================== AUTOMATIC BACKGROUND PRODUCT SLIDESHOW ENGINE (2s Auto-Slide & Multiple Transitions) ==================== */
+const bgProductSlides = [
+  {{ img: "catalog_assets/products/ALW-01.jpg", name: "ALW-01 Heavy Duty Sliding Window System", cat: "Aluminium Windows" }},
+  {{ img: "catalog_assets/products/UWC-01.jpg", name: "UWC-01 German Profile Thermal UPVC Casement Window", cat: "UPVC Windows" }},
+  {{ img: "catalog_assets/products/GLZ-01.jpg", name: "GLZ-01 Commercial Structural Curtain Wall Glazing", cat: "Curtain Glazing" }},
+  {{ img: "catalog_assets/products/RLS-01.jpg", name: "RLS-01 Toughened Glass Balcony Railing Profile", cat: "Glass Railings" }},
+  {{ img: "catalog_assets/products/MOD-01.jpg", name: "MOD-01 Waterproof Modular Kitchen Aluminium Rack", cat: "Modular Kitchen" }},
+  {{ img: "catalog_assets/products/STF-01.jpg", name: "STF-01 304 Grade Stainless Steel Main Security Gate", cat: "SS Security Gates" }},
+  {{ img: "catalog_assets/products/UWD-01.jpg", name: "UWD-01 Soundproof Double Glazed UPVC Entry Door", cat: "UPVC Doors" }},
+  {{ img: "catalog_assets/products/ALD-01.jpg", name: "ALD-01 Modern Luxury Aluminium Entry Door", cat: "Aluminium Doors" }},
+  {{ img: "catalog_assets/products/ALP-01.jpg", name: "ALP-01 Acoustic Glass Interior Partition Profile", cat: "Glass Partitions" }},
+  {{ img: "catalog_assets/products/MST-01.jpg", name: "MST-01 Anti-Mosquito SS Mesh Security Window", cat: "Mesh Screens" }},
+  {{ img: "catalog_assets/products/SLS-01.jpg", name: "SLS-01 Exterior Architectural Louver & Sunshade", cat: "Sunshades & Louvers" }},
+  {{ img: "catalog_assets/products/ALW-04.jpg", name: "ALW-04 Panoramic 3-Track Slider Window", cat: "Aluminium Windows" }},
+  {{ img: "catalog_assets/products/UWC-05.jpg", name: "UWC-05 Tilt & Turn Insulation UPVC Window", cat: "UPVC Windows" }},
+  {{ img: "catalog_assets/products/GLZ-03.jpg", name: "GLZ-03 High-Rise ACP Cladding Facade", cat: "Curtain Glazing" }},
+  {{ img: "catalog_assets/products/RLS-03.jpg", name: "RLS-03 Frameless Spigot Glass Balustrade", cat: "Glass Railings" }},
+  {{ img: "catalog_assets/products/STF-05.jpg", name: "STF-05 Custom Stainless Steel Spiral Staircase", cat: "SS Railings & Stairs" }},
+  {{ img: "catalog_assets/products/ALD-04.jpg", name: "ALD-04 Slimline Folding Sliding Glass Door", cat: "Aluminium Doors" }}
+];
+
+let currentBgIdx = 0;
+let isLayerAActive = true;
+const transitionStyles = ['zoom-fade', 'horizontal-slide', 'blur-reveal', 'vertical-drop', 'perspective-3d'];
+
+function initBgSlideshow() {{
+  const layerA = document.getElementById('bg-slide-a');
+  const layerB = document.getElementById('bg-slide-b');
+  const ticker = document.getElementById('bg-slide-ticker');
+  if (!layerA || !layerB) return;
+
+  // Set initial image
+  layerA.style.backgroundImage = `url('${{bgProductSlides[0].img}}')`;
+  if (ticker) {{
+    ticker.innerHTML = `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider mr-1.5 border border-emerald-500/30">${{bgProductSlides[0].cat}}</span> 📸 Showcase: <span class="text-amber-300 font-bold">${{bgProductSlides[0].name}}</span>`;
+  }}
+
+  setInterval(() => {{
+    currentBgIdx = (currentBgIdx + 1) % bgProductSlides.length;
+    const slide = bgProductSlides[currentBgIdx];
+    const effect = transitionStyles[currentBgIdx % transitionStyles.length];
+
+    const currentLayer = isLayerAActive ? layerA : layerB;
+    const nextLayer = isLayerAActive ? layerB : layerA;
+
+    // Load image onto inactive layer
+    nextLayer.style.backgroundImage = `url('${{slide.img}}')`;
+
+    if (effect === 'zoom-fade') {{
+      nextLayer.style.transform = 'scale(1.12)';
+      nextLayer.style.filter = 'brightness(1.1)';
+      setTimeout(() => {{
+        nextLayer.style.transform = 'scale(1.0)';
+        nextLayer.style.filter = 'brightness(1.0)';
+        nextLayer.style.opacity = '1';
+        currentLayer.style.opacity = '0';
+      }}, 50);
+    }} else if (effect === 'horizontal-slide') {{
+      nextLayer.style.transform = 'translateX(50px)';
+      setTimeout(() => {{
+        nextLayer.style.transform = 'translateX(0px)';
+        nextLayer.style.opacity = '1';
+        currentLayer.style.opacity = '0';
+      }}, 50);
+    }} else if (effect === 'blur-reveal') {{
+      nextLayer.style.filter = 'blur(12px) contrast(1.2)';
+      setTimeout(() => {{
+        nextLayer.style.filter = 'blur(0px) contrast(1.0)';
+        nextLayer.style.opacity = '1';
+        currentLayer.style.opacity = '0';
+      }}, 50);
+    }} else if (effect === 'vertical-drop') {{
+      nextLayer.style.transform = 'translateY(-30px)';
+      setTimeout(() => {{
+        nextLayer.style.transform = 'translateY(0px)';
+        nextLayer.style.opacity = '1';
+        currentLayer.style.opacity = '0';
+      }}, 50);
+    }} else {{ // perspective-3d
+      nextLayer.style.transform = 'scale(0.94) rotate(-0.8deg)';
+      setTimeout(() => {{
+        nextLayer.style.transform = 'scale(1.0) rotate(0deg)';
+        nextLayer.style.opacity = '1';
+        currentLayer.style.opacity = '0';
+      }}, 50);
+    }}
+
+    if (ticker) {{
+      ticker.innerHTML = `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider mr-1.5 border border-emerald-500/30">${{slide.cat}}</span> 📸 Showcase: <span class="text-amber-300 font-bold">${{slide.name}}</span>`;
+    }}
+
+    isLayerAActive = !isLayerAActive;
+  }}, 2000); // 2 seconds auto-slide
 }}
 
 /* ==================== INITIALIZATION ==================== */
 document.addEventListener('DOMContentLoaded', () => {{
+  initBgSlideshow();
+  renderAutoMarquee();
   renderRealProjects();
+  renderCatalogCategoryPills();
   renderCatalog();
 }});
 </script>
@@ -2280,15 +2879,15 @@ document.addEventListener('DOMContentLoaded', () => {{
 </html>
 """
 
-# Write index.html at root
+# Write root index.html
 index_path = ROOT / "index.html"
 index_path.write_text(html_content, encoding="utf-8")
 print(f"Successfully generated root website: {index_path} ({len(html_content)} bytes)")
 
-# Write catalog.html inside catalog/
+# Write catalog/catalog.html
 catalog_html_path = CATALOG_DIR / "catalog.html"
-catalog_html_content = html_content.replace('catalog_assets/', '../catalog_assets/')
+catalog_html_content = html_content.replace('catalog_assets/', '../catalog_assets/').replace('uploads/', '../uploads/')
 catalog_html_path.write_text(catalog_html_content, encoding="utf-8")
 print(f"Successfully generated catalog version: {catalog_html_path}")
 
-print("Master Website & Catalog Build Complete!")
+print("Master Portal with Ultra-Premium AI Chatbot execution complete!")
