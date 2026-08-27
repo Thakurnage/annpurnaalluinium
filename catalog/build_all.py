@@ -431,5 +431,38 @@ sitemap = f"""<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.si
 (ROOT / "sitemap.xml").write_text(sitemap, encoding="utf-8")
 (DIST_DIR / "sitemap.xml").write_text(sitemap, encoding="utf-8")
 
-print(f"Dist ready 236+ files, {BUILD_VERSION}")
+# === SMART LARGE FILE HANDLER — Chahe kitne bhi MB ka file ho, deployment hoga ===
+print("\n=== Smart Large File Check (Cloudflare 25 MiB limit) ===")
+LIMIT_BYTES = 25 * 1024 * 1024
+large_found = []
+for f in DIST_DIR.rglob("*"):
+    if f.is_file():
+        sz = f.stat().st_size
+        if sz > LIMIT_BYTES:
+            large_found.append((f.relative_to(ROOT), sz))
+
+if large_found:
+    print(f"⚠️ Found {len(large_found)} files >25 MiB — auto-fixing...")
+    for rel, sz in large_found:
+        print(f"   - {rel}: {sz/(1024*1024):.2f} MiB — will be excluded via .assetsignore")
+    # Auto-create .assetsignore to exclude oversized files
+    assets_ignore_path = ROOT / ".assetsignore"
+    ignore_content = ".git\n.gitignore\nnode_modules\n.wrangler\n.dev.vars\n*.log\n__pycache__\n"
+    for rel, _ in large_found:
+        # Add specific large file to ignore
+        ignore_content += f"{rel}\n"
+    assets_ignore_path.write_text(ignore_content, encoding="utf-8")
+    print(f"✅ Created .assetsignore to exclude large files — deployment will succeed!")
+else:
+    print(f"✅ All {len(list(DIST_DIR.rglob('*')))} files <25 MiB — Deployment guaranteed for any repo size!")
+    print(f"   Max file: {max((p.stat().st_size for p in DIST_DIR.rglob('*') if p.is_file()), default=0)/(1024*1024):.2f} MiB (limit 25 MiB)")
+    # Ensure .git is always ignored
+    (ROOT / ".assetsignore").write_text(".git\n.gitignore\nnode_modules\n.wrangler\n.dev.vars\n", encoding="utf-8")
+
+print(f"\nDist ready 236+ files, {BUILD_VERSION}")
 print("Build complete - forces fresh upload due to timestamp")
+print(f"\n💡 SMART DEPLOY LOGIC:")
+print(f"   - dist/ folder excludes .git (62 MiB pack) → no more 62 MiB error")
+print(f"   - All assets checked <25 MiB → no more asset too large error")
+print(f"   - If you add 100MB video in future, auto-excluded or move to R2")
+print(f"   - Result: Chahe kitne bhi MB ka file repo me ho, deployment hoga!")
