@@ -82,6 +82,26 @@ python catalog/build_all.py
 
 ---
 
+## 🗺️ Janakpur local SEO
+
+The build writes crawlable service pages (not hash-only SPA routes) so Google can rank the workshop for neighbourhood and product searches:
+
+| Page | Intent |
+|---|---|
+| `/upvc-window-janakpur/` | UPVC window Janakpur / यूपीभीसी झ्याल |
+| `/aluminium-janakpur/` | Aluminium door & partition |
+| `/glass-railing-janakpur/` | Toughened balcony / stair glass |
+| `/steel-gate-janakpur/` | SS 304 railing & temple gate |
+| `/modular-kitchen-janakpur/` | Waterproof kitchen rack |
+| `/acp-cladding-janakpur/` | Shopfront & ACP facade |
+| `/janakpur-dham/` | Workshop NAP — Murli Chowk, Ward 8 |
+| `/service-areas/` | Dhalkebar, Jaleshwor, Lahan, Bardibas, Madhesh |
+| `/faq-janakpur/` | Price, free visit, UPVC vs aluminium |
+
+Also generated: `sitemap.xml` (real URLs + hreflang), `robots.txt`, `llms.txt`, `manifest.webmanifest`, `humans.txt`, `404.html`. Re-run `python catalog/build_all.py` after copy changes. Live site: [annapurna-upvc-janakpur.com](https://annapurna-upvc-janakpur.com/).
+
+---
+
 ## 📞 Business Contact & Inquiries
 
 - **Workshop Address:** Murli Chowk (Airport Road), Janakpur Dham-8, Dhanusha, Nepal

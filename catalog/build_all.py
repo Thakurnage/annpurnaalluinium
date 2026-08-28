@@ -40,14 +40,20 @@ SHOP = {
     "whatsapp": "9779817658719",
     "address": "Janakpur Dham-8, Murli Chowk (Airport Road), Dhanusha, Madhesh Province, Nepal",
     "address_short": "Murli Chowk (Airport Road), Janakpur Dham-8, Dhanusha",
-    "gmaps_url": "https://maps.google.com/?q=Murli+Chowk+Airport+Road+Janakpur+Nepal",
+    "gmaps_url": "https://maps.google.com/?q=Murli+Chowk+Airport+Road+Janakpur+Dham+Nepal",
     "hours": "Sunday – Saturday: 9:00 AM – 7:00 PM (All 7 Days Open)",
     "province": "Madhesh Province",
     "country": "Nepal",
+    "phone2": "+977 9817667115",
+    "pan": "616619779",
+    "geo_lat": 26.7288,
+    "geo_lng": 85.9254,
     "service_areas": [
         "Janakpur Dham", "Dhanusha", "Mahottari (Jaleshwor)", "Sarlahi (Malangwa)",
         "Siraha (Lahan)", "Sindhuli (Bardibas)", "Udayapur (Gaighat)", "Rajbiraj",
-        "Birgunj", "Hetauda", "Kathmandu", "Nepal-Wide Supply & Installation"
+        "Birgunj", "Hetauda", "Kathmandu", "Nepal-Wide Supply & Installation",
+        "Murli Chowk", "Airport Road Janakpur", "Ramanand Chowk", "Bhanu Chowk",
+        "Pidari Chowk", "Zero Mile Janakpur", "Dhalkebar", "Dhanushadham",
     ]
 }
 
@@ -624,15 +630,25 @@ schema_local_business = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     "name": SHOP["legal_name"],
-    "alternateName": "Annapurna Aluminium Janakpur",
+    "alternateName": [
+        "Annapurna Aluminium Janakpur",
+        "Annapurna UPVC Janakpur",
+        "अन्नपूर्णा आल्मुनियम जनकपुरधाम",
+    ],
     "image": [
         "https://annapurna-upvc-janakpur.com/catalog_assets/real_projects/facade_commercial_plaza.jpg",
-        "https://annapurna-upvc-janakpur.com/catalog_assets/real_projects/gate_navdurga_mandir.jpg"
+        "https://annapurna-upvc-janakpur.com/catalog_assets/real_projects/gate_navdurga_mandir.jpg",
+        "https://annapurna-upvc-janakpur.com/catalog_assets/board_final.png",
     ],
+    "logo": "https://annapurna-upvc-janakpur.com/catalog_assets/board_final.png",
     "@id": "https://annapurna-upvc-janakpur.com/#business",
     "url": "https://annapurna-upvc-janakpur.com/",
-    "telephone": SHOP["phone1"],
+    "telephone": [SHOP["phone1"], SHOP["phone2"]],
     "priceRange": "$$",
+    "currenciesAccepted": "NPR",
+    "paymentAccepted": "Cash, eSewa, Khalti, Bank Transfer",
+    "hasMap": SHOP["gmaps_url"],
+    "knowsLanguage": ["ne", "en", "mai"],
     "address": {
         "@type": "PostalAddress",
         "streetAddress": "Murli Chowk (Airport Road), Janakpur Dham-8",
@@ -644,7 +660,7 @@ schema_local_business = {
     "geo": {
         "@type": "GeoCoordinates",
         "latitude": 26.7288,
-        "longitude": 85.9248
+        "longitude": 85.9254
     },
     "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -656,6 +672,14 @@ schema_local_business = {
         "@type": "Person",
         "name": SHOP["owner_name"],
         "jobTitle": "Founder & Master Architectural Fabricator"
+    },
+    "identifier": {"@type": "PropertyValue", "name": "PAN", "value": SHOP["pan"]},
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": SHOP["phone1"],
+        "contactType": "sales",
+        "availableLanguage": ["Nepali", "English", "Maithili"],
+        "areaServed": "NP"
     },
     "areaServed": SHOP["service_areas"],
     "hasOfferCatalog": {
@@ -729,6 +753,30 @@ schema_faq = {
             "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "We use genuine SS 304 marine grade stainless steel with high chromium-nickel content, mirror buffed finish, and argon TIG welding to guarantee lifetime shine without rusting or tarnishing under monsoon rains."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Do you give free site visit in every ward of Janakpur Dham?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Our engineer visits Murli Chowk, Airport Road, Janaki Mandir / Janak Chowk, Ramanand Chowk, Bhanu Chowk, Pidari Chowk, Zero Mile, Mills Area, railway station road and all wards of Janakpur Sub-Metropolitan City for free laser measurement. WhatsApp +977 9817658719."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "जनकपुरधाममा झ्याल ढोका कहाँ बनाउने?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "अन्नपूर्णा आल्मुनियम तथा यूपीभीसी उद्योग, मुरली चोक (एयरपोर्ट रोड), जनकपुरधाम-८, धनुषा। यूपीभीसी झ्याल, आल्मुनियम ढोका, ग्लास रेलिङ, एसएस ३०४ मन्दिर गेट र मोड्युलर किचन र्याक कारखाना मूल्यमा। ह्वाट्सएप +977 9817658719।"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Do you cover Dhalkebar, Jaleshwor, Lahan and Bardibas from Janakpur?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Free site measurement for genuine building work across Dhanusha (Dhalkebar, Dhanushadham), Mahottari (Jaleshwor, Gaushala, Bardibas), Siraha (Lahan) and Sarlahi (Malangwa). Frames are fabricated in Janakpur Dham and installed on your site."
             }
         }
     ]
@@ -1160,8 +1208,8 @@ html_content = f"""<!DOCTYPE html>
 <!-- GEO LOCAL SEO -->
 <meta name="geo.region" content="NP-P2">
 <meta name="geo.placename" content="Janakpur Dham, Dhanusha, Madhesh Province, Nepal">
-<meta name="geo.position" content="26.7288;85.9248">
-<meta name="ICBM" content="26.7288, 85.9248">
+<meta name="geo.position" content="26.7288;85.9254">
+<meta name="ICBM" content="26.7288, 85.9254">
 
 <!-- CANONICAL URL -->
 <link rel="canonical" href="https://annapurna-upvc-janakpur.com/">
@@ -3507,6 +3555,11 @@ document.addEventListener('DOMContentLoaded', () => {{
 </html>
 """
 
+# Janakpur-area local SEO: keyword-first title, crawlable hub, extra FAQs
+from seo_janakpur import enhance_homepage, generate_local_seo  # noqa: E402
+
+html_content = enhance_homepage(html_content, SHOP)
+
 # Write root index.html
 index_path = ROOT / "index.html"
 index_path.write_text(html_content, encoding="utf-8")
@@ -3514,7 +3567,7 @@ print(f"Successfully generated root website: {index_path} ({len(html_content)} b
 
 # Write catalog/catalog.html
 catalog_html_path = CATALOG_DIR / "catalog.html"
-catalog_html_content = html_content.replace('catalog_assets/', '../catalog_assets/').replace('uploads/', '../uploads/')
+catalog_html_content = html_content.replace("catalog_assets/", "../catalog_assets/").replace("uploads/", "../uploads/")
 catalog_html_path.write_text(catalog_html_content, encoding="utf-8")
 print(f"Successfully generated catalog version: {catalog_html_path}")
 
@@ -3543,5 +3596,6 @@ def sync_dist_html() -> None:
     print(f"Synced deployed dist/ assets: {DIST_DIR}")
 
 sync_dist_html()
+generate_local_seo(ROOT, DIST_DIR, SHOP)
 
 print("Master Portal with Ultra-Premium AI Chatbot execution complete!")

@@ -21,12 +21,12 @@ Assets directory "/opt/buildhome/repo" (".")
   "observability": {"enabled": True},
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "404-page"
   }
 }
 ```
-- `directory: "./dist"` — clean folder with only `index.html` + `catalog_assets/` (NO .git)
-- `not_found_handling: "single-page-application"` — SPA routing for landing page
+- `directory: "./dist"` — clean folder with only `index.html` + `catalog_assets/` + Janakpur SEO landers (NO .git)
+- `not_found_handling: "404-page"` — unknown URLs return `404.html` (avoids soft-404 on the homepage SPA). Real landers like `/upvc-window-janakpur/` are static files.
 
 ### 2. Clean `dist/` Folder Generation
 `catalog/build_all.py` now auto-creates `dist/`:
