@@ -146,7 +146,7 @@ UPVC window price Nepal me competitive — aaj hi call karein free quote ke liye
 ## 🔟 Photo Strategy (GMB)
 
 - **Cover photo:** Shop front (Murli Chowk, Airport Road) — daylight, clean
-- **Logo:** Annapurna Aluminium & UPVC board (board_of_shop.jpg wala design)
+- **Logo:** Annapurna Aluminium & UPVC board — clean file ready: `catalog_assets/board_final.png` (uploads/board_of_shop.jpg se professionally extract kiya gaya — square crop nahi, poora board hi logo hai)
 - **15–30 photos:** Products ki real photos (catalog wali 102 photos me se best)
 - **Har photo caption:** Location keyword — jaise "UPVC window installed in Janakpur Dham"
 - **Videos:** 30-sec install video (mobile se bhi chalega)

@@ -759,6 +759,7 @@ schema_breadcrumbs = {
 
 # Construct Ultra-Professional Landing Page HTML String
 html_content = f"""<!DOCTYPE html>
+<!-- BUILD v3.4-premium-hero | 2026-08-28 | Premium hero redesign · cinematic crossfade background showcase · managed visibility scrim · synced auto-slide progress | Annapurna Aluminium & UPVC Udhyog -->
 <html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
@@ -772,6 +773,12 @@ html_content = f"""<!DOCTYPE html>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="googlebot" content="index, follow">
 <meta name="theme-color" content="#030712">
+
+<!-- FAVICON · Founder's professional portrait with brand gradient ring (v3.4) -->
+<link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="catalog_assets/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="catalog_assets/favicon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="catalog_assets/apple-touch-icon.png">
 
 <!-- GEO LOCAL SEO -->
 <meta name="geo.region" content="NP-P2">
@@ -853,10 +860,11 @@ body {{
 
 /* Ultra-Luxury Glassmorphism */
 .glass-panel {{
-  background: rgba(11, 19, 43, 0.78);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 19, 43, 0.52);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }}
 
 .glass-nav {{
@@ -867,10 +875,11 @@ body {{
 }}
 
 .glass-card {{
-  background: linear-gradient(145deg, rgba(17, 29, 66, 0.65) 0%, rgba(7, 12, 28, 0.88) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, rgba(17, 29, 66, 0.44) 0%, rgba(7, 12, 28, 0.66) 100%);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }}
 
@@ -880,70 +889,82 @@ body {{
   box-shadow: 0 20px 40px -12px rgba(16, 185, 129, 0.2);
 }}
 
-/* BACKGROUND PRODUCT SHOWCASE SLIDESHOW TRANSITIONS & PROGRESS BAR */
-.bg-slide-layer {{
+/* ===== v3.3 · RIGHT-EDGE PER-ROW EXPANDING SOCIAL RAIL ===== */
+.social-dock{{position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:45;display:flex;flex-direction:column;align-items:flex-end;gap:9px;padding:10px 0}}
+.social-dock-row{{display:flex;align-items:center;text-decoration:none;background:linear-gradient(155deg,rgba(13,22,48,.94),rgba(3,7,18,.97));backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border:1px solid rgba(255,255,255,.14);border-radius:15px;padding:6px;box-shadow:0 12px 30px -12px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.07);transform:translateX(21px);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .3s;will-change:transform;position:relative}}
+.social-dock-row:hover,.social-dock-row:focus-visible{{transform:translateX(0);border-color:rgba(255,255,255,.3);box-shadow:-14px 14px 34px -12px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.12)}}
+.social-dock-label{{font-size:12px;font-weight:700;white-space:nowrap;color:#e2e8f0;max-width:0;opacity:0;overflow:hidden;transition:max-width .45s cubic-bezier(.16,1,.3,1),opacity .28s ease .07s,padding .45s cubic-bezier(.16,1,.3,1)}}
+.social-dock-row:hover .social-dock-label,.social-dock-row:focus-visible .social-dock-label{{max-width:230px;opacity:1;padding-left:13px;padding-right:3px}}
+.social-dock-icon{{flex:0 0 auto;width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.12);transition:transform .32s cubic-bezier(.16,1,.3,1),background .3s,box-shadow .3s}}
+.social-dock-row:hover .social-dock-icon{{transform:scale(1.07)}}
+.social-dock-row::after{{content:"";position:absolute;left:2px;top:50%;transform:translateY(-50%);width:3px;height:26px;border-radius:3px;background:linear-gradient(to bottom,#10b981,#38bdf8);opacity:.7;box-shadow:0 0 10px rgba(16,185,129,.55)}}
+.social-dock-row:hover::after{{opacity:0}}
+.social-dock-call{{margin-top:5px}}
+@media(max-width:640px){{.social-dock{{gap:7px}}.social-dock-row{{transform:translateX(25px);padding:5px}}.social-dock-icon{{width:38px;height:38px;border-radius:10px}}}}
+
+/* ==================== PREMIUM HERO BACKGROUND SHOWCASE ENGINE (v3.4) ==================== */
+/* Smooth cinematic crossfade — product photos stay visible while the text zone keeps full contrast */
+.hero-slide-layer {{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}}
+.hero-slide-layer.is-active {{
+  opacity: 1;
+}}
+
+/* Slow Ken Burns breathing on the photo layer only (the content layer stays perfectly still) */
+.hero-slide-img {{
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform, filter;
+  transform: scale(1.04);
+  will-change: transform;
+}}
+.hero-slide-img.play {{
+  animation: heroKenBurns 5.5s linear forwards;
+}}
+@keyframes heroKenBurns {{
+  from {{ transform: scale(1.04); }}
+  to   {{ transform: scale(1.12); }}
 }}
 
-/* Transition Effect 1: Zoom & Fade (Ken Burns) */
-.effect-zoom-fade {{
-  transform: scale(1.08);
-  filter: brightness(0.9) contrast(1.1);
+/* Auto-slide progress bar (kept in sync with the 4.5s slide interval in JS) */
+.hero-progress-fill {{
+  animation: heroProgressFill 4.5s linear forwards;
 }}
-.effect-zoom-fade.active {{
-  transform: scale(1.0);
-  filter: brightness(1.0) contrast(1.0);
-}}
-
-/* Transition Effect 2: Horizontal Slide Glide */
-.effect-horizontal-slide {{
-  transform: translateX(60px) scale(1.03);
-}}
-.effect-horizontal-slide.active {{
-  transform: translateX(0px) scale(1.0);
+@keyframes heroProgressFill {{
+  from {{ width: 0%; }}
+  to   {{ width: 100%; }}
 }}
 
-/* Transition Effect 3: Cinematic Blur Reveal */
-.effect-cinematic-blur {{
-  filter: blur(16px) brightness(1.3);
-  transform: scale(1.05);
+/* Premium CTA shine sweep */
+.btn-shine {{
+  position: relative;
+  overflow: hidden;
 }}
-.effect-cinematic-blur.active {{
-  filter: blur(0px) brightness(1.0);
-  transform: scale(1.0);
+.btn-shine::after {{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -70%;
+  width: 45%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
 }}
-
-/* Transition Effect 4: Vertical Drop Smooth */
-.effect-vertical-drop {{
-  transform: translateY(-40px) scale(1.02);
-}}
-.effect-vertical-drop.active {{
-  transform: translateY(0px) scale(1.0);
-}}
-
-/* Transition Effect 5: 3D Perspective Flip */
-.effect-perspective-3d {{
-  transform: scale(0.92) rotate(-1.5deg);
-  filter: brightness(0.8);
-}}
-.effect-perspective-3d.active {{
-  transform: scale(1.0) rotate(0deg);
-  filter: brightness(1.0);
+.btn-shine:hover::after {{
+  left: 130%;
 }}
 
-/* Glowing Slide Progress Bar Animation */
-@keyframes slideProgressAnim {{
-  0% {{ width: 0%; opacity: 0.8; }}
-  90% {{ opacity: 1; }}
-  100% {{ width: 100%; opacity: 0.2; }}
-}}
-.slide-progress-active {{
-  animation: slideProgressAnim 2s linear infinite;
+@media (prefers-reduced-motion: reduce) {{
+  .hero-slide-img.play {{ animation: none; }}
+  .hero-progress-fill {{ animation: none; width: 100%; }}
 }}
 
 .glow-orb {{
@@ -1164,16 +1185,26 @@ body {{
     <!-- Brand Logo -->
     <a href="#" class="flex items-center gap-2.5 sm:gap-3 group" aria-label="Annapurna Aluminium Homepage">
       <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 via-cyan-500 to-amber-500 p-0.5 shadow-lg group-hover:scale-105 transition-transform flex-shrink-0">
-        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-black text-amber-400 text-lg">
-          🏢
+        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2.4" y="3" width="19.2" height="18" rx="2.8" fill="#fff"/>
+            <path d="M2.4 5.8c0-1.55 1.25-2.8 2.8-2.8h13.6c1.55 0 2.8 1.25 2.8 2.8v2.6H2.4V5.8Z" fill="#E52427"/>
+            <path d="M2.4 15.6h19.2v2.6c0 1.55-1.25 2.8-2.8 2.8H5.2c-1.55 0-2.8-1.25-2.8-2.8v-2.6Z" fill="#3A519A"/>
+            <rect x="6.3" y="9.3" width="11.4" height="4.6" rx="0.8" stroke="#DC2829" stroke-width="1.5"/>
+            <path d="M12 9.3v4.6" stroke="#3A519A" stroke-width="1.2"/>
+            <path d="M6.3 11.6h11.4" stroke="#3A519A" stroke-width="0.9"/>
+          </svg>
         </div>
       </div>
       <div>
-        <div class="font-extrabold font-display text-base sm:text-xl text-white tracking-tight flex items-center gap-1.5">
-          <span>ANNAPURNA</span>
+        <div class="font-extrabold font-display text-base sm:text-xl tracking-tight flex items-center gap-1.5">
+          <span style="background:linear-gradient(90deg,#fde68a,#fbbf24,#34d399);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">ANNAPURNA</span>
           <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-semibold">ALUMINIUM &amp; UPVC</span>
         </div>
-        <p class="text-[10px] sm:text-[11px] text-amber-400/90 font-medium tracking-wide truncate max-w-[200px] sm:max-w-none" data-i18n="nav_subtitle">Janakpur Dham · Windows, Doors, Glass &amp; Steel Works</p>
+        <p class="text-[10px] sm:text-[11px] text-amber-400/90 font-medium tracking-wide truncate max-w-[200px] sm:max-w-none flex items-center gap-1" data-i18n="nav_subtitle">
+          <svg class="w-3 h-3 flex-shrink-0 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Janakpur Dham · Windows, Doors, Glass &amp; Steel Works</span>
+        </p>
       </div>
     </a>
 
@@ -1260,91 +1291,124 @@ body {{
 
 <main>
 
-<!-- HERO SECTION WITH BACKGROUND AUTOMATIC 2s PRODUCT SLIDESHOW CAROUSEL -->
-<section class="relative pt-16 pb-12 sm:pt-24 sm:pb-20 px-4 overflow-hidden min-h-[85vh] flex items-center justify-center">
+<!-- HERO SECTION · v3.4 PREMIUM SHOWCASE (Cinematic Crossfade Background Engine) -->
+<section class="relative pt-20 pb-16 sm:pt-28 sm:pb-24 px-4 overflow-hidden min-h-[92vh] flex items-center justify-center">
   
-  <!-- HERO BACKGROUND AUTOMATIC 2s SLIDESHOW CAROUSEL WITH MULTIPLE TRANSITIONS -->
-  <div id="hero-bg-carousel" class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-    <!-- Background Slide Layer A -->
-    <div id="bg-slide-a" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 transform scale-100 opacity-100"></div>
+  <!-- HERO BACKGROUND · 2-LAYER CINEMATIC CROSSFADE SHOWCASE -->
+  <div id="hero-bg-carousel" class="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <!-- Background Slide Layer A (photo + slow Ken Burns) -->
+    <div id="bg-slide-a" class="hero-slide-layer is-active"><div class="hero-slide-img play"></div></div>
     <!-- Background Slide Layer B -->
-    <div id="bg-slide-b" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 transform scale-100 opacity-0"></div>
-    
-    <!-- Dark Sapphire Overlay for Contrast and 100% Readability -->
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-950/92 to-slate-950"></div>
-    <div class="absolute inset-0 bg-slate-950/50 backdrop-blur-[1.5px]"></div>
-    <!-- High-Tech Blueprint Grid Overlay -->
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#0f172a25_1px,transparent_1px),linear-gradient(to_bottom,#0f172a25_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-40"></div>
+    <div id="bg-slide-b" class="hero-slide-layer"><div class="hero-slide-img"></div></div>
+
+    <!-- Managed Visibility Stack: workshop photos stay visible · text zone gets cinematic focus -->
+    <div class="absolute inset-0 bg-slate-950/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-950/20 to-slate-950"></div>
+    <div class="absolute inset-0" style="background:radial-gradient(ellipse 66% 52% at 50% 40%, rgba(2,6,17,0.68) 0%, rgba(2,6,17,0.30) 52%, rgba(2,6,17,0) 78%)"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#0f172a22_1px,transparent_1px),linear-gradient(to_bottom,#0f172a22_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-30"></div>
   </div>
 
   <!-- Ambient Glow Orbs -->
-  <div class="glow-orb w-[500px] h-[500px] bg-emerald-500/30 -top-20 -left-20 pointer-events-none"></div>
-  <div class="glow-orb w-[450px] h-[450px] bg-amber-500/20 top-1/2 -right-20 pointer-events-none"></div>
+  <div class="glow-orb w-[500px] h-[500px] bg-emerald-500/25 -top-24 -left-24 pointer-events-none"></div>
+  <div class="glow-orb w-[450px] h-[450px] bg-amber-500/15 top-1/3 -right-24 pointer-events-none"></div>
 
-  <div class="max-w-7xl mx-auto relative z-10 text-center">
-    
-    <!-- Dynamic Background Showcase Slide Ticker Pill -->
-    <div class="inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-slate-950/90 border border-cyan-500/50 text-cyan-300 text-xs sm:text-sm font-semibold mb-4 shadow-2xl backdrop-blur-md">
-      <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
-      <span id="bg-slide-ticker" class="font-mono text-xs sm:text-sm text-cyan-300">📸 Live Catalog Showcase: ALW-01 Panoramic Corner Window</span>
-      <span class="text-[10px] bg-cyan-500/20 px-2 py-0.5 rounded-md text-cyan-200 border border-cyan-500/30 font-bold hidden sm:inline-block">2s Auto-Slide</span>
+  <div class="relative z-10 w-full max-w-5xl mx-auto text-center">
+
+    <!-- Live Showcase Ticker · with synced auto-slide progress bar -->
+    <div class="inline-flex flex-col max-w-full mb-8 rounded-2xl border border-cyan-400/25 bg-slate-950/70 backdrop-blur-xl overflow-hidden shadow-[0_18px_50px_-12px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.06)]">
+      <div class="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-5 py-2.5">
+        <span class="relative flex w-2.5 h-2.5 flex-shrink-0">
+          <span class="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-60 animate-ping"></span>
+          <span class="relative inline-flex w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+        </span>
+        <span class="hidden sm:inline-block text-[10px] font-extrabold uppercase tracking-[0.22em] text-amber-300/90">Live Showcase</span>
+        <span id="bg-slide-ticker" class="font-mono text-[11px] sm:text-xs text-cyan-100 truncate">📸 ALW-01 Heavy Duty Sliding Window System</span>
+        <span id="bg-slide-counter" class="font-mono text-[10px] sm:text-[11px] font-bold text-amber-300/90 tabular-nums flex-shrink-0">01 / 17</span>
+      </div>
+      <div class="h-[3px] w-full bg-white/5">
+        <div id="bg-slide-progress" class="hero-progress-fill h-full w-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-amber-300"></div>
+      </div>
     </div>
 
     <!-- Top Verified Pill -->
-    <div class="block max-w-fit mx-auto items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/40 text-emerald-400 text-xs sm:text-sm font-semibold mb-6 shadow-xl backdrop-blur-md">
-      <span class="text-base">👑</span>
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-300/30 bg-slate-950/65 backdrop-blur-md text-amber-200 text-xs sm:text-sm font-semibold mb-7 shadow-lg">
+      <svg class="w-4 h-4 text-amber-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8l4.5 3.5L12 4l5.5 7.5L22 8l-2 10a2 2 0 0 1-2 1.6H6a2 2 0 0 1-2-1.6Z"/></svg>
       <span data-i18n="hero_badge">#1 Certified UPVC, Aluminium &amp; SS Fabrication Center · Janakpur Dham, Nepal</span>
     </div>
 
     <!-- Main Title -->
-    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-display tracking-tight text-white mb-6 leading-tight">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-display tracking-tight text-white mb-6 leading-[1.06] drop-shadow-[0_4px_28px_rgba(0,0,0,0.65)]">
       <span data-i18n="hero_h1_1">World-Class</span> <br class="hidden sm:inline">
-      <span class="bg-gradient-to-r from-emerald-400 via-cyan-300 to-amber-300 bg-clip-text text-transparent" data-i18n="hero_h1_2">UPVC, Aluminium &amp; Glass</span> <br class="hidden sm:inline">
+      <span class="bg-gradient-to-r from-emerald-300 via-cyan-300 to-amber-300 bg-clip-text text-transparent" data-i18n="hero_h1_2">UPVC, Aluminium &amp; Glass</span> <br class="hidden sm:inline">
       <span data-i18n="hero_h1_3">Precision Craftsmanship</span>
     </h1>
 
     <!-- Subtitle -->
-    <p class="max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed mb-8" data-i18n="hero_desc">
+    <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-slate-200/90 leading-relaxed mb-10 [text-shadow:0_1px_14px_rgba(0,0,0,0.85)]" data-i18n="hero_desc">
       102+ Custom Designs manufactured at our Janakpur workshop: German-profile UPVC windows, modern aluminium doors &amp; partitions, SS 304 temple gates, balustrades, modular kitchen racks, and commercial ACP glass facades.
     </p>
 
-    <!-- Action Buttons -->
-    <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10">
-      <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna%20Aluminium,%20I%20want%20to%20consult%20on%20WhatsApp%20for%20a%20project." target="_blank" rel="noopener" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-sm sm:text-base shadow-xl shadow-emerald-500/25 transition-all hover:scale-105 flex items-center gap-2">
-        <span class="text-lg">💬</span> <span data-i18n="hero_btn_whatsapp">WhatsApp Consultation (+977 9817658719)</span>
+    <!-- Action Buttons · Premium -->
+    <div class="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mb-12">
+      <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna%20Aluminium,%20I%20want%20to%20consult%20on%20WhatsApp%20for%20a%20project." target="_blank" rel="noopener" class="btn-shine inline-flex items-center gap-2.5 px-7 sm:px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 text-white font-extrabold text-sm sm:text-base shadow-[0_16px_40px_-10px_rgba(16,185,129,0.55),inset_0_1px_0_rgba(255,255,255,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_50px_-10px_rgba(16,185,129,0.7)]">
+        <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+          <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.387.709.282 1.263.45 1.694.59.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </span>
+        <span data-i18n="hero_btn_whatsapp">WhatsApp Consultation (+977 9817658719)</span>
       </a>
 
-      <button onclick="toggleChatbot()" class="px-6 py-3.5 rounded-2xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 font-bold text-sm sm:text-base border border-cyan-500/30 transition-all hover:scale-105 flex items-center gap-2">
-        <span>🤖</span> <span>Ask AI Assistant</span>
+      <button onclick="toggleChatbot()" class="group inline-flex items-center gap-2.5 px-6 sm:px-7 py-4 rounded-2xl border border-cyan-400/30 bg-cyan-500/10 backdrop-blur-xl text-cyan-200 font-bold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300/60 hover:bg-cyan-500/20 hover:shadow-[0_18px_44px_-12px_rgba(34,211,238,0.45)]">
+        <span class="text-lg transition-transform duration-300 group-hover:scale-110">🤖</span>
+        <span>Ask AI Assistant</span>
       </button>
 
-      <a href="#catalog" class="px-6 py-3.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 text-white font-bold text-sm sm:text-base border border-white/10 transition-all hover:scale-105 flex items-center gap-2">
-        <span>🔥</span> <span data-i18n="hero_btn_catalog">Browse 102+ Catalog</span>
+      <a href="#catalog" class="group inline-flex items-center gap-2.5 px-6 sm:px-7 py-4 rounded-2xl border border-amber-300/30 bg-amber-400/10 backdrop-blur-xl text-amber-200 font-bold text-sm sm:text-base shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-300/60 hover:bg-amber-400/20 hover:shadow-[0_18px_44px_-12px_rgba(251,191,36,0.4)]">
+        <span class="text-lg transition-transform duration-300 group-hover:scale-110">🔥</span>
+        <span data-i18n="hero_btn_catalog">Browse 102+ Catalog</span>
       </a>
     </div>
 
-    <!-- Quick Stats Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-10">
-      <div class="glass-card p-4 rounded-2xl text-center">
-        <div class="text-2xl sm:text-3xl font-black font-display text-emerald-400">102+</div>
-        <div class="text-xs text-slate-400 font-medium mt-1" data-i18n="stat_designs">Unique Custom Designs</div>
+    <!-- Quick Stats · Premium Band -->
+    <div class="max-w-4xl mx-auto rounded-3xl border border-white/10 bg-white/10 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.9)] overflow-hidden grid grid-cols-2 md:grid-cols-4 gap-px backdrop-blur-2xl">
+      <div class="bg-slate-950/70 px-4 py-6 sm:py-7 text-center">
+        <div class="mx-auto mb-3 w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500/25 to-emerald-500/5 border border-emerald-400/30 flex items-center justify-center">
+          <svg class="w-4 h-4 text-emerald-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </div>
+        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-emerald-300 to-teal-300 bg-clip-text text-transparent">102+</div>
+        <div class="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400" data-i18n="stat_designs">Unique Custom Designs</div>
       </div>
-      <div class="glass-card p-4 rounded-2xl text-center">
-        <div class="text-2xl sm:text-3xl font-black font-display text-amber-400">40+</div>
-        <div class="text-xs text-slate-400 font-medium mt-1" data-i18n="stat_sites">Real Workshop Projects</div>
+      <div class="bg-slate-950/70 px-4 py-6 sm:py-7 text-center">
+        <div class="mx-auto mb-3 w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500/25 to-amber-500/5 border border-amber-400/30 flex items-center justify-center">
+          <svg class="w-4 h-4 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M9 10h.01M15 10h.01M9 13h.01M15 13h.01"/></svg>
+        </div>
+        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-amber-300 to-orange-300 bg-clip-text text-transparent">40+</div>
+        <div class="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400" data-i18n="stat_sites">Real Workshop Projects</div>
       </div>
-      <div class="glass-card p-4 rounded-2xl text-center">
-        <div class="text-2xl sm:text-3xl font-black font-display text-cyan-400">100%</div>
-        <div class="text-xs text-slate-400 font-medium mt-1" data-i18n="stat_quality">SS 304 Rust-Free Guarantee</div>
+      <div class="bg-slate-950/70 px-4 py-6 sm:py-7 text-center">
+        <div class="mx-auto mb-3 w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/25 to-cyan-500/5 border border-cyan-400/30 flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-cyan-300 to-sky-300 bg-clip-text text-transparent">100%</div>
+        <div class="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400" data-i18n="stat_quality">SS 304 Rust-Free Guarantee</div>
       </div>
-      <div class="glass-card p-4 rounded-2xl text-center">
-        <div class="text-2xl sm:text-3xl font-black font-display text-indigo-400">15+ Yrs</div>
-        <div class="text-xs text-slate-400 font-medium mt-1" data-i18n="stat_exp">Engineering Craftsmanship</div>
+      <div class="bg-slate-950/70 px-4 py-6 sm:py-7 text-center">
+        <div class="mx-auto mb-3 w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500/25 to-violet-500/5 border border-violet-400/30 flex items-center justify-center">
+          <svg class="w-4 h-4 text-violet-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>
+        </div>
+        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-violet-300 to-fuchsia-300 bg-clip-text text-transparent">15+ Yrs</div>
+        <div class="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400" data-i18n="stat_exp">Engineering Craftsmanship</div>
       </div>
     </div>
+
+    <!-- Scroll Cue -->
+    <a href="#projects" class="mt-12 inline-flex flex-col items-center gap-1.5 text-slate-400 hover:text-amber-300 transition-colors">
+      <span class="text-[10px] font-bold uppercase tracking-[0.2em]">Explore Real Projects</span>
+      <svg class="w-5 h-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </a>
 
   </div>
 </section>
+
 
 <!-- SECTION: AUTOMATIC INFINITE PRODUCT & PROJECT SLIDING CAROUSEL -->
 <section class="py-6 border-t border-b border-white/10 bg-slate-950/80 overflow-hidden relative z-10">
@@ -1670,12 +1734,27 @@ body {{
     <div class="glass-card p-8 rounded-3xl">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
         
-        <!-- Founder Photo -->
+        <!-- Founder Photo — v3.3 professional portrait with gold gradient glow frame -->
         <div class="relative group">
-          <img src="uploads/owner_image.jpg" alt="Prof. Nageshwar Thakur — Founder Annapurna Aluminium Janakpur" class="rounded-2xl w-full h-96 object-cover object-top border-2 border-emerald-500/30 shadow-2xl group-hover:scale-105 transition-transform duration-500" loading="lazy">
-          <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/90 backdrop-blur-md border border-white/10 shadow-lg">
-            <div class="font-bold text-white text-base">{SHOP['owner_name']}</div>
-            <div class="text-xs text-amber-400 font-medium" data-i18n="about_tag">Founder &amp; Chief Engineer</div>
+          <div class="absolute -inset-1 rounded-[1.4rem] bg-gradient-to-br from-amber-300 via-emerald-400 to-cyan-400 opacity-45 blur-lg group-hover:opacity-70 transition-opacity duration-500 pointer-events-none"></div>
+          <div class="relative rounded-2xl p-[2px] bg-gradient-to-br from-amber-300 via-amber-500 to-emerald-400 shadow-2xl">
+            <div class="relative rounded-[14px] overflow-hidden bg-slate-950">
+              <img src="uploads/owner_professional.jpg" alt="Prof. Nageshwar Thakur — Founder &amp; Master Fabricator, Annapurna Aluminium &amp; UPVC Udhyog, Janakpur Dham" class="w-full h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" width="892" height="1200">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent pointer-events-none"></div>
+
+              <!-- Verified Badge -->
+              <div class="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-cyan-400/45 shadow-lg">
+                <svg class="w-3.5 h-3.5 text-cyan-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.6l2.47 1.8 3.05-.03 .93 2.9 2.48 1.77-.97 2.9.97 2.9-2.48 1.77-.93 2.9-3.05-.03L12 22.4l-2.47-1.8-3.05.03-.93-2.9L3.07 15.96l.97-2.9-.97-2.9 2.48-1.77.93-2.9 3.05.03L12 1.6Zm-1.1 13.4l5.2-5.2-1.42-1.42-3.78 3.79-1.78-1.79L7.7 11.8l3.2 3.2Z"/></svg>
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-cyan-300">Verified</span>
+              </div>
+
+              <!-- Name Plate -->
+              <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/88 backdrop-blur-md border border-white/12 shadow-lg">
+                <div class="font-bold text-white text-base leading-tight">{SHOP['owner_name']}</div>
+                <div class="text-xs font-medium mt-0.5" style="background:linear-gradient(90deg,#fde68a,#fbbf24,#34d399);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent" data-i18n="about_tag">Founder &amp; Master Fabricator</div>
+                <div class="mt-1.5 inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-[10px] font-extrabold uppercase tracking-wider text-emerald-300">15+ Yrs</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1708,6 +1787,31 @@ body {{
 
         </div>
 
+      </div>
+    </div>
+
+    <!-- Workshop Board Showcase — authentic shop signage -->
+    <div class="mt-8 glass-card rounded-3xl overflow-hidden">
+      <div class="p-6 sm:p-7 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-blue-900 flex items-center justify-center shadow-lg flex-shrink-0">
+            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 7v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-3-5Z"/><path d="M3 7h18"/><path d="M16 11a4 4 0 0 1-8 0"/></svg>
+          </span>
+          <div>
+            <h3 class="font-bold text-white text-base sm:text-lg leading-tight" data-i18n="board_title">Our Workshop — Murli Chowk, Janakpur Dham-8</h3>
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5" data-i18n="board_sub">On the Airport Road · Open 9:00 AM – 7:00 PM, all 7 days</p>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=Murli+Chowk+Airport+Road+Janakpur+Nepal" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-bold hover:bg-cyan-500/25 transition-colors">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-i18n="board_directions">Get Directions</span>
+        </a>
+      </div>
+      <div class="px-4 sm:px-6 pb-5 sm:pb-6">
+        <div class="relative rounded-xl overflow-hidden border border-white/12 shadow-2xl ring-1 ring-white/10 bg-slate-950">
+          <img src="catalog_assets/board_final.png" alt="Annapurna Aluminium &amp; UPVC shop board — Janakpur Dham-8, Murli Chowk (Airport Road)" width="1169" height="220" loading="lazy" class="w-full h-auto block">
+        </div>
+        <p class="text-[11px] sm:text-xs text-slate-400 mt-3.5 leading-relaxed" data-i18n="board_note"><span class="text-slate-300">“यहाँ आल्मुनियम र UPVC को झ्याल, ढोका, पार्टिसन, किचन रैक तथा स्टील रेलिङको काम गरिन्छ।”</span> — Aluminium &amp; UPVC windows, doors, partitions, kitchen racks and steel railing work, all under one roof.</p>
       </div>
     </div>
 
@@ -1789,12 +1893,33 @@ body {{
 </main>
 
 <!-- FOOTER -->
-<footer class="bg-slate-950 border-t border-white/10 py-12 px-4 text-xs text-slate-400">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-    
+<footer class="relative bg-slate-950 border-t border-white/10 py-12 px-4 text-xs text-slate-400">
+  <!-- Gradient glow line -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/70 to-transparent"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-16 bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+
     <!-- Brand -->
     <div class="space-y-3">
-      <div class="font-bold text-white text-base">ANNAPURNA ALUMINIUM &amp; UPVC</div>
+      <div class="flex items-center gap-2.5">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 via-cyan-500 to-amber-500 p-0.5 shadow-lg flex-shrink-0">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2.4" y="3" width="19.2" height="18" rx="2.8" fill="#fff"/>
+              <path d="M2.4 5.8c0-1.55 1.25-2.8 2.8-2.8h13.6c1.55 0 2.8 1.25 2.8 2.8v2.6H2.4V5.8Z" fill="#E52427"/>
+              <path d="M2.4 15.6h19.2v2.6c0 1.55-1.25 2.8-2.8 2.8H5.2c-1.55 0-2.8-1.25-2.8-2.8v-2.6Z" fill="#3A519A"/>
+              <rect x="6.3" y="9.3" width="11.4" height="4.6" rx="0.8" stroke="#DC2829" stroke-width="1.5"/>
+              <path d="M12 9.3v4.6" stroke="#3A519A" stroke-width="1.2"/>
+              <path d="M6.3 11.6h11.4" stroke="#3A519A" stroke-width="0.9"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="font-extrabold font-display text-base tracking-tight leading-none" style="background:linear-gradient(90deg,#fde68a,#fbbf24,#34d399);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">ANNAPURNA</div>
+          <div class="text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-400/90 mt-1">Aluminium &amp; UPVC Udhyog</div>
+        </div>
+      </div>
       <p class="leading-relaxed">
         Premier architectural fabrication center in Janakpur Dham, Nepal. Specializing in soundproof UPVC windows, toughened glass balustrades, SS 304 temple gates, and modular kitchens.
       </p>
@@ -1802,50 +1927,81 @@ body {{
 
     <!-- Quick Links -->
     <div>
-      <div class="font-bold text-white text-xs uppercase tracking-wider mb-3">Quick Navigation</div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-6 rounded-md bg-emerald-500/12 border border-emerald-500/25 flex items-center justify-center flex-shrink-0"><svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+        <span class="font-bold text-white text-xs uppercase tracking-wider">Quick Navigation</span>
+      </div>
       <ul class="space-y-2">
-        <li><a href="#projects" class="hover:text-white">40+ Real Projects Gallery</a></li>
-        <li><a href="#catalog" class="hover:text-white">102+ Product Catalog</a></li>
-        <li><a href="#workflow" class="hover:text-white">Precision Workflow</a></li>
-        <li><a href="#booking" class="hover:text-white">Book Free Site Visit</a></li>
-        <li><a href="#about" class="hover:text-white">Founder &amp; Workshop</a></li>
+        <li><a href="#projects" class="hover:text-white transition-colors">40+ Real Projects Gallery</a></li>
+        <li><a href="#catalog" class="hover:text-white transition-colors">102+ Product Catalog</a></li>
+        <li><a href="#workflow" class="hover:text-white transition-colors">Precision Workflow</a></li>
+        <li><a href="#booking" class="hover:text-white transition-colors">Book Free Site Visit</a></li>
+        <li><a href="#about" class="hover:text-white transition-colors">Founder &amp; Workshop</a></li>
       </ul>
     </div>
 
     <!-- Service Areas -->
     <div>
-      <div class="font-bold text-white text-xs uppercase tracking-wider mb-3">Service Areas</div>
-      <p class="leading-relaxed mb-2">
-        Janakpur Dham, Dhanusha, Jaleshwor (Mahottari), Malangwa (Sarlahi), Lahan (Siraha), Bardibas, Kathmandu &amp; All Nepal.
-      </p>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-6 rounded-md bg-emerald-500/12 border border-emerald-500/25 flex items-center justify-center flex-shrink-0"><svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span class="font-bold text-white text-xs uppercase tracking-wider">Service Areas</span>
+      </div>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">Janakpur Dham</span>
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">Dhanusha</span>
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">Jaleshwor</span>
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">Malangwa</span>
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">Lahan</span>
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">Bardibas</span>
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">Rajbiraj</span>
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">Birgunj</span>
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">Hetauda</span>
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">Kathmandu</span>
+        <span class="px-2 py-0.5 rounded-md bg-slate-900/80 border border-white/10 text-[10px] font-semibold text-slate-300 hover:border-emerald-400/45 hover:text-emerald-300 transition-colors">All Nepal</span>
+      </div>
     </div>
 
     <!-- Contact Summary & Live GPS Map -->
     <div>
-      <div class="font-bold text-white text-xs uppercase tracking-wider mb-3">Live Location &amp; Contact</div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-6 rounded-md bg-emerald-500/12 border border-emerald-500/25 flex items-center justify-center flex-shrink-0"><svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+        <span class="font-bold text-white text-xs uppercase tracking-wider">Live Location &amp; Contact</span>
+      </div>
       <a href="https://maps.google.com/?q=26.7118,85.9189" target="_blank" rel="noopener" class="block p-3 rounded-xl bg-slate-900 border border-emerald-500/30 hover:border-emerald-400 transition-all mb-3 group" title="Click to open Google Maps turn-by-turn navigation">
         <div class="flex items-center justify-between text-xs font-bold text-emerald-400 mb-1">
-          <span>📍 Murli Chowk Workshop</span>
-          <span class="text-[9px] bg-emerald-500/20 px-1.5 py-0.5 rounded text-emerald-300 font-mono">Open Map 🗺️</span>
+          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Murli Chowk Workshop</span>
+          <span class="text-[9px] bg-emerald-500/20 px-1.5 py-0.5 rounded text-emerald-300 font-mono">Open Map</span>
         </div>
         <p class="text-[11px] text-slate-300 leading-snug group-hover:text-white">
           Airport Road, Ward No. 8, Janakpur Dham, Dhanusha, Nepal
         </p>
       </a>
-      <p class="leading-relaxed mb-1 font-bold text-emerald-400 flex items-center gap-1.5">
-        <span>💬</span> <span>WhatsApp Direct:</span> <a href="https://wa.me/9779817658719" target="_blank" class="font-mono text-white hover:underline">+977 9817658719</a>
-      </p>
+
+      <!-- WhatsApp Contact Card -->
+      <a href="https://wa.me/9779817658719" target="_blank" rel="noopener" class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900 border border-emerald-500/30 hover:border-emerald-400 hover:bg-slate-900/70 transition-all mb-3 group">
+        <span class="w-9 h-9 rounded-lg bg-emerald-500/18 border border-emerald-500/35 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500 transition-colors">
+          <svg class="w-4.5 h-4.5 fill-current text-emerald-400 group-hover:text-white transition-colors" style="width:1.125rem;height:1.125rem" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.387.709.282 1.263.45 1.694.59.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </span>
+        <span class="min-w-0">
+          <span class="block text-[10px] font-bold uppercase tracking-wider text-emerald-400">WhatsApp Direct</span>
+          <span class="block font-mono font-bold text-white text-[13px] leading-tight">+977 9817658719</span>
+        </span>
+      </a>
       <p class="leading-relaxed text-slate-400 text-[11px]">Workshop Open 7 Days (9:00 AM – 7:00 PM)</p>
     </div>
 
   </div>
 
-  <div class="max-w-7xl mx-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+  <div class="relative max-w-7xl mx-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
     <div>
-      © 2026 {SHOP['legal_name']}. All Rights Reserved. Murli Chowk, Janakpur Dham, Nepal.
+      © 2026 {SHOP['legal_name'].replace('&', '&amp;')}. All Rights Reserved. Murli Chowk, Janakpur Dham, Nepal.
     </div>
-    <div class="text-[11px] text-slate-500">
-      WhatsApp Direct Contact: +977 9817658719
+    <div class="flex items-center gap-4 text-[11px] font-semibold">
+      <a href="https://wa.me/9779817658719" target="_blank" rel="noopener" class="text-slate-400 hover:text-emerald-400 transition-colors">WhatsApp</a>
+      <span class="w-px h-3 bg-white/15"></span>
+      <a href="https://www.facebook.com/search/top?q=Annapurna%20Aluminium%20Janakpur" target="_blank" rel="noopener" class="text-slate-400 hover:text-blue-400 transition-colors">Facebook</a>
+      <span class="w-px h-3 bg-white/15"></span>
+      <a href="https://www.youtube.com/results?search_query=Annapurna+Aluminium+Janakpur" target="_blank" rel="noopener" class="text-slate-400 hover:text-red-400 transition-colors">YouTube</a>
     </div>
   </div>
 </footer>
@@ -1900,36 +2056,54 @@ body {{
 </div>
 
 <!-- FLOATING VERTICAL SOCIAL MEDIA DOCK (Tucked into right edge, slides out on hover) -->
-<div id="social-float-dock" class="fixed right-2 sm:right-3 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2.5 p-2 bg-slate-950/90 backdrop-blur-2xl rounded-2xl border border-white/15 shadow-[0_10px_35px_rgba(0,0,0,0.9)]">
-  
-  <!-- WhatsApp Direct Button -->
-  <a href="https://wa.me/9779817658719?text=Namaste%20Annapurna%20Aluminium,%20I%20am%20contacting%20you%20from%20your%20website." target="_blank" rel="noopener" class="group relative w-11 h-11 rounded-xl bg-emerald-500/20 hover:bg-emerald-500 border border-emerald-500/40 hover:border-emerald-400 flex items-center justify-center transition-all hover:scale-110 shadow-lg" aria-label="WhatsApp Direct Chat">
-    <svg class="w-5 h-5 fill-current text-emerald-400 group-hover:text-white transition-colors" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.387.709.282 1.263.45 1.694.59.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950 text-emerald-400 font-bold text-xs whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-1 transition-all border border-emerald-500/40 shadow-2xl backdrop-blur-xl">💬 WhatsApp Direct (+977 9817658719)</span>
+<div id="social-float-dock" class="social-dock" role="complementary" aria-label="Contact and social links">
+
+  <!-- WhatsApp Direct -->
+  <a href="https://wa.me/9779817658719?text=Namaste%20Annapurna%20Aluminium,%20I%20am%20contacting%20you%20from%20your%20website." target="_blank" rel="noopener" class="social-dock-row group" aria-label="WhatsApp Direct Chat">
+    <span class="social-dock-label">WhatsApp Direct · +977 9817658719</span>
+    <span class="social-dock-icon bg-emerald-500/20 group-hover:border-emerald-400/60 group-hover:bg-emerald-500">
+      <svg class="w-5 h-5 fill-current text-emerald-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.387.709.282 1.263.45 1.694.59.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </span>
   </a>
 
-  <!-- Facebook Official Button -->
-  <a href="https://www.facebook.com/search/top?q=Annapurna%20Aluminium%20Janakpur" target="_blank" rel="noopener" class="group relative w-11 h-11 rounded-xl bg-blue-600/20 hover:bg-blue-600 border border-blue-500/40 hover:border-blue-400 flex items-center justify-center transition-all hover:scale-110 shadow-lg" aria-label="Facebook Profile">
-    <svg class="w-5 h-5 fill-current text-blue-400 group-hover:text-white transition-colors" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950 text-blue-400 font-bold text-xs whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-1 transition-all border border-blue-500/40 shadow-2xl backdrop-blur-xl">Facebook Showcase Page</span>
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/search/top?q=Annapurna%20Aluminium%20Janakpur" target="_blank" rel="noopener" class="social-dock-row group" aria-label="Facebook Profile">
+    <span class="social-dock-label">Facebook Showcase Page</span>
+    <span class="social-dock-icon bg-blue-600/20 group-hover:border-blue-400/60 group-hover:bg-blue-600">
+      <svg class="w-5 h-5 fill-current text-blue-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </span>
   </a>
 
-  <!-- YouTube Official Channel Button -->
-  <a href="https://www.youtube.com/results?search_query=Annapurna+Aluminium+Janakpur" target="_blank" rel="noopener" class="group relative w-11 h-11 rounded-xl bg-red-600/20 hover:bg-red-600 border border-red-500/40 hover:border-red-400 flex items-center justify-center transition-all hover:scale-110 shadow-lg" aria-label="YouTube Channel">
-    <svg class="w-5 h-5 fill-current text-red-500 group-hover:text-white transition-colors" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950 text-red-400 font-bold text-xs whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-1 transition-all border border-red-500/40 shadow-2xl backdrop-blur-xl">YouTube Video Channel</span>
+  <!-- YouTube -->
+  <a href="https://www.youtube.com/results?search_query=Annapurna+Aluminium+Janakpur" target="_blank" rel="noopener" class="social-dock-row group" aria-label="YouTube Channel">
+    <span class="social-dock-label">YouTube Video Channel</span>
+    <span class="social-dock-icon bg-red-600/20 group-hover:border-red-400/60 group-hover:bg-red-600">
+      <svg class="w-5 h-5 fill-current text-red-500 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </span>
   </a>
 
-  <!-- Instagram Official Page Button -->
-  <a href="https://www.instagram.com/explore/tags/annapurnaaluminium/" target="_blank" rel="noopener" class="group relative w-11 h-11 rounded-xl bg-pink-500/20 hover:bg-pink-500 border border-pink-500/40 hover:border-pink-400 flex items-center justify-center transition-all hover:scale-110 shadow-lg" aria-label="Instagram Profile">
-    <svg class="w-5 h-5 fill-current text-pink-500 group-hover:text-white transition-colors" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950 text-pink-400 font-bold text-xs whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-1 transition-all border border-pink-500/40 shadow-2xl backdrop-blur-xl">Instagram Feed &amp; Reels</span>
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/explore/tags/annapurnaaluminium/" target="_blank" rel="noopener" class="social-dock-row group" aria-label="Instagram Profile">
+    <span class="social-dock-label">Instagram Feed &amp; Reels</span>
+    <span class="social-dock-icon bg-pink-500/20 group-hover:border-pink-400/60 group-hover:bg-pink-500">
+      <svg class="w-5 h-5 fill-current text-pink-500 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </span>
   </a>
 
-  <!-- TikTok Official Showcase Button -->
-  <a href="https://www.tiktok.com/search?q=Annapurna%20Aluminium%20Janakpur" target="_blank" rel="noopener" class="group relative w-11 h-11 rounded-xl bg-pink-600/20 hover:bg-pink-600 border border-pink-500/40 hover:border-pink-400 flex items-center justify-center transition-all hover:scale-110 shadow-lg" aria-label="TikTok Videos">
-    <svg class="w-5 h-5 fill-current text-pink-400 group-hover:text-white transition-colors" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.98-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.32 1.53-1.34 2.53-.03.88.35 1.75 1.02 2.29.83.67 1.98.88 3.01.58.97-.27 1.8-1.02 2.15-1.97.23-.62.29-1.3.29-1.96V.02z"/></svg>
-    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950 text-pink-400 font-bold text-xs whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 group-hover:-translate-x-1 transition-all border border-pink-500/40 shadow-2xl backdrop-blur-xl">TikTok Video Showcase</span>
+  <!-- TikTok -->
+  <a href="https://www.tiktok.com/search?q=Annapurna%20Aluminium%20Janakpur" target="_blank" rel="noopener" class="social-dock-row group" aria-label="TikTok Videos">
+    <span class="social-dock-label">TikTok Video Showcase</span>
+    <span class="social-dock-icon bg-pink-600/20 group-hover:border-pink-400/60 group-hover:bg-pink-600">
+      <svg class="w-5 h-5 fill-current text-pink-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.98-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.32 1.53-1.34 2.53-.03.88.35 1.75 1.02 2.29.83.67 1.98.88 3.01.58.97-.27 1.8-1.02 2.15-1.97.23-.62.29-1.3.29-1.96V.02z"/></svg>
+    </span>
+  </a>
+
+  <!-- Direct Call -->
+  <a href="tel:+9779817658719" class="social-dock-row social-dock-call group" aria-label="Call +977 9817658719">
+    <span class="social-dock-label">Call Now · +977 9817658719</span>
+    <span class="social-dock-icon bg-amber-500/20 group-hover:border-amber-400/60 group-hover:bg-amber-500">
+      <svg class="w-5 h-5 fill-current text-amber-400 group-hover:text-slate-950 transition-colors" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.4 21 3 13.6 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
+    </span>
   </a>
 
 </div>
@@ -2034,6 +2208,23 @@ const REAL_PROJECTS = {json.dumps(REAL_PROJECTS, ensure_ascii=False)};
 const PRODUCTS = {json.dumps(products_list, ensure_ascii=False)};
 const CATS = {json.dumps(CATS, ensure_ascii=False)};
 
+/* Category metadata (colors, icons, EN/NE badges) for the 102+ catalog pills */
+const CAT_META = {{
+  "UWC": {{"color": "#00d2ff", "icon": "⬚", "badge": "UPVC Windows", "badge_ne": "यूपीभीसी झ्यालहरू", "tag": "German Multi-Chamber · Soundproof · Heatproof"}},
+  "UWD": {{"color": "#3b82f6", "icon": "▤", "badge": "UPVC Doors", "badge_ne": "यूपीभीसी ढोकाहरू", "tag": "Steel Reinforced · Weatherproof · High Security"}},
+  "ALW": {{"color": "#22d3ee", "icon": "◫", "badge": "Aluminium Windows", "badge_ne": "आल्मुनियम झ्यालहरू", "tag": "6063-T5 Alloy · Slim Profiles · Powder Coated"}},
+  "ALD": {{"color": "#60a5fa", "icon": "▣", "badge": "Aluminium Doors", "badge_ne": "आल्मुनियम ढोकाहरू", "tag": "Eurobond ACP · Frosted Glass · Zero Warping"}},
+  "ALP": {{"color": "#2dd4bf", "icon": "▥", "badge": "Aluminium Partitions", "badge_ne": "आल्मुनियम पार्टिसन", "tag": "Acoustic Glass · Office Cabins · Modern Privacy"}},
+  "GLZ": {{"color": "#818cf8", "icon": "◈", "badge": "Glass Solutions", "badge_ne": "टफन्ड ग्लास", "tag": "8-12mm Toughened · Frameless Spigots · Safety"}},
+  "STF": {{"color": "#a855f7", "icon": "▦", "badge": "Storefront & Facades", "badge_ne": "ग्लास फसाड तथा एसीपी", "tag": "Curtain Wall Glazing · ACP Cladding · Showrooms"}},
+  "MST": {{"color": "#f59e0b", "icon": "⛓", "badge": "MS & Steel Works", "badge_ne": "मन्दिर तथा मेन गेट", "tag": "Temple Gates · Grills · Security Doors · Sheds"}},
+  "SLS": {{"color": "#eab308", "icon": "✦", "badge": "Stainless Steel (SS 304)", "badge_ne": "एसएस ३०४ रेलिङ", "tag": "Mirror Polish · Crystal Pillars · Lifetime Rust-Free"}},
+  "RLS": {{"color": "#f97316", "icon": "⤢", "badge": "Railings & Balustrades", "badge_ne": "बालकनी तथा भर्याङ", "tag": "Staircases · Balconies · Glass & SS Hybrid"}},
+  "MOD": {{"color": "#ec4899", "icon": "▧", "badge": "Modular Kitchen & Racks", "badge_ne": "मोड्युलर किचन र्याक", "tag": "Termite-Proof · 100% Waterproof · ACP Racks"}}
+}};
+
+
+
 {templates_js_raw}
 
 function getProductSvg(artKey, artParams) {{
@@ -2119,7 +2310,11 @@ const I18N = {{
     faq_q5: "How long does manufacturing and installation take?",
     faq_a5: "Standard residential window and door orders are completed in <strong>3 to 5 business days</strong>. Commercial facade glazing, large temple gates, and custom modular kitchens are scheduled as per site milestones with prompt delivery.",
     lightbox_btn_inquire: "Direct WhatsApp Inquiry (+977 9817658719)",
-    chat_welcome: "Namaste! 🙏 Welcome to Annapurna Aluminium & UPVC Udhyog. How can I assist your building project today?"
+    chat_welcome: "Namaste! 🙏 Welcome to Annapurna Aluminium & UPVC Udhyog. How can I assist your building project today?",
+    board_title: "Our Workshop — Murli Chowk, Janakpur Dham-8",
+    board_sub: "On the Airport Road · Open 9:00 AM – 7:00 PM, all 7 days",
+    board_directions: "Get Directions",
+    board_note: "“यहाँ आल्मुनियम र UPVC को झ्याल, ढोका, पार्टिसन, किचन रैक तथा स्टील रेलिङको काम गरिन्छ।” — Aluminium & UPVC windows, doors, partitions, kitchen racks and steel railing work, all under one roof."
   }},
   ne: {{
     top_open: "हप्ताको सातै दिन खुला · बिहान ९:०० देखि साँझ ७:०० सम्म",
@@ -2192,7 +2387,11 @@ const I18N = {{
     faq_q5: "सामान तयार हुन कति समय लाग्छ?",
     faq_a5: "साधारणतया ३ देखि ५ दिन भित्र सामान तयार गरी फिटिङ गरिन्छ।",
     lightbox_btn_inquire: "ह्वाट्सएपमा सोधपुछ गर्नुहोस् (+९७७ ९८१७६५८७१९)",
-    chat_welcome: "नमस्ते! 🙏 अन्नपूर्णा आल्मुनियम तथा यूपीभीसी उद्योगमा स्वागत छ। आज तपाईंलाई कसरी सहयोग गर्न सक्छु?"
+    chat_welcome: "नमस्ते! 🙏 अन्नपूर्णा आल्मुनियम तथा यूपीभीसी उद्योगमा स्वागत छ। आज तपाईंलाई कसरी सहयोग गर्न सक्छु?",
+    board_title: "हाम्रो कारखाना — मुरली चौक, जनकपुरधाम-८",
+    board_sub: "एयरपोर्ट जाने बाटोमा · बिहान ९:०० देखि साँझ ७:०० सम्म, सातै दिन खुला",
+    board_directions: "रास्ता देखाउनुहोस्",
+    board_note: "“यहाँ आल्मुनियम र UPVC को झ्याल, ढोका, पार्टिसन, किचन रैक तथा स्टील रेलिङको काम गरिन्छ।” — एउटै छत तल सबै काम।"
   }}
 }};
 
@@ -2770,7 +2969,7 @@ function toggleMobileMenu() {{
   if (menu) menu.classList.toggle('hidden');
 }}
 
-/* ==================== AUTOMATIC BACKGROUND PRODUCT SLIDESHOW ENGINE (2s Auto-Slide & Multiple Transitions) ==================== */
+/* ==================== PREMIUM BACKGROUND PRODUCT SHOWCASE SLIDESHOW ENGINE (v3.4 · Cinematic Crossfade · 4.5s Auto-Slide) ==================== */
 const bgProductSlides = [
   {{ img: "catalog_assets/products/ALW-01.jpg", name: "ALW-01 Heavy Duty Sliding Window System", cat: "Aluminium Windows" }},
   {{ img: "catalog_assets/products/UWC-01.jpg", name: "UWC-01 German Profile Thermal UPVC Casement Window", cat: "UPVC Windows" }},
@@ -2792,77 +2991,78 @@ const bgProductSlides = [
 ];
 
 let currentBgIdx = 0;
-let isLayerAActive = true;
-const transitionStyles = ['zoom-fade', 'horizontal-slide', 'blur-reveal', 'vertical-drop', 'perspective-3d'];
+
+/* v3.4 · Premium background engine — one 4.5s slide interval, smooth 1.8s crossfade,
+   Ken Burns motion on the photo layer only (content stays rock-steady & readable). */
+const BG_SLIDE_INTERVAL_MS = 4500;
 
 function initBgSlideshow() {{
   const layerA = document.getElementById('bg-slide-a');
   const layerB = document.getElementById('bg-slide-b');
   const ticker = document.getElementById('bg-slide-ticker');
+  const counter = document.getElementById('bg-slide-counter');
+  const progress = document.getElementById('bg-slide-progress');
   if (!layerA || !layerB) return;
 
-  // Set initial image
-  layerA.style.backgroundImage = `url('${{bgProductSlides[0].img}}')`;
-  if (ticker) {{
-    ticker.innerHTML = `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider mr-1.5 border border-emerald-500/30">${{bgProductSlides[0].cat}}</span> 📸 Showcase: <span class="text-amber-300 font-bold">${{bgProductSlides[0].name}}</span>`;
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const layers = [layerA, layerB];
+  let activeLayer = 0;
+
+  const imgOf = (layer) => layer.querySelector('.hero-slide-img');
+  const pad = (n) => String(n).padStart(2, '0');
+
+  function updateTicker(slide, index) {{
+    if (ticker) {{
+      ticker.innerHTML = `<span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 text-[9px] font-bold uppercase tracking-wider mr-1.5 border border-emerald-400/25">${{slide.cat}}</span> 📸 <span class="text-amber-300 font-bold">${{slide.name}}</span>`;
+    }}
+    if (counter) {{
+      counter.innerText = `${{pad(index + 1)}} / ${{pad(bgProductSlides.length)}}`;
+    }}
   }}
+
+  function restartProgress() {{
+    if (!progress) return;
+    progress.style.animation = 'none';
+    void progress.offsetWidth;
+    progress.style.animation = '';
+  }}
+
+  function showSlide(layer, slide, index, animate, onRevealed) {{
+    const img = imgOf(layer);
+    const reveal = () => {{
+      img.style.backgroundImage = `url('${{slide.img}}')`;
+      if (!reducedMotion) {{
+        img.classList.remove('play');
+        void img.offsetWidth;
+        img.classList.add('play');
+      }}
+      layer.classList.add('is-active');
+      updateTicker(slide, index);
+      restartProgress();
+      if (typeof onRevealed === 'function') onRevealed();
+    }};
+    const pre = new Image();
+    pre.onload = reveal;
+    pre.onerror = reveal;
+    pre.src = slide.img;
+  }}
+
+  // Initial slide
+  imgOf(layerA).style.backgroundImage = `url('${{bgProductSlides[0].img}}')`;
+  layerA.classList.add('is-active');
+  if (!reducedMotion) imgOf(layerA).classList.add('play');
+  updateTicker(bgProductSlides[0], 0);
+  restartProgress();
 
   setInterval(() => {{
     currentBgIdx = (currentBgIdx + 1) % bgProductSlides.length;
-    const slide = bgProductSlides[currentBgIdx];
-    const effect = transitionStyles[currentBgIdx % transitionStyles.length];
-
-    const currentLayer = isLayerAActive ? layerA : layerB;
-    const nextLayer = isLayerAActive ? layerB : layerA;
-
-    // Load image onto inactive layer
-    nextLayer.style.backgroundImage = `url('${{slide.img}}')`;
-
-    if (effect === 'zoom-fade') {{
-      nextLayer.style.transform = 'scale(1.12)';
-      nextLayer.style.filter = 'brightness(1.1)';
-      setTimeout(() => {{
-        nextLayer.style.transform = 'scale(1.0)';
-        nextLayer.style.filter = 'brightness(1.0)';
-        nextLayer.style.opacity = '1';
-        currentLayer.style.opacity = '0';
-      }}, 50);
-    }} else if (effect === 'horizontal-slide') {{
-      nextLayer.style.transform = 'translateX(50px)';
-      setTimeout(() => {{
-        nextLayer.style.transform = 'translateX(0px)';
-        nextLayer.style.opacity = '1';
-        currentLayer.style.opacity = '0';
-      }}, 50);
-    }} else if (effect === 'blur-reveal') {{
-      nextLayer.style.filter = 'blur(12px) contrast(1.2)';
-      setTimeout(() => {{
-        nextLayer.style.filter = 'blur(0px) contrast(1.0)';
-        nextLayer.style.opacity = '1';
-        currentLayer.style.opacity = '0';
-      }}, 50);
-    }} else if (effect === 'vertical-drop') {{
-      nextLayer.style.transform = 'translateY(-30px)';
-      setTimeout(() => {{
-        nextLayer.style.transform = 'translateY(0px)';
-        nextLayer.style.opacity = '1';
-        currentLayer.style.opacity = '0';
-      }}, 50);
-    }} else {{ // perspective-3d
-      nextLayer.style.transform = 'scale(0.94) rotate(-0.8deg)';
-      setTimeout(() => {{
-        nextLayer.style.transform = 'scale(1.0) rotate(0deg)';
-        nextLayer.style.opacity = '1';
-        currentLayer.style.opacity = '0';
-      }}, 50);
-    }}
-
-    if (ticker) {{
-      ticker.innerHTML = `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider mr-1.5 border border-emerald-500/30">${{slide.cat}}</span> 📸 Showcase: <span class="text-amber-300 font-bold">${{slide.name}}</span>`;
-    }}
-
-    isLayerAActive = !isLayerAActive;
-  }}, 2000); // 2 seconds auto-slide
+    const prevLayer = layers[activeLayer];
+    activeLayer = (activeLayer + 1) % 2;
+    showSlide(layers[activeLayer], bgProductSlides[currentBgIdx], currentBgIdx, true, () => {{
+      // Let the new photo settle on top, then let the old one dissolve away (no hard cut)
+      setTimeout(() => prevLayer.classList.remove('is-active'), 1000);
+    }});
+  }}, BG_SLIDE_INTERVAL_MS);
 }}
 
 /* ==================== INITIALIZATION ==================== */
