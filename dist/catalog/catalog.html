@@ -1321,16 +1321,13 @@ body {
     <a href="#" class="flex items-center gap-2.5 sm:gap-3 group" aria-label="Annapurna Aluminium Homepage">
       <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 via-cyan-500 to-amber-500 p-0.5 shadow-lg group-hover:scale-105 transition-transform flex-shrink-0">
         <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <defs>
-              <linearGradient id="brandLogoGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#34d399"/><stop offset="52%" stop-color="#22d3ee"/><stop offset="100%" stop-color="#fbbf24"/>
-              </linearGradient>
-            </defs>
-            <path d="M3 21h18" stroke="url(#brandLogoGrad)"/>
-            <path d="M5 21V6.2a1 1 0 0 1 .62-.93l7-2.8a1 1 0 0 1 1.38.92V21" stroke="url(#brandLogoGrad)"/>
-            <path d="M14 21V9.6h4.4a1 1 0 0 1 1 1V21" stroke="url(#brandLogoGrad)"/>
-            <path d="M8 8.4h3M8 11.6h3M8 14.8h3M8 18h3M16.2 13h1.4M16.2 16.4h1.4" stroke="url(#brandLogoGrad)"/>
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2.4" y="3" width="19.2" height="18" rx="2.8" fill="#fff"/>
+            <path d="M2.4 5.8c0-1.55 1.25-2.8 2.8-2.8h13.6c1.55 0 2.8 1.25 2.8 2.8v2.6H2.4V5.8Z" fill="#E52427"/>
+            <path d="M2.4 15.6h19.2v2.6c0 1.55-1.25 2.8-2.8 2.8H5.2c-1.55 0-2.8-1.25-2.8-2.8v-2.6Z" fill="#3A519A"/>
+            <rect x="6.3" y="9.3" width="11.4" height="4.6" rx="0.8" stroke="#DC2829" stroke-width="1.5"/>
+            <path d="M12 9.3v4.6" stroke="#3A519A" stroke-width="1.2"/>
+            <path d="M6.3 11.6h11.4" stroke="#3A519A" stroke-width="0.9"/>
           </svg>
         </div>
       </div>
@@ -1928,6 +1925,31 @@ body {
       </div>
     </div>
 
+    <!-- Workshop Board Showcase — authentic shop signage -->
+    <div class="mt-8 glass-card rounded-3xl overflow-hidden">
+      <div class="p-6 sm:p-7 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-blue-900 flex items-center justify-center shadow-lg flex-shrink-0">
+            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 7v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-3-5Z"/><path d="M3 7h18"/><path d="M16 11a4 4 0 0 1-8 0"/></svg>
+          </span>
+          <div>
+            <h3 class="font-bold text-white text-base sm:text-lg leading-tight" data-i18n="board_title">Our Workshop — Murli Chowk, Janakpur Dham-8</h3>
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5" data-i18n="board_sub">On the Airport Road · Open 9:00 AM – 7:00 PM, all 7 days</p>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=Murli+Chowk+Airport+Road+Janakpur+Nepal" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-bold hover:bg-cyan-500/25 transition-colors">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-i18n="board_directions">Get Directions</span>
+        </a>
+      </div>
+      <div class="px-4 sm:px-6 pb-5 sm:pb-6">
+        <div class="relative rounded-xl overflow-hidden border border-white/12 shadow-2xl ring-1 ring-white/10 bg-slate-950">
+          <img src="../catalog_assets/board_final.png" alt="Annapurna Aluminium &amp; UPVC shop board — Janakpur Dham-8, Murli Chowk (Airport Road)" width="1169" height="220" loading="lazy" class="w-full h-auto block">
+        </div>
+        <p class="text-[11px] sm:text-xs text-slate-400 mt-3.5 leading-relaxed" data-i18n="board_note"><span class="text-slate-300">“यहाँ आल्मुनियम र UPVC को झ्याल, ढोका, पार्टिसन, किचन रैक तथा स्टील रेलिङको काम गरिन्छ।”</span> — Aluminium &amp; UPVC windows, doors, partitions, kitchen racks and steel railing work, all under one roof.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -2018,12 +2040,13 @@ body {
       <div class="flex items-center gap-2.5">
         <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500 via-cyan-500 to-amber-500 p-0.5 shadow-lg flex-shrink-0">
           <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <defs><linearGradient id="footLogoGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#34d399"/><stop offset="52%" stop-color="#22d3ee"/><stop offset="100%" stop-color="#fbbf24"/></linearGradient></defs>
-              <path d="M3 21h18" stroke="url(#footLogoGrad)"/>
-              <path d="M5 21V6.2a1 1 0 0 1 .62-.93l7-2.8a1 1 0 0 1 1.38.92V21" stroke="url(#footLogoGrad)"/>
-              <path d="M14 21V9.6h4.4a1 1 0 0 1 1 1V21" stroke="url(#footLogoGrad)"/>
-              <path d="M8 8.4h3M8 11.6h3M8 14.8h3M8 18h3M16.2 13h1.4M16.2 16.4h1.4" stroke="url(#footLogoGrad)"/>
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2.4" y="3" width="19.2" height="18" rx="2.8" fill="#fff"/>
+              <path d="M2.4 5.8c0-1.55 1.25-2.8 2.8-2.8h13.6c1.55 0 2.8 1.25 2.8 2.8v2.6H2.4V5.8Z" fill="#E52427"/>
+              <path d="M2.4 15.6h19.2v2.6c0 1.55-1.25 2.8-2.8 2.8H5.2c-1.55 0-2.8-1.25-2.8-2.8v-2.6Z" fill="#3A519A"/>
+              <rect x="6.3" y="9.3" width="11.4" height="4.6" rx="0.8" stroke="#DC2829" stroke-width="1.5"/>
+              <path d="M12 9.3v4.6" stroke="#3A519A" stroke-width="1.2"/>
+              <path d="M6.3 11.6h11.4" stroke="#3A519A" stroke-width="0.9"/>
             </svg>
           </div>
         </div>
@@ -3166,7 +3189,11 @@ const I18N = {
     faq_q5: "How long does manufacturing and installation take?",
     faq_a5: "Standard residential window and door orders are completed in <strong>3 to 5 business days</strong>. Commercial facade glazing, large temple gates, and custom modular kitchens are scheduled as per site milestones with prompt delivery.",
     lightbox_btn_inquire: "Direct WhatsApp Inquiry (+977 9817658719)",
-    chat_welcome: "Namaste! 🙏 Welcome to Annapurna Aluminium & UPVC Udhyog. How can I assist your building project today?"
+    chat_welcome: "Namaste! 🙏 Welcome to Annapurna Aluminium & UPVC Udhyog. How can I assist your building project today?",
+    board_title: "Our Workshop — Murli Chowk, Janakpur Dham-8",
+    board_sub: "On the Airport Road · Open 9:00 AM – 7:00 PM, all 7 days",
+    board_directions: "Get Directions",
+    board_note: "“यहाँ आल्मुनियम र UPVC को झ्याल, ढोका, पार्टिसन, किचन रैक तथा स्टील रेलिङको काम गरिन्छ।” — Aluminium & UPVC windows, doors, partitions, kitchen racks and steel railing work, all under one roof."
   },
   ne: {
     top_open: "हप्ताको सातै दिन खुला · बिहान ९:०० देखि साँझ ७:०० सम्म",
@@ -3239,7 +3266,11 @@ const I18N = {
     faq_q5: "सामान तयार हुन कति समय लाग्छ?",
     faq_a5: "साधारणतया ३ देखि ५ दिन भित्र सामान तयार गरी फिटिङ गरिन्छ।",
     lightbox_btn_inquire: "ह्वाट्सएपमा सोधपुछ गर्नुहोस् (+९७७ ९८१७६५८७१९)",
-    chat_welcome: "नमस्ते! 🙏 अन्नपूर्णा आल्मुनियम तथा यूपीभीसी उद्योगमा स्वागत छ। आज तपाईंलाई कसरी सहयोग गर्न सक्छु?"
+    chat_welcome: "नमस्ते! 🙏 अन्नपूर्णा आल्मुनियम तथा यूपीभीसी उद्योगमा स्वागत छ। आज तपाईंलाई कसरी सहयोग गर्न सक्छु?",
+    board_title: "हाम्रो कारखाना — मुरली चौक, जनकपुरधाम-८",
+    board_sub: "एयरपोर्ट जाने बाटोमा · बिहान ९:०० देखि साँझ ७:०० सम्म, सातै दिन खुला",
+    board_directions: "रास्ता देखाउनुहोस्",
+    board_note: "“यहाँ आल्मुनियम र UPVC को झ्याल, ढोका, पार्टिसन, किचन रैक तथा स्टील रेलिङको काम गरिन्छ।” — एउटै छत तल सबै काम।"
   }
 };
 
