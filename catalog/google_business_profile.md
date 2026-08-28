@@ -47,7 +47,15 @@ UPVC window price Nepal me competitive — aaj hi call karein free quote ke liye
 | **PAN No.** | 616619779 |
 | **Address** | Janakpur Dham-8, Murli Chowk (Airport Road), Dhanusha, Madhesh Province, Nepal |
 | **Hours** | Monday–Sunday, 9:00 AM – 7:00 PM |
+| **Website** | https://annapurna-upvc-janakpur.com/ |
 | **Services** | UPVC & Aluminium windows (jhyal), doors (dhoka), partitions, kitchen racks, steel railings, grills & fabrication |
+
+**Website buttons / additional links (GMB):**
+- UPVC windows: `https://annapurna-upvc-janakpur.com/upvc-window-janakpur/`
+- Aluminium: `https://annapurna-upvc-janakpur.com/aluminium-janakpur/`
+- Glass railing: `https://annapurna-upvc-janakpur.com/glass-railing-janakpur/`
+- Workshop / directions: `https://annapurna-upvc-janakpur.com/janakpur-dham/`
+- Service areas: `https://annapurna-upvc-janakpur.com/service-areas/`
 
 ---
 
