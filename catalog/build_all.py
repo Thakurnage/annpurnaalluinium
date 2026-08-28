@@ -15,6 +15,7 @@ with:
 
 import json
 import os
+import shutil
 import sys
 from pathlib import Path
 
@@ -23,6 +24,7 @@ ASSETS = ROOT / "catalog_assets"
 REAL_PROJ_DIR = ASSETS / "real_projects"
 PRODUCTS_DIR = ASSETS / "products"
 CATALOG_DIR = ROOT / "catalog"
+DIST_DIR = ROOT / "dist"
 sys.path.insert(0, str(CATALOG_DIR))
 
 from products_data import P, CATS, BASE_FEATS  # noqa: E402
@@ -759,7 +761,7 @@ schema_breadcrumbs = {
 
 # Construct Ultra-Professional Landing Page HTML String
 html_content = f"""<!DOCTYPE html>
-<!-- BUILD v3.4-premium-hero | 2026-08-28 | Premium hero redesign · cinematic crossfade background showcase · managed visibility scrim · synced auto-slide progress | Annapurna Aluminium & UPVC Udhyog -->
+<!-- BUILD v3.6-premium-hero | 2026-08-28 | Premium hero redesign · cinematic crossfade background showcase · managed visibility scrim · synced auto-slide progress · gold shimmer headline · entrance reveal · count-up stats | Annapurna Aluminium & UPVC Udhyog -->
 <html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
@@ -902,7 +904,7 @@ body {{
 .social-dock-call{{margin-top:5px}}
 @media(max-width:640px){{.social-dock{{gap:7px}}.social-dock-row{{transform:translateX(25px);padding:5px}}.social-dock-icon{{width:38px;height:38px;border-radius:10px}}}}
 
-/* ==================== PREMIUM HERO BACKGROUND SHOWCASE ENGINE (v3.4) ==================== */
+/* ==================== PREMIUM HERO BACKGROUND SHOWCASE ENGINE (v3.6) ==================== */
 /* Smooth cinematic crossfade — product photos stay visible while the text zone keeps full contrast */
 .hero-slide-layer {{
   position: absolute;
@@ -962,9 +964,64 @@ body {{
   left: 130%;
 }}
 
+/* ==================== PREMIUM HERO v3.6 ENHANCEMENTS ==================== */
+/* Cinematic golden shimmer on the headline brand line */
+.gold-shimmer-text {{
+  background: linear-gradient(100deg, #f7e8b6 0%, #f5c76d 18%, #fff6db 36%, #d99a2b 52%, #f7c86b 68%, #fff0c4 82%, #e6aa3a 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldShimmerSweep 5.2s linear infinite;
+}}
+@keyframes goldShimmerSweep {{
+  0%   {{ background-position: 0% 0; }}
+  100% {{ background-position: -220% 0; }}
+}}
+
+/* Cinematic entrance reveal used on hero content blocks */
+.hero-entrance {{
+  opacity: 0;
+  transform: translateY(22px);
+  animation: heroEntranceIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}}
+.hero-entrance-delay-1 {{ animation-delay: 0.12s; }}
+.hero-entrance-delay-2 {{ animation-delay: 0.24s; }}
+.hero-entrance-delay-3 {{ animation-delay: 0.36s; }}
+.hero-entrance-delay-4 {{ animation-delay: 0.48s; }}
+.hero-entrance-delay-5 {{ animation-delay: 0.60s; }}
+.hero-entrance-delay-6 {{ animation-delay: 0.72s; }}
+@keyframes heroEntranceIn {{
+  from {{ opacity: 0; transform: translateY(22px) scale(0.985); }}
+  to   {{ opacity: 1; transform: translateY(0) scale(1); }}
+}}
+
+/* Animated count-up stats band shine sweep */
+.hero-stats-band {{
+  position: relative;
+}}
+.hero-stats-band::before {{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.07) 42%, rgba(255,222,128,0.16) 50%, transparent 58%);
+  background-size: 260% 100%;
+  animation: heroStatsSheen 7s ease-in-out infinite;
+}}
+@keyframes heroStatsSheen {{
+  0%   {{ background-position: 120% 0; }}
+  55%  {{ background-position: -120% 0; }}
+  100% {{ background-position: -120% 0; }}
+}}
+
 @media (prefers-reduced-motion: reduce) {{
   .hero-slide-img.play {{ animation: none; }}
   .hero-progress-fill {{ animation: none; width: 100%; }}
+  .gold-shimmer-text {{ animation: none; background-position: 0% 0; }}
+  .hero-entrance {{ opacity: 1; transform: none; animation: none; }}
+  .hero-stats-band::before {{ animation: none; }}
 }}
 
 .glow-orb {{
@@ -1291,7 +1348,7 @@ body {{
 
 <main>
 
-<!-- HERO SECTION · v3.4 PREMIUM SHOWCASE (Cinematic Crossfade Background Engine) -->
+<!-- HERO SECTION · v3.6 PREMIUM SHOWCASE (Cinematic Crossfade · Gold Shimmer · Entrance Reveal · Count-Up Stats) -->
 <section class="relative pt-20 pb-16 sm:pt-28 sm:pb-24 px-4 overflow-hidden min-h-[92vh] flex items-center justify-center">
   
   <!-- HERO BACKGROUND · 2-LAYER CINEMATIC CROSSFADE SHOWCASE -->
@@ -1315,7 +1372,7 @@ body {{
   <div class="relative z-10 w-full max-w-5xl mx-auto text-center">
 
     <!-- Live Showcase Ticker · with synced auto-slide progress bar -->
-    <div class="inline-flex flex-col max-w-full mb-8 rounded-2xl border border-cyan-400/25 bg-slate-950/70 backdrop-blur-xl overflow-hidden shadow-[0_18px_50px_-12px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.06)]">
+    <div class="hero-entrance hero-entrance-delay-1 inline-flex flex-col max-w-full mb-8 rounded-2xl border border-cyan-400/25 bg-slate-950/70 backdrop-blur-xl overflow-hidden shadow-[0_18px_50px_-12px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.06)]">
       <div class="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-5 py-2.5">
         <span class="relative flex w-2.5 h-2.5 flex-shrink-0">
           <span class="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-60 animate-ping"></span>
@@ -1331,25 +1388,25 @@ body {{
     </div>
 
     <!-- Top Verified Pill -->
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-300/30 bg-slate-950/65 backdrop-blur-md text-amber-200 text-xs sm:text-sm font-semibold mb-7 shadow-lg">
+    <div class="hero-entrance hero-entrance-delay-2 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-300/30 bg-slate-950/65 backdrop-blur-md text-amber-200 text-xs sm:text-sm font-semibold mb-7 shadow-lg">
       <svg class="w-4 h-4 text-amber-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8l4.5 3.5L12 4l5.5 7.5L22 8l-2 10a2 2 0 0 1-2 1.6H6a2 2 0 0 1-2-1.6Z"/></svg>
       <span data-i18n="hero_badge">#1 Certified UPVC, Aluminium &amp; SS Fabrication Center · Janakpur Dham, Nepal</span>
     </div>
 
     <!-- Main Title -->
-    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-display tracking-tight text-white mb-6 leading-[1.06] drop-shadow-[0_4px_28px_rgba(0,0,0,0.65)]">
+    <h1 class="hero-entrance hero-entrance-delay-3 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-display tracking-tight text-white mb-6 leading-[1.06] drop-shadow-[0_4px_28px_rgba(0,0,0,0.65)]">
       <span data-i18n="hero_h1_1">World-Class</span> <br class="hidden sm:inline">
-      <span class="bg-gradient-to-r from-emerald-300 via-cyan-300 to-amber-300 bg-clip-text text-transparent" data-i18n="hero_h1_2">UPVC, Aluminium &amp; Glass</span> <br class="hidden sm:inline">
+      <span class="gold-shimmer-text" data-i18n="hero_h1_2">UPVC, Aluminium &amp; Glass</span> <br class="hidden sm:inline">
       <span data-i18n="hero_h1_3">Precision Craftsmanship</span>
     </h1>
 
     <!-- Subtitle -->
-    <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-slate-200/90 leading-relaxed mb-10 [text-shadow:0_1px_14px_rgba(0,0,0,0.85)]" data-i18n="hero_desc">
+    <p class="hero-entrance hero-entrance-delay-4 max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-slate-200/90 leading-relaxed mb-10 [text-shadow:0_1px_14px_rgba(0,0,0,0.85)]" data-i18n="hero_desc">
       102+ Custom Designs manufactured at our Janakpur workshop: German-profile UPVC windows, modern aluminium doors &amp; partitions, SS 304 temple gates, balustrades, modular kitchen racks, and commercial ACP glass facades.
     </p>
 
     <!-- Action Buttons · Premium -->
-    <div class="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mb-12">
+    <div class="hero-entrance hero-entrance-delay-5 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mb-12">
       <a href="https://wa.me/{SHOP['whatsapp']}?text=Namaste%20Annapurna%20Aluminium,%20I%20want%20to%20consult%20on%20WhatsApp%20for%20a%20project." target="_blank" rel="noopener" class="btn-shine inline-flex items-center gap-2.5 px-7 sm:px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-500 text-white font-extrabold text-sm sm:text-base shadow-[0_16px_40px_-10px_rgba(16,185,129,0.55),inset_0_1px_0_rgba(255,255,255,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_50px_-10px_rgba(16,185,129,0.7)]">
         <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
           <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.387.709.282 1.263.45 1.694.59.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -1369,39 +1426,39 @@ body {{
     </div>
 
     <!-- Quick Stats · Premium Band -->
-    <div class="max-w-4xl mx-auto rounded-3xl border border-white/10 bg-white/10 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.9)] overflow-hidden grid grid-cols-2 md:grid-cols-4 gap-px backdrop-blur-2xl">
+    <div class="hero-entrance hero-entrance-delay-6 hero-stats-band max-w-4xl mx-auto rounded-3xl border border-white/10 bg-white/10 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.9)] overflow-hidden grid grid-cols-2 md:grid-cols-4 gap-px backdrop-blur-2xl">
       <div class="bg-slate-950/70 px-4 py-6 sm:py-7 text-center">
         <div class="mx-auto mb-3 w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500/25 to-emerald-500/5 border border-emerald-400/30 flex items-center justify-center">
           <svg class="w-4 h-4 text-emerald-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
         </div>
-        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-emerald-300 to-teal-300 bg-clip-text text-transparent">102+</div>
+        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-emerald-300 to-teal-300 bg-clip-text text-transparent"><span data-count-target="102" data-count-suffix="+">102+</span></div>
         <div class="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400" data-i18n="stat_designs">Unique Custom Designs</div>
       </div>
       <div class="bg-slate-950/70 px-4 py-6 sm:py-7 text-center">
         <div class="mx-auto mb-3 w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500/25 to-amber-500/5 border border-amber-400/30 flex items-center justify-center">
           <svg class="w-4 h-4 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M9 10h.01M15 10h.01M9 13h.01M15 13h.01"/></svg>
         </div>
-        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-amber-300 to-orange-300 bg-clip-text text-transparent">40+</div>
+        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-amber-300 to-orange-300 bg-clip-text text-transparent"><span data-count-target="40" data-count-suffix="+">40+</span></div>
         <div class="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400" data-i18n="stat_sites">Real Workshop Projects</div>
       </div>
       <div class="bg-slate-950/70 px-4 py-6 sm:py-7 text-center">
         <div class="mx-auto mb-3 w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500/25 to-cyan-500/5 border border-cyan-400/30 flex items-center justify-center">
           <svg class="w-4 h-4 text-cyan-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
         </div>
-        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-cyan-300 to-sky-300 bg-clip-text text-transparent">100%</div>
+        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-cyan-300 to-sky-300 bg-clip-text text-transparent"><span data-count-target="100" data-count-suffix="%">100%</span></div>
         <div class="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400" data-i18n="stat_quality">SS 304 Rust-Free Guarantee</div>
       </div>
       <div class="bg-slate-950/70 px-4 py-6 sm:py-7 text-center">
         <div class="mx-auto mb-3 w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500/25 to-violet-500/5 border border-violet-400/30 flex items-center justify-center">
           <svg class="w-4 h-4 text-violet-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>
         </div>
-        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-violet-300 to-fuchsia-300 bg-clip-text text-transparent">15+ Yrs</div>
+        <div class="text-3xl md:text-4xl font-black font-display bg-gradient-to-r from-violet-300 to-fuchsia-300 bg-clip-text text-transparent"><span data-count-target="15" data-count-suffix="+ Yrs">15+ Yrs</span></div>
         <div class="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400" data-i18n="stat_exp">Engineering Craftsmanship</div>
       </div>
     </div>
 
     <!-- Scroll Cue -->
-    <a href="#projects" class="mt-12 inline-flex flex-col items-center gap-1.5 text-slate-400 hover:text-amber-300 transition-colors">
+    <a href="#projects" class="hero-entrance hero-entrance-delay-6 mt-12 inline-flex flex-col items-center gap-1.5 text-slate-400 hover:text-amber-300 transition-colors">
       <span class="text-[10px] font-bold uppercase tracking-[0.2em]">Explore Real Projects</span>
       <svg class="w-5 h-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
     </a>
@@ -3065,9 +3122,60 @@ function initBgSlideshow() {{
   }}, BG_SLIDE_INTERVAL_MS);
 }}
 
+/* v3.6 · Animated count-up for hero stats (starts when the stat band enters the viewport) */
+function initHeroCounters() {{
+  const counters = document.querySelectorAll('[data-count-target]');
+  if (!counters.length) return;
+
+  const setFinal = (el) => {{
+    const target = Number(el.getAttribute('data-count-target') || 0);
+    const suffix = el.getAttribute('data-count-suffix') || '';
+    el.textContent = target + suffix;
+  }};
+
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const animateOne = (el) => {{
+    const target = Number(el.getAttribute('data-count-target') || 0);
+    const suffix = el.getAttribute('data-count-suffix') || '';
+    const duration = 1500;
+    const start = performance.now();
+    const easeOutExpo = (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+
+    if (reducedMotion) {{
+      setFinal(el);
+      return;
+    }}
+
+    const tick = (now) => {{
+      const progress = Math.min((now - start) / duration, 1);
+      const value = Math.round(easeOutExpo(progress) * target);
+      el.textContent = value + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+      else setFinal(el);
+    }};
+    requestAnimationFrame(tick);
+  }};
+
+  if (!('IntersectionObserver' in window)) {{
+    counters.forEach(setFinal);
+    return;
+  }}
+
+  const observer = new IntersectionObserver((entries) => {{
+    entries.forEach((entry) => {{
+      if (!entry.isIntersecting) return;
+      animateOne(entry.target);
+      observer.unobserve(entry.target);
+    }});
+  }}, {{ threshold: 0.3 }});
+  counters.forEach((el) => observer.observe(el));
+}}
+
 /* ==================== INITIALIZATION ==================== */
 document.addEventListener('DOMContentLoaded', () => {{
   initBgSlideshow();
+  initHeroCounters();
   renderAutoMarquee();
   renderRealProjects();
   renderCatalogCategoryPills();
@@ -3089,5 +3197,31 @@ catalog_html_path = CATALOG_DIR / "catalog.html"
 catalog_html_content = html_content.replace('catalog_assets/', '../catalog_assets/').replace('uploads/', '../uploads/')
 catalog_html_path.write_text(catalog_html_content, encoding="utf-8")
 print(f"Successfully generated catalog version: {catalog_html_path}")
+
+# Sync Cloudflare deployment folder (dist) so every build automatically updates deployable assets
+def sync_dist_html() -> None:
+    if DIST_DIR.exists():
+        shutil.rmtree(DIST_DIR)
+    DIST_DIR.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(ROOT / "index.html", DIST_DIR / "index.html")
+    shutil.copytree(ASSETS, DIST_DIR / "catalog_assets")
+    (DIST_DIR / "catalog").mkdir(parents=True, exist_ok=True)
+    shutil.copy2(ROOT / "catalog" / "catalog.html", DIST_DIR / "catalog" / "catalog.html")
+    for name in ("_headers", "robots.txt", "sitemap.xml", "favicon.ico"):
+        src = ROOT / name
+        if src.exists():
+            shutil.copy2(src, DIST_DIR / name)
+    uploads_src = ROOT / "uploads"
+    if uploads_src.exists():
+        uploads_dst = DIST_DIR / "uploads"
+        uploads_dst.mkdir(parents=True, exist_ok=True)
+        # Only copy files that are referenced by the site; the rest live in root uploads/ (not deployed).
+        for name in ("chatbot_icon.png", "owner_image.jpg", "owner_professional.jpg"):
+            src = uploads_src / name
+            if src.exists():
+                shutil.copy2(src, uploads_dst / name)
+    print(f"Synced deployed dist/ assets: {DIST_DIR}")
+
+sync_dist_html()
 
 print("Master Portal with Ultra-Premium AI Chatbot execution complete!")

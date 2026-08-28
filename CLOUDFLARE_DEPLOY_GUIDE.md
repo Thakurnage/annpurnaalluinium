@@ -68,6 +68,16 @@ npx wrangler deploy
 npx wrangler deploy --dry-run
 ```
 
+### Option A2: Automatic GitHub Actions (Auto Apply)
+`.github/workflows/auto-apply.yml` automatically runs on every push/merge to `main`:
+1. Runs `python catalog/build_all.py` → regenerates `index.html`, `catalog.html`, and `dist/`.
+2. Uploads the built `dist/` as an artifact (`annapurna-dist`).
+3. If repo secrets are configured, deploys directly to Cloudflare automatically.
+   - Add repo secrets (Settings → Secrets and variables → Actions):
+     - `CLOUDFLARE_API_TOKEN`
+     - `CLOUDFLARE_ACCOUNT_ID`
+   - If secrets are missing, the workflow still builds and uploads `dist/`, then prints a notice.
+
 ### Option B: Cloudflare Pages (GitHub Connected)
 1. Go to Cloudflare Dashboard → Pages → Create Project → Connect to GitHub `Thakurnage/annpurnaalluinium`
 2. Build Settings:
