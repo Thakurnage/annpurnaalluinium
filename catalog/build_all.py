@@ -760,6 +760,381 @@ schema_breadcrumbs = {
 }
 
 # Construct Ultra-Professional Landing Page HTML String
+PREMIUM_BOOKING_CSS = r'''/* ==================== PREMIUM BOOKING v3.7 — LUXURY GLASSMORPHISM SHELL ==================== */
+.bk-shell {
+  position: relative;
+  border-radius: 1.75rem;
+  padding: 2px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.bk-shell::before {
+  content: "";
+  position: absolute;
+  inset: -120%;
+  z-index: -2;
+  background: linear-gradient(115deg, #10b981, #22d3ee, #fbbf24, #34d399, #0ea5e9, #f59e0b, #10b981);
+  background-size: 400% 400%;
+  animation: bkBorderFlow 9s ease-in-out infinite;
+}
+@keyframes bkBorderFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bk-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: calc(1.75rem - 2px);
+  background:
+    radial-gradient(60% 45% at 12% 0%, rgba(16, 185, 129, 0.16), transparent 60%),
+    radial-gradient(50% 42% at 88% 8%, rgba(251, 191, 36, 0.12), transparent 60%),
+    radial-gradient(55% 45% at 50% 100%, rgba(34, 211, 238, 0.10), transparent 65%),
+    rgba(4, 10, 24, 0.94);
+}
+
+/* Benefit cards */
+.bk-benefit-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1rem 1.1rem;
+  border-radius: 1.1rem;
+  background: linear-gradient(150deg, rgba(17, 29, 66, 0.5), rgba(7, 12, 28, 0.72));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bk-benefit-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 14px 30px -14px rgba(16, 185, 129, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.bk-benefit-ic {
+  flex: 0 0 auto;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.24), rgba(34, 211, 238, 0.14));
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 18px -6px rgba(16, 185, 129, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* How-It-Works mini timeline */
+.bk-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+.bk-tl-step { position: relative; text-align: center; }
+.bk-tl-step::after {
+  content: "";
+  position: absolute;
+  top: 1.12rem;
+  left: calc(50% + 1.35rem);
+  width: calc(100% - 2.7rem);
+  height: 2px;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.55), rgba(34, 211, 238, 0.3));
+  border-radius: 2px;
+}
+.bk-tl-step:last-child::after { display: none; }
+.bk-tl-num {
+  position: relative;
+  z-index: 1;
+  width: 2.3rem;
+  height: 2.3rem;
+  margin: 0 auto 0.45rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 0.8rem;
+  color: #ffffff;
+  background: linear-gradient(145deg, #059669, #0d9488);
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.14), 0 8px 18px -8px rgba(16, 185, 129, 0.7);
+}
+.bk-tl-cap {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  line-height: 1.25;
+}
+
+/* Premium inputs */
+.bk-input-wrap { position: relative; }
+.bk-input-ic {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 1;
+}
+.bk-input-wrap input,
+.bk-input-wrap select,
+.bk-input-wrap textarea {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.6rem;
+  border-radius: 0.9rem;
+  background: rgba(7, 12, 28, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  font-size: 0.78rem;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+.bk-input-wrap textarea { padding-left: 1rem; }
+.bk-input-wrap input::placeholder,
+.bk-input-wrap textarea::placeholder { color: #64748b; }
+.bk-input-wrap input:focus,
+.bk-input-wrap select:focus,
+.bk-input-wrap textarea:focus {
+  outline: none;
+  border-color: rgba(16, 185, 129, 0.75);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.16), 0 0 22px -6px rgba(16, 185, 129, 0.5);
+  background: rgba(7, 14, 32, 0.96);
+}
+.bk-input-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+.bk-input-wrap optgroup { background: #0b132b; color: #fbbf24; font-weight: 800; font-size: 0.72rem; }
+.bk-input-wrap option { background: #0b132b; color: #e2e8f0; font-size: 0.78rem; font-weight: 500; }
+.bk-select-chev {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #34d399;
+  font-size: 0.8rem;
+  filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.6));
+  z-index: 1;
+}
+
+/* Premium submit — WhatsApp SVG + shine sweep */
+.bk-submit {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #047857, #10b981 45%, #0d9488);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 14px 34px -12px rgba(16, 185, 129, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+}
+.bk-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 44px -12px rgba(16, 185, 129, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.bk-submit::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -75%;
+  width: 42%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  animation: bkShine 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes bkShine {
+  0%, 55% { left: -75%; }
+  90%, 100% { left: 135%; }
+}
+.bk-sub-ic { width: 18px; height: 18px; flex: 0 0 auto; }
+
+/* Badge + divider */
+.bk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.16), rgba(34, 211, 238, 0.12));
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  color: #6ee7b7;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 640px) {
+  .bk-timeline { grid-template-columns: repeat(2, 1fr); row-gap: 1rem; }
+  .bk-tl-step:nth-child(2)::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bk-shell::before, .bk-submit::after { animation: none; }
+}'''
+
+PREMIUM_BOOKING_HTML = '''<!-- SECTION: FREE SITE VISIT & CONSULTATION BOOKING (v3.7 PREMIUM · WHATSAPP DISPATCH) -->
+<section id="booking" class="py-16 px-4 relative z-10 bg-slate-950/60 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="bk-shell">
+      <div class="relative p-6 sm:p-10 lg:p-12">
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+
+          <!-- LEFT: Benefit Cards + How-It-Works Timeline -->
+          <div>
+            <div class="bk-badge mb-4">💬 WhatsApp Direct Appointment</div>
+            <h2 class="text-2xl sm:text-4xl font-black font-display text-white mb-4" data-i18n="booking_title">Book Free On-Site Measurement</h2>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6" data-i18n="booking_desc">Building a new house, commercial showroom, or renovating your hotel in Janakpur Dham or nearby districts? Our master engineer will visit your site with actual profile and glass samples for laser-guided measurement.</p>
+
+            <div class="space-y-3 mb-7">
+              <div class="bk-benefit-card">
+                <div class="bk-benefit-ic">💬</div>
+                <div>
+                  <div class="text-[13px] font-extrabold text-white" data-i18n="bk_benefit_1_t">Direct WhatsApp Dispatch</div>
+                  <div class="text-[11px] text-slate-400 leading-snug mt-0.5" data-i18n="bk_benefit_1_d">Booking lands instantly with our master engineer (+977 9817658719)</div>
+                </div>
+              </div>
+              <div class="bk-benefit-card">
+                <div class="bk-benefit-ic">🧪</div>
+                <div>
+                  <div class="text-[13px] font-extrabold text-white" data-i18n="bk_benefit_2_t">Real Sample Demo On-Site</div>
+                  <div class="text-[11px] text-slate-400 leading-snug mt-0.5" data-i18n="bk_benefit_2_d">Physical UPVC, aluminium &amp; glass samples with laser-guided measurement</div>
+                </div>
+              </div>
+              <div class="bk-benefit-card">
+                <div class="bk-benefit-ic">📐</div>
+                <div>
+                  <div class="text-[13px] font-extrabold text-white" data-i18n="bk_benefit_3_t">Instant Quote + 3D Advice</div>
+                  <div class="text-[11px] text-slate-400 leading-snug mt-0.5" data-i18n="bk_benefit_3_d">Structural quotation &amp; 3D drawing advice on the spot</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- How It Works mini timeline -->
+            <div class="rounded-2xl border border-white/10 bg-slate-950/55 p-5">
+              <div class="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-emerald-300 mb-4">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                <span data-i18n="bk_how_title">How It Works</span>
+              </div>
+              <div class="bk-timeline">
+                <div class="bk-tl-step"><div class="bk-tl-num">1</div><div class="bk-tl-cap" data-i18n="bk_step_1">Request</div></div>
+                <div class="bk-tl-step"><div class="bk-tl-num">2</div><div class="bk-tl-cap" data-i18n="bk_step_2">Confirm Slot</div></div>
+                <div class="bk-tl-step"><div class="bk-tl-num">3</div><div class="bk-tl-cap" data-i18n="bk_step_3">Site Visit</div></div>
+                <div class="bk-tl-step"><div class="bk-tl-num">4</div><div class="bk-tl-cap" data-i18n="bk_step_4">Quote &amp; Blueprint</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Premium Booking Form (Direct WhatsApp Dispatch) -->
+          <form onsubmit="handleContactSubmit(event)" class="space-y-4 rounded-2xl border border-white/10 bg-slate-950/70 p-6 sm:p-7 backdrop-blur-xl shadow-2xl relative">
+            <div class="flex items-center gap-3 mb-1">
+              <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500/25 to-cyan-500/20 border border-emerald-400/40 flex items-center justify-center text-base shadow-[0_0_16px_-4px_rgba(16,185,129,0.6)]">📋</div>
+              <div>
+                <h3 class="font-extrabold text-white text-[15px] leading-tight" data-i18n="form_title">Request Site Visit &amp; Custom Quote</h3>
+                <div class="text-[10px] text-slate-400 font-semibold tracking-wide" data-i18n="bk_form_sub">100% free · Reply within 15 minutes</div>
+              </div>
+            </div>
+            <div class="h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"></div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-slate-300 mb-1.5" data-i18n="form_label_name">Your Full Name *</label>
+              <div class="bk-input-wrap">
+                <span class="bk-input-ic">👤</span>
+                <input type="text" id="form-name" required placeholder="e.g. Er. Ram Shrestha" autocomplete="name">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-slate-300 mb-1.5" data-i18n="form_label_phone">Your WhatsApp Number *</label>
+              <div class="bk-input-wrap">
+                <span class="bk-input-ic">📱</span>
+                <input type="tel" id="form-phone" required placeholder="e.g. 9817658719" autocomplete="tel">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-slate-300 mb-1.5" data-i18n="form_label_city">Project Location / District *</label>
+              <div class="bk-input-wrap">
+                <span class="bk-input-ic">📍</span>
+                <input type="text" id="form-city" required placeholder="e.g. Janakpur-8, Dhanusha" autocomplete="address-level2">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-slate-300 mb-1.5" data-i18n="form_label_service">Primary Architectural Requirement</label>
+              <div class="bk-input-wrap">
+                <span class="bk-input-ic">🪟</span>
+                <select id="form-service" class="bk-select">
+                  <optgroup label="🪟 Windows &amp; Doors">
+                    <option>UPVC Windows &amp; Patio Doors</option>
+                    <option>Soundproof German UPVC Casement Windows</option>
+                    <option>Aluminium Sliding Windows &amp; Frames</option>
+                    <option>UPVC French / Patio Doors</option>
+                    <option>Aluminium Main Entry Doors</option>
+                  </optgroup>
+                  <optgroup label="🏢 Office, Glass &amp; Steel">
+                    <option>Aluminium Office Partitions &amp; Doors</option>
+                    <option>Toughened Glass Railings &amp; Balustrades</option>
+                    <option>SS 304 Temple Gate &amp; Main Gate</option>
+                    <option>Structural Curtain Wall Glazing</option>
+                    <option>SS 304 Railings &amp; Spiral Stairs</option>
+                  </optgroup>
+                  <optgroup label="🏠 Interior &amp; Facade">
+                    <option>Modular Waterproof Kitchen Racks</option>
+                    <option>ACP Facade Cladding</option>
+                    <option>Aluminium Louvers &amp; Sunshades</option>
+                    <option>Glass Wardrobes &amp; Shower Enclosures</option>
+                  </optgroup>
+                </select>
+                <span class="bk-select-chev">▾</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-slate-300 mb-1.5" data-i18n="form_label_notes">Approximate Openings / Notes</label>
+              <div class="bk-input-wrap">
+                <textarea id="form-notes" rows="2" placeholder="e.g. 10 windows, 2 main doors, 30 ft balcony railing..."></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="bk-submit">
+              <svg class="bk-sub-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/><path d="M12.05 2a9.97 9.97 0 0 0-8.61 14.98L2 22l5.13-1.4A10 10 0 1 0 12.05 2Zm0 18.2a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.05.83.84-2.97-.2-.31a8.2 8.2 0 1 1 6.9 3.78Z"/></svg>
+              <span data-i18n="bk_submit">Send Booking to WhatsApp</span>
+            </button>
+            <p class="text-[10px] text-slate-500 text-center">🔒 No spam · Direct to master engineer · Reply within 15 minutes</p>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>'''
+
 html_content = f"""<!DOCTYPE html>
 <!-- BUILD v3.6-premium-hero | 2026-08-28 | Premium hero redesign · cinematic crossfade background showcase · managed visibility scrim · synced auto-slide progress · gold shimmer headline · entrance reveal · count-up stats | Annapurna Aluminium & UPVC Udhyog -->
 <html lang="en" class="scroll-smooth">
@@ -1178,6 +1553,7 @@ body {{
 ::-webkit-scrollbar-thumb:hover {{
   background: #10b981;
 }}
+{PREMIUM_BOOKING_CSS}
 </style>
 
 <!-- JSON-LD STRUCTURED DATA SCHEMAS -->
@@ -1700,89 +2076,7 @@ body {{
   </div>
 </section>
 
-<!-- SECTION: FREE SITE VISIT & CONSULTATION BOOKING (WHATSAPP DISPATCH) -->
-<section id="booking" class="py-16 px-4 relative z-10 bg-slate-950/60 border-t border-white/5">
-  <div class="max-w-5xl mx-auto">
-    
-    <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/30 shadow-2xl relative overflow-hidden">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        
-        <!-- Left info -->
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
-            💬 WhatsApp Direct Appointment
-          </div>
-          <h2 class="text-2xl sm:text-4xl font-black font-display text-white mb-4" data-i18n="booking_title">
-            Book Free On-Site Measurement
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6" data-i18n="booking_desc">
-            Building a new house, commercial showroom, or renovating your hotel in Janakpur Dham or nearby districts? Our master engineer will visit your site with actual profile and glass samples for laser-guided measurement.
-          </p>
-          
-          <div class="space-y-3 text-xs text-slate-300">
-            <div class="flex items-center gap-2.5">
-              <span class="text-emerald-400 font-bold">✓</span>
-              <span>Direct WhatsApp dispatch to master engineer (+977 9817658719)</span>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <span class="text-emerald-400 font-bold">✓</span>
-              <span>Physical UPVC, Aluminium &amp; Glass samples demo on-site</span>
-            </div>
-            <div class="flex items-center gap-2.5">
-              <span class="text-emerald-400 font-bold">✓</span>
-              <span>Instant structural quotation &amp; 3D drawing advice</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Form (Direct WhatsApp Dispatch) -->
-        <form onsubmit="handleContactSubmit(event)" class="space-y-4 bg-slate-950/80 p-6 rounded-2xl border border-white/10">
-          <h3 class="font-bold text-white text-base mb-2" data-i18n="form_title">Request Site Visit &amp; Custom Quote</h3>
-          
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="form_label_name">Your Full Name *</label>
-            <input type="text" id="form-name" required placeholder="e.g. Er. Ram Shrestha" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none">
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="form_label_phone">Your WhatsApp Number *</label>
-            <input type="tel" id="form-phone" required placeholder="e.g. 9817658719" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none">
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="form_label_city">Project Location / District *</label>
-            <input type="text" id="form-city" required placeholder="e.g. Janakpur-8, Dhanusha" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none">
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="form_label_service">Primary Architectural Requirement</label>
-            <select id="form-service" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none">
-              <option>UPVC Windows &amp; Patio Doors</option>
-              <option>Aluminium Office Partitions &amp; Doors</option>
-              <option>Toughened Glass Railings &amp; Balustrades</option>
-              <option>SS 304 Temple Gate &amp; Main Gate</option>
-              <option>Modular Waterproof Kitchen Racks</option>
-              <option>ACP Facade Cladding &amp; Curtain Wall Glazing</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="form_label_notes">Approximate Openings / Notes</label>
-            <textarea id="form-notes" rows="2" placeholder="e.g. 10 windows, 2 main doors, 30 ft balcony railing..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-xs focus:border-emerald-400 focus:outline-none"></textarea>
-          </div>
-
-          <button type="submit" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-all shadow-lg flex items-center justify-center gap-2">
-            <span class="text-base">💬</span> <span>Send Booking to WhatsApp (+977 9817658719)</span>
-          </button>
-        </form>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
+{PREMIUM_BOOKING_HTML}
 
 <!-- SECTION: FOUNDER & ABOUT US -->
 <section id="about" class="py-16 px-4 relative z-10 border-t border-white/5">
@@ -2352,6 +2646,19 @@ const I18N = {{
     form_label_city: "Project Location / District *",
     form_label_service: "Primary Architectural Requirement",
     form_label_notes: "Approximate Openings / Notes",
+    bk_benefit_1_t: "Direct WhatsApp Dispatch",
+    bk_benefit_1_d: "Booking lands instantly with our master engineer (+977 9817658719)",
+    bk_benefit_2_t: "Real Sample Demo On-Site",
+    bk_benefit_2_d: "Physical UPVC, aluminium & glass samples with laser-guided measurement",
+    bk_benefit_3_t: "Instant Quote + 3D Advice",
+    bk_benefit_3_d: "Structural quotation and 3D drawing advice on the spot",
+    bk_how_title: "How It Works",
+    bk_step_1: "Request",
+    bk_step_2: "Confirm Slot",
+    bk_step_3: "Site Visit",
+    bk_step_4: "Quote & Blueprint",
+    bk_form_sub: "100% free · Reply within 15 minutes",
+    bk_submit: "Send Booking to WhatsApp",
     about_tag: "Founder & Master Fabricator",
     about_bio_1: '"We started Annapurna Aluminium & UPVC in Janakpur Dham with a singular mission: to deliver European-grade window insulation, modern aluminium elegance, and unyielding steel security at direct factory prices to every home and enterprise in Nepal."',
     about_bio_2: "From the sacred doors of Sri Nav Durga Mandir Duhaba to commercial plazas across Madhesh Province, our team of seasoned craftsmen takes personal pride in every single weld, miter cut, and glass installation.",
@@ -2429,6 +2736,19 @@ const I18N = {{
     form_label_city: "साइटको ठेगाना / जिल्ला *",
     form_label_service: "चाहिएको फेब्रिकेसन काम",
     form_label_notes: "झ्याल/ढोकाको संख्या वा विवरण",
+    bk_benefit_1_t: "सिधा ह्वाट्सएप पठाइन्छ",
+    bk_benefit_1_d: "बुकिङ तुरुन्तै मुख्य इन्जिनियरसम्म पुग्छ (+९७७ ९८१७६५८७१९)",
+    bk_benefit_2_t: "साइटमै वास्तविक नमुना प्रदर्शन",
+    bk_benefit_2_d: "लेजर नापसहित यूपीभीसी, आल्मुनियम र ग्लासका वास्तविक नमुनाहरू",
+    bk_benefit_3_t: "तुरुन्त कोटेशन + ३डी सल्लाह",
+    bk_benefit_3_d: "घटनास्थलमै संरचनात्मक कोटेशन र ३डी नक्सा सल्लाह",
+    bk_how_title: "कसरी काम गर्छ",
+    bk_step_1: "अनुरोध",
+    bk_step_2: "समय पक्का",
+    bk_step_3: "साइट भिजिट",
+    bk_step_4: "कोटेशन र ब्लुप्रिन्ट",
+    bk_form_sub: "१००% निःशुल्क · १५ मिनेटभित्र जवाफ",
+    bk_submit: "ह्वाट्सएपमा बुकिङ पठाउनुहोस्",
     about_tag: "संस्थापक तथा मुख्य फेब्रिकेटर",
     about_bio_1: '"हामीले जनकपुरधाममा युरोपियन स्तरको झ्याल र स्टिल फेब्रिकेसन direct factory मूल्यमा उपलब्ध गराउने लक्ष्य राखेका छौं।"',
     about_bio_2: "श्री नव दुर्गा मन्दिर दुहबा गेटदेखि व्यापारिक कम्प्लेक्सहरूसम्म, हाम्रा दक्ष प्राविधिकहरू हरेक काममा पूर्ण ध्यान दिन्छन्।",
