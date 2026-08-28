@@ -2034,6 +2034,23 @@ const REAL_PROJECTS = {json.dumps(REAL_PROJECTS, ensure_ascii=False)};
 const PRODUCTS = {json.dumps(products_list, ensure_ascii=False)};
 const CATS = {json.dumps(CATS, ensure_ascii=False)};
 
+/* Category metadata (colors, icons, EN/NE badges) for the 102+ catalog pills */
+const CAT_META = {
+  "UWC": {"color": "#00d2ff", "icon": "⬚", "badge": "UPVC Windows", "badge_ne": "यूपीभीसी झ्यालहरू", "tag": "German Multi-Chamber · Soundproof · Heatproof"},
+  "UWD": {"color": "#3b82f6", "icon": "▤", "badge": "UPVC Doors", "badge_ne": "यूपीभीसी ढोकाहरू", "tag": "Steel Reinforced · Weatherproof · High Security"},
+  "ALW": {"color": "#22d3ee", "icon": "◫", "badge": "Aluminium Windows", "badge_ne": "आल्मुनियम झ्यालहरू", "tag": "6063-T5 Alloy · Slim Profiles · Powder Coated"},
+  "ALD": {"color": "#60a5fa", "icon": "▣", "badge": "Aluminium Doors", "badge_ne": "आल्मुनियम ढोकाहरू", "tag": "Eurobond ACP · Frosted Glass · Zero Warping"},
+  "ALP": {"color": "#2dd4bf", "icon": "▥", "badge": "Aluminium Partitions", "badge_ne": "आल्मुनियम पार्टिसन", "tag": "Acoustic Glass · Office Cabins · Modern Privacy"},
+  "GLZ": {"color": "#818cf8", "icon": "◈", "badge": "Glass Solutions", "badge_ne": "टफन्ड ग्लास", "tag": "8-12mm Toughened · Frameless Spigots · Safety"},
+  "STF": {"color": "#a855f7", "icon": "▦", "badge": "Storefront & Facades", "badge_ne": "ग्लास फसाड तथा एसीपी", "tag": "Curtain Wall Glazing · ACP Cladding · Showrooms"},
+  "MST": {"color": "#f59e0b", "icon": "⛓", "badge": "MS & Steel Works", "badge_ne": "मन्दिर तथा मेन गेट", "tag": "Temple Gates · Grills · Security Doors · Sheds"},
+  "SLS": {"color": "#eab308", "icon": "✦", "badge": "Stainless Steel (SS 304)", "badge_ne": "एसएस ३०४ रेलिङ", "tag": "Mirror Polish · Crystal Pillars · Lifetime Rust-Free"},
+  "RLS": {"color": "#f97316", "icon": "⤢", "badge": "Railings & Balustrades", "badge_ne": "बालकनी तथा भर्याङ", "tag": "Staircases · Balconies · Glass & SS Hybrid"},
+  "MOD": {"color": "#ec4899", "icon": "▧", "badge": "Modular Kitchen & Racks", "badge_ne": "मोड्युलर किचन र्याक", "tag": "Termite-Proof · 100% Waterproof · ACP Racks"}
+};
+
+
+
 {templates_js_raw}
 
 function getProductSvg(artKey, artParams) {{
